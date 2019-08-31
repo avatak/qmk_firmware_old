@@ -1,0 +1,77 @@
+#pragma once
+#include "avatak.h"
+
+enum userspace_custom_keycodes {
+    COLEMAK = SAFE_RANGE,
+    COLEMAC,
+    RGBRST,
+    // LATEX SPECIFIC
+    ALIGN,
+    ARRAY,
+    DISPMATH,
+    DCLICK,
+    ENUMERATE,
+    ITEM,
+    ITEMIZE,
+    LEFTRIGHT,
+    LEMMA,
+    LINEMATH,
+    SECTION,
+    THEOREM,
+    NEW_SAFE_RANGE,
+};
+
+// Mod Combos
+#define ALTBSPC LALT(KC_BSPC)
+#define ALTCTL LALT(KC_LCTL)
+#define ALTDEL LALT(KC_DEL)
+#define ALTLEFT LALT(KC_LEFT)
+#define ALTRIGHT LALT(KC_RIGHT)
+#define ALTSHFT LALT(KC_LSFT)
+
+#define CTLBSPC LCTL(KC_BSPC)
+#define CTLDEL LCTL(KC_DEL)
+#define CTLLEFT LCTL(KC_LEFT)
+#define CTLRIGHT LCTL(KC_RIGHT)
+#define CTL_SCLN CTL_T(KC_SCLN)
+#define CTL_SLSH CTL_T(KC_SLASH)
+#define CTLSHIFT LCTL(KC_LSFT)
+
+#define GUILEFT LGUI(KC_LEFT)
+#define GUIRIGHT LGUI(KC_RIGHT)
+#define GUI_SCLN GUI_T(KC_SCLN)
+#define GUI_SLSH GUI_T(KC_SLASH)
+
+// Layer switching
+#define ADJUST MO(_ADJUST)
+#define MACWIN MO(_MWIN)
+#define MNAVESC LT(_MNAV, KC_ESC)
+#define NAVESC LT(_NAV, KC_ESC)
+#define MNAVSPC LT(_MNAV, KC_SPC)
+#define MOUSE TT(_MOUSE)
+#define NAVSPC LT(_NAV, KC_SPC)
+#define SYMENT LT(_SYM, KC_ENT)
+#define SYMSPC LT(_SYM, KC_SPC)
+#define TEXSPC LT(_TEX, KC_SPC)
+
+#define MACEND LGUI(KC_RIGHT)
+#define MACHOME LGUI(KC_LEFT)
+#define TABRIGHT LCTL(KC_TAB)
+#define TABLEFT S(LCTL(KC_TAB))
+
+// Mac Window Adjustment with magnet
+#define MW_CENT LCTL(LALT(KC_F))
+#define MW_CSQR LCTL(LALT(KC_C))
+#define MW_FULL LCTL(LALT(KC_ENT))
+#define MW_LEFT LCTL(LALT(KC_LEFT))
+#define MW_LLFT LCTL(LALT(KC_J))
+#define MW_LOWR LCTL(LALT(KC_DOWN))
+#define MW_LRIT LCTL(LALT(KC_K))
+#define MW_L13 LCTL(LALT(KC_D))
+#define MW_L23 LCTL(LALT(KC_E))
+#define MW_RGHT LCTL(LALT(KC_RIGHT))
+#define MW_R13 LCTL(LALT(KC_G))
+#define MW_R23 LCTL(LALT(KC_T))
+#define MW_ULFT LCTL(LALT(KC_U))
+#define MW_UPPR LCTL(LALT(KC_UP))
+#define MW_URIT LCTL(LALT(KC_I))
