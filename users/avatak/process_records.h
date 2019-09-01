@@ -45,6 +45,7 @@ enum userspace_custom_keycodes {
 // Layer switching
 #define ADJUST MO(_ADJUST)
 #define MACWIN MO(_MWIN)
+#define MEDIA MO(_MEDIA)
 #define MNAVESC LT(_MNAV, KC_ESC)
 #define NAVESC LT(_NAV, KC_ESC)
 #define MNAVSPC LT(_MNAV, KC_SPC)
