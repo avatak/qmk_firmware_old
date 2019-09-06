@@ -18,9 +18,9 @@
 
 // Layers
 enum custom_layers {
-    _QWERTY = 0,
-    _COLEMAK_DH,
-    _COLEMAC_DH,
+    _COLEMAK = 0,
+    _COLEMAC,
+    _QWERTY,
     _NAV,
     _MNAV,
     _TEX,
@@ -28,7 +28,7 @@ enum custom_layers {
     _NUM,
     _MWIN,
     _MEDIA,
-    _ADJUST
+    _ADJUST,
 };
 
 /*  Custom keycode definitions */ 
@@ -153,7 +153,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     *  `---------------------------------------------------------------------------------------------------------------'
     */
 
-    [_COLEMAK_DH] = LAYOUT(/* Base */
+    [_COLEMAK] = LAYOUT(/* Base */
         KC_GRV , KC_1   , KC_2   , KC_3   , KC_4   , KC_5   ,                   KC_6   , KC_7   , KC_8   , KC_9   , KC_0   , KC_BSPC, 
         KC_TAB , KC_Q   , KC_W   , KC_F   , KC_P   , KC_B   ,                   KC_J   , KC_L   , KC_U   , KC_Y   , GUISCLN, KC_BSLS, 
         NAVESC , KC_A   , KC_R   , KC_S   , KC_T   , KC_G   ,                   KC_K   , KC_N   , KC_E   , KC_I   , KC_O   , KC_QUOT, 
@@ -162,7 +162,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
 
 
-    [_COLEMAC_DH] = LAYOUT( /* Variation of above with shifted codes more appropriate for using a mac */
+    [_COLEMAC] = LAYOUT( /* Variation of above with shifted codes more appropriate for using a mac */
         KC_GRV , KC_1   , KC_2   , KC_3   , KC_4   , KC_5   ,                   KC_6   , KC_7   , KC_8   , KC_9   , KC_0   , KC_BSPC, 
         KC_TAB , KC_Q   , KC_W   , KC_F   , KC_P   , KC_B   ,                   KC_J   , KC_L   , KC_U   , KC_Y   , CTLSCLN, KC_BSLS, 
         MNAVESC, KC_A   , KC_R   , KC_S   , KC_T   , KC_G   ,                   KC_K   , KC_N   , KC_E   , KC_I   , KC_O   , KC_QUOT, 
@@ -298,7 +298,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     *  |-------+-------+-------+-------+-------+-------|               |-------+-------+-------+-------+-------+-------|
     *  |       |       |       |       |       |       |               |SFT+TAB|   4   |   5   |   6   |   +   |       |
     *  |-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------|
-    *  |       |       |       |       |       |       |       |       | TAB   |   1   |   2   |   3   |   =   |       |
+    *  |    r   |       |       |       |       |       |       |       | TAB   |   1   |   2   |   3   |   =   |       |
     *  |-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------|
     *  |       |       |       |       |       |       |       |SFT+ENT|ENTER  |   0   |   ,   |   .   |       |       |
     *  `---------------------------------------------------------------------------------------------------------------'
@@ -380,29 +380,25 @@ bool os_redo(void) {
     return false;
 }
 
-void persistent_default_layer_set(uint16_t default_layer) {
-  eeconfig_update_default_layer(default_layer);
-  default_layer_set(default_layer);
-}
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         case COLEMAK:
             if (record->event.pressed) {
-                set_single_persistent_default_layer(_COLEMAK_DH);
-                os_status = _COLEMAK_DH;
+                set_single_persistent_default_layer(_COLEMAK);
+                os_status = _COLEMAK;
             }
             break;
         case COLEMAC:
             if (record->event.pressed) {
-                set_single_persistent_default_layer(_COLEMAC_DH);
-                os_status = _COLEMAC_DH;
+                set_single_persistent_default_layer(_COLEMAC);
+                os_status = _COLEMAC;
             }
             break;
         case QWERTY:
             if (record->event.pressed) {
                 set_single_persistent_default_layer(_QWERTY);
-                os_status = _COLEMAK_DH;
+                os_status = _COLEMAK;
             }
             break;
         case RGBRST:
@@ -505,9 +501,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             // ADJUST layer
             else if (IS_LAYER_ON(_ADJUST)) {
                 if (clockwise) {
-                    tap_code16(RGB_HUI);
+                    rgblight_increase_hue();
                 } else {
-                    tap_code16(RGB_HUD);
+                    rgblight_decrease_hue();
                 }
             }
             else if (IS_LAYER_ON(_MEDIA)) {
@@ -549,9 +545,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         // Adjust layer
         else if (IS_LAYER_ON(_ADJUST)) {
             if (clockwise) {
-                tap_code16(RGB_MOD);
+                rgblight_step();
             } else {
-                tap_code16(RGB_RMOD);
+                rgblight_step_reverse();
             }
         }
         // Media layer
@@ -574,7 +570,13 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   }
 #endif
 
-#ifdef OLED_DRIVER_ENABLE
+
+
+oled_rotation_t oled_init_user(oled_rotation_t rotation) {
+  if (is_keyboard_master())
+    return OLED_ROTATION_270;
+  return rotation;
+}
 
 static void render_logo(void) {
   static const char PROGMEM qmk_logo[] = {
@@ -585,66 +587,78 @@ static void render_logo(void) {
   oled_write_P(qmk_logo, false);
 }
 
-oled_rotation_t oled_init_user(oled_rotation_t rotation) {
-    if (!is_keyboard_master())
-        return OLED_ROTATION_180;  // flips the display 180 degrees if offhand
-    return rotation;
+static void render_status(void) {
+  // Render to mode icon
+  
+  static const char PROGMEM sol_icon[] = {
+    0x9b,0x9c,0x9d,0x9e,0x9f,
+    0xbb,0xbc,0xbd,0xbe,0xbf,
+    0xdb,0xdc,0xdd,0xde,0xdf,0
+  };
+  oled_write_P(sol_icon, false);
+  
+
+  // Define layers here
+  oled_write_P(PSTR("Layer"), false);
+  switch (get_highest_layer(layer_state)) {
+    case _QWERTY:
+      oled_write_P(PSTR("QWRTY"), false);
+      break;
+    case _COLEMAK:
+      oled_write_P(PSTR("COLMK"), false);
+      break;
+    case _COLEMAC:
+      oled_write_P(PSTR("CLMAC"), false);
+      break;
+    case _TEX:
+      oled_write_P(PSTR("LaTeX"), false);
+      break;
+    case _SYM:
+      oled_write_P(PSTR("SYM  "), false);
+      break;
+    case _NAV:
+      oled_write_P(PSTR("NAV  "), false);
+      break;
+    case _MNAV:
+      oled_write_P(PSTR("MNAV "), false);
+      break;
+    case _NUM:
+      oled_write_P(PSTR("NUM  "), false);
+      break;
+    case _MWIN:
+      oled_write_P(PSTR("MWIN "), false);
+      break;
+    case _MEDIA:
+      oled_write_P(PSTR("MEDIA"), false);
+      break;
+    case _ADJUST:
+      oled_write_P(PSTR("ADJ  "), false);
+      break;
+    default:
+      oled_write_P(PSTR("UNDEF"), false);
+  }
+
+  // Host Keyboard LED Status
+    uint8_t led_state = host_keyboard_leds();
+    oled_write_P(PSTR("-----"), false);
+    oled_write_P(IS_LED_ON(led_state, USB_LED_NUM_LOCK) ? PSTR("NUMLK") : PSTR("     "), false);
+    oled_write_P(IS_LED_ON(led_state, USB_LED_CAPS_LOCK) ? PSTR("CAPLK") : PSTR("     "), false);
+    oled_write_P(IS_LED_ON(led_state, USB_LED_SCROLL_LOCK) ? PSTR("SCRLK") : PSTR("     "), false);
+
 }
+
+
+
 
 void oled_task_user(void) {
-    if (is_keyboard_master()) {
-    // Host Keyboard Layer Status
-        oled_write_P(PSTR("Layer: "), false);
-        switch (get_highest_layer(layer_state)) {
-            case _QWERTY:
-                oled_write_P(PSTR("Qwerty\n"), false);
-                break;
-            case _COLEMAK_DH:
-                oled_write_P(PSTR("Colemak\n"), false);
-                break;
-            case _COLEMAC_DH:
-                oled_write_P(PSTR("Colemac\n"), false);
-                break;
-            case _NAV:
-                oled_write_P(PSTR("Nav\n"), false);
-                break;
-            case _MNAV:
-                oled_write_P(PSTR("Nav (OSX)\n"), false);
-                break;
-            case _TEX:
-                oled_write_P(PSTR("LaTeX\n"), false);
-                break;
-            case _SYM:
-                oled_write_P(PSTR("Symbol\n"), false);
-                break;
-            case _NUM:
-                oled_write_P(PSTR("Numpad\n"), false);
-                break;
-            case _MWIN:
-                oled_write_P(PSTR("MacWin\n"), false);
-                break;
-            case _MEDIA:
-                oled_write_P(PSTR("Media\n"), false);
-                break;
-            case _ADJUST:
-                oled_write_P(PSTR("Adjust\n"), false);
-                break;
-            default:
-                // Or use the write_ln shortcut over adding '\n' to the end of your string
-                oled_write_ln_P(PSTR("Undefined"), false);
-        }
-
-        // Host Keyboard LED Status
-        uint8_t led_usb_state = host_keyboard_leds();
-        oled_write_P(led_usb_state & (1<<USB_LED_NUM_LOCK) ? PSTR("NUMLCK ") : PSTR("       "), false);
-        oled_write_P(led_usb_state & (1<<USB_LED_CAPS_LOCK) ? PSTR("CAPLCK ") : PSTR("       "), false);
-        oled_write_P(led_usb_state & (1<<USB_LED_SCROLL_LOCK) ? PSTR("SCRLCK ") : PSTR("       "), false);
-    }  else {
-      render_logo();       // Renders a statuc logo
-      oled_scroll_left();  // Turns on scrolling
+  if (is_keyboard_master()) {
+    render_status();
+  } else {
+    render_logo();
+    oled_scroll_left();
   }
 }
-#endif
+
 
 
 

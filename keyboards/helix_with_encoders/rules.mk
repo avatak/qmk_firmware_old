@@ -47,7 +47,7 @@ OPT_DEFS += -DINTERRUPT_CONTROL_ENDPOINT
 #   LUFA DFU     lufa-dfu
 #   QMK DFU      qmk-dfu
 #   atmega32a    bootloadHID
-BOOTLOADER = qmk-dfu
+BOOTLOADER = atmel-dfu
 
 
 # If you don't know the bootloader type, then you can specify the
@@ -83,7 +83,7 @@ HD44780_ENABLE = no 		# Enable support for HD44780 based LCDs (+400)
 
 ENCODER_ENABLE = yes
 
-OLED_DRIVER_ENABLE=yes
+OLED_DRIVER_ENABLE = yes
 
 
 # Link time optimization, should save on firmware size
