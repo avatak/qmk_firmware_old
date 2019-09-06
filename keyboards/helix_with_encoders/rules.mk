@@ -1,4 +1,5 @@
 # MCU name
+#MCU = at90usb1286
 MCU = atmega32u4
 
 # Processor frequency.
@@ -48,7 +49,6 @@ OPT_DEFS += -DINTERRUPT_CONTROL_ENDPOINT
 #   atmega32a    bootloadHID
 BOOTLOADER = qmk-dfu
 
-SPLIT_KEYBOARD = yes
 
 # If you don't know the bootloader type, then you can specify the
 # Boot Section Size in *bytes* by uncommenting out the OPT_DEFS line
@@ -72,7 +72,7 @@ COMMAND_ENABLE = no        # Commands for debug and configuration
 SLEEP_LED_ENABLE = no       # Breathing sleep LED during USB suspend
 # if this doesn't work, see here: https://github.com/tmk/tmk_keyboard/wiki/FAQ#nkro-doesnt-work
 NKRO_ENABLE = no            # USB Nkey Rollover
-BACKLIGHT_ENABLE = no       # Enable keyboard backlight functionality
+BACKLIGHT_ENABLE = no       # Enable keyboard backlight functionality on B7 by default
 RGBLIGHT_ENABLE = yes        # Enable keyboard RGB underglow
 MIDI_ENABLE = no            # MIDI support (+2400 to 4200, depending on config)
 UNICODE_ENABLE = no         # Unicode
@@ -82,4 +82,9 @@ FAUXCLICKY_ENABLE = no      # Use buzzer to emulate clicky switches
 HD44780_ENABLE = no 		# Enable support for HD44780 based LCDs (+400)
 
 ENCODER_ENABLE = yes
-OLED_DRIVE_ENABLE = yes
+
+OLED_DRIVER_ENABLE=yes
+
+
+# Link time optimization, should save on firmware size
+EXTRAFLAGS += -flto
