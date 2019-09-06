@@ -49,9 +49,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
   #undef RGBLED_NUM
   #define RGBLED_NUM 14
   #define RGBLED_SPLIT {7, 7}
+  //#undef RGBLIGHT_ANIMATIONS
   // #define RGBLIGHT_ANIMATIONS
-  // #define RGBLIGHT_EFFECT_STATIC_GRADIENT
-   // #define RGBLIGHT_EFFECT_RAINBOW_SWIRL
+  //#define RGBLIGHT_EFFECT_STATIC_GRADIENT
+  #//define RGBLIGHT_EFFECT_RAINBOW_SWIRL
    // #define RGBLIGHT_EFFECT_RAINBOW_MOOD
    // #define RGBLIGHT_EFFECT_STATIC_GRADIENT
 #endif

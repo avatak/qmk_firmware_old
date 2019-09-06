@@ -28,6 +28,7 @@ enum userspace_custom_keycodes {
 #define ALTLEFT LALT(KC_LEFT)
 #define ALTRIGHT LALT(KC_RIGHT)
 #define ALTSHFT LALT(KC_LSFT)
+#define ALT_Q ALT_T(KC_Q)
 
 #define CTLBSPC LCTL(KC_BSPC)
 #define CTLDEL LCTL(KC_DEL)
