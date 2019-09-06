@@ -2,7 +2,7 @@
 #include "avatak.h"
 
 extern keymap_config_t keymap_config;
-
+/*
 enum KEYMAP_CUSTOM_KEYCODES {\
     HALL = NEW_SAFE_RANGE,
     JESU,
@@ -10,6 +10,7 @@ enum KEYMAP_CUSTOM_KEYCODES {\
     PRELUDE,
     WEASLE
 };
+*/
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
@@ -46,7 +47,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_NAV] =  LAYOUT_wrapper( \
     _______, __NAV_L0___________________________________, _______, _______, _______, _______, _______, _______,\
     _______, __NAV_L1___________________________________, __NAV_R1___________________________________, _______,\
-    _______, __NAV_L2___________________________________, __NAV_R2___________________________________, _______, \
+    _______, __NAV_L2___________________________________, __NAV_R2___________________________________, S(KC_F10), \
     _______, __NAV_L3___________________________________, __NAV_R3___________________________________, _______, \
     ADJUST , _______, _______, _______, _______, _______, KC_ENT , KC_ENT , _______, _______, _______, KC_F12 \
 ),
@@ -98,7 +99,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 
 [_ADJUST] =  LAYOUT( \
-    RGBRST , PRELUDE, HALL   , JESU   , WEASLE, RGB_M_P, RGB_M_R, RGB_M_SW, RGB_M_G, _______, BL_STEP, _______,\
+    //RGBRST , PRELUDE, HALL   , JESU   , WEASLE, RGB_M_P, RGB_M_R, RGB_M_SW, RGB_M_G, _______, BL_STEP, _______,
+    RGBRST , _______, _______, _______, _______, RGB_M_P, RGB_M_R, RGB_M_SW, RGB_M_G, _______, BL_STEP, _______,\
     _______, RGB_TOG, RGB_VAD, RGB_HUI, RGB_VAI, _______, _______, _______, CK_UP  , _______, BL_TOGG, RESET  ,\
     _______, AU_TOG ,RGB_RMOD, RGB_HUD, RGB_MOD, _______, _______, _______, CK_DOWN, KC_VOLU, _______, RGBRST , \
     _______, _______, RGB_SAD, CK_TOGG, RGB_SAI, _______, _______, _______, KC_MPRV, KC_VOLD, KC_MNXT, _______, \
@@ -218,7 +220,7 @@ void encoder_update_user(uint8_t index, bool clockwise) {
         }
     }
   }
-
+/*
 float tone_jesu[][2] = SONG(JESU_JOY);
 float tone_ff[][2] = SONG(_FF_PRELUDE);
 float tone_pop[][2] = SONG(POP_GOES_THE_WEASLE);
@@ -249,4 +251,4 @@ bool process_record_keymap(uint16_t keycode, keyrecord_t *record) {
     }
     return true;
 }
-
+*/
