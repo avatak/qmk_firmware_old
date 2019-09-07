@@ -1,4 +1,4 @@
-/* Copyright 2019 Michael Shultz
+ /* Copyright 2019 Michael Shultz
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -27,7 +27,6 @@ enum custom_layers {
     _SYM,
     _NUM,
     _MWIN,
-    _MEDIA,
     _ADJUST,
 };
 
@@ -36,7 +35,6 @@ enum custom_layers {
 /* Layer changes */
 
     #define ADJUST MO(_ADJUST)
-    #define MEDIA MO(_MEDIA)
     #define MACWIN MO(_MWIN)
     #define MNAVESC LT(_MNAV, KC_ESC)
     #define MNAVSPC LT(_MNAV, KC_SPC)
@@ -136,7 +134,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_TAB , KC_Q   , KC_W   , KC_E   , KC_R   , KC_T   ,                   KC_Y   , KC_U   , KC_I   , KC_O   , KC_P   , KC_BSLS, 
         NAVESC , KC_A   , KC_S   , KC_D   , KC_F   , KC_G   ,                   KC_H   , KC_J   , KC_K   , KC_L   , GUISCLN, KC_QUOT, 
         KC_LSFT, KC_Z   , KC_X   , KC_C   , KC_V   , KC_B   , _______, _______, KC_N   , KC_M   , KC_COMM, KC_DOT , CTLSLSH, KC_RSFT, 
-        ADJUST , KC_LCTL, _______, KC_LGUI, KC_LALT, NAVSPC , NUMPAD , SYMENT , TEXSPC , ALTCTL , ALTSHFT, _______, _______, MEDIA  
+        ADJUST , KC_LCTL, _______, KC_LGUI, KC_LALT, NAVSPC , NUMPAD , SYMENT , TEXSPC , ALTCTL , ALTSHFT, _______, _______, ADJUST
     ),
 
    /*  QWERTY 
@@ -158,7 +156,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_TAB , KC_Q   , KC_W   , KC_F   , KC_P   , KC_B   ,                   KC_J   , KC_L   , KC_U   , KC_Y   , GUISCLN, KC_BSLS, 
         NAVESC , KC_A   , KC_R   , KC_S   , KC_T   , KC_G   ,                   KC_K   , KC_N   , KC_E   , KC_I   , KC_O   , KC_QUOT, 
         KC_LSFT, KC_Z   , KC_X   , KC_C   , KC_D   , KC_V   , _______, _______, KC_M   , KC_H   , KC_COMM, KC_DOT , CTLSLSH, KC_RSFT, 
-        ADJUST , KC_LCTL, _______, KC_LGUI, KC_LALT, NAVSPC , NUMPAD , SYMENT , TEXSPC , ALTCTL , ALTSHFT, _______, _______, MEDIA  
+        ADJUST , KC_LCTL, _______, KC_LGUI, KC_LALT, NAVSPC , NUMPAD , SYMENT , TEXSPC , ALTCTL , ALTSHFT, _______, _______, ADJUST  
     ),
 
 
@@ -167,7 +165,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_TAB , KC_Q   , KC_W   , KC_F   , KC_P   , KC_B   ,                   KC_J   , KC_L   , KC_U   , KC_Y   , CTLSCLN, KC_BSLS, 
         MNAVESC, KC_A   , KC_R   , KC_S   , KC_T   , KC_G   ,                   KC_K   , KC_N   , KC_E   , KC_I   , KC_O   , KC_QUOT, 
         KC_LSFT, KC_Z   , KC_X   , KC_C   , KC_D   , KC_V   , _______, _______, KC_M   , KC_H   , KC_COMM, KC_DOT , GUISLSH, KC_RSFT, 
-        ADJUST , KC_LCTL, _______, KC_LALT, KC_LGUI, MNAVSPC, NUMPAD , SYMENT , TEXSPC , ALTCTL , ALTSHFT, _______, _______, MEDIA  
+        ADJUST , KC_LCTL, _______, KC_LALT, KC_LGUI, MNAVSPC, NUMPAD , SYMENT , TEXSPC , ALTCTL , ALTSHFT, _______, _______, ADJUST 
     ),
 
     /* NAVIGATION
@@ -186,8 +184,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [_NAV] = LAYOUT(
         _______, _______, _______, _______, ALT_F4 , _______,                   _______, _______, _______, _______, _______, _______, \
-        _______, _______, CTLPGUP, KC_PGUP, CTLPGDN, _______,                   _______, TABLEFT, KC_UP  , TABRGHT, _______, _______, \
-        _______, _______, KC_HOME, KC_PGDN, KC_END , _______,                   CTLLEFT, KC_LEFT, KC_DOWN, KC_RGHT, CTLRGHT, _______, \
+        _______, _______, CTLPGUP, KC_PGUP, CTLPGDN, _______,                   _______, TABLEFT, KC_UP  , TABRGHT, _______, S(LCTL(LALT(KC_S))), \
+        _______, _______, KC_HOME, KC_PGDN, KC_END , _______,                   CTLLEFT, KC_LEFT, KC_DOWN, KC_RGHT, CTLRGHT, S(LALT(KC_F10)), \
         _______, _______, _______, KC_CAPS, KC_INS , _______, _______, _______, CTLBSPC, KC_BSPC, KC_DEL , CTLDEL , CTLZERO, _______, \
         _______, _______, _______, _______, _______, _______, _______, _______, KC_ENT , _______, _______, _______, _______, KC_F12 \
     ),
@@ -268,27 +266,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         _______, _______, _______, _______, _______, _______, _______, _______, MW_FULL, _______, _______, _______, _______, _______
     ),
 
-   /* Media  
-    *  ,-----------------------------------------------.               ,-----------------------------------------------.
-    *  |       |       |       |       |       |       |               |       |       |       |       |       |       |
-    *  |-------+-------+-------+-------+-------+-------|               |-------+-------+-------+-------+-------+-------|
-    *  |       |       |       |       |       |       |               |       |       |       |       |       |       |
-    *  |-------+-------+-------+-------+-------+-------|               |-------+-------+-------+-------+-------+-------|
-    *  |       |       |       |       |       |       |               |       |       | play  | vol up|       |       |
-    *  |-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------|
-    *  |       |       |       |       |       |       |       |       |       |       | prev  | vol dn|  next |       |
-    *  |-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------|
-    *  |       |       |       |       |       |       |       |       |       |       |       | mute  |       |       |
-    *  `---------------------------------------------------------------------------------------------------------------'
-    */
-
-    [_MEDIA] = LAYOUT(
-        _______, _______, _______, _______, _______, _______,                   _______, _______, _______, _______, _______, _______,
-        _______, _______, _______, _______, _______, _______,                   _______, _______, _______, _______, _______, _______,
-        _______, _______, _______, _______, _______, _______,                   _______, _______, KC_MPLY, KC_VOLU, _______, _______,
-        _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, KC_MPRV, KC_VOLD, KC_MNXT, _______,
-        _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, KC_MUTE, _______, _______
-    ),
 
    /* Media control 
     *  ,-----------------------------------------------.               ,-----------------------------------------------.
@@ -298,7 +275,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     *  |-------+-------+-------+-------+-------+-------|               |-------+-------+-------+-------+-------+-------|
     *  |       |       |       |       |       |       |               |SFT+TAB|   4   |   5   |   6   |   +   |       |
     *  |-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------|
-    *  |    r   |       |       |       |       |       |       |       | TAB   |   1   |   2   |   3   |   =   |       |
+    *  |       |       |       |       |       |       |       |       | TAB   |   1   |   2   |   3   |   =   |       |
     *  |-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------|
     *  |       |       |       |       |       |       |       |SFT+ENT|ENTER  |   0   |   ,   |   .   |       |       |
     *  `---------------------------------------------------------------------------------------------------------------'
@@ -310,7 +287,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         _______, _______, _______, _______, _______, _______,                 S(KC_TAB), KC_P4  , KC_P5  , KC_P6  , KC_PPLS, _______,
         _______, _______, _______, _______, _______, _______, _______, _______, KC_TAB , KC_P1  , KC_P2  , KC_P3  , KC_EQL , _______,
         _______, _______, _______, _______, _______, _______,_______,S(KC_ENT), KC_ENT , KC_P0  , KC_COMM, KC_PDOT, _______, _______
-    ),
+    ), 
 
    /* Adjustment layer
     *  ,-----------------------------------------------.               ,-----------------------------------------------.
@@ -327,11 +304,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     */
 
     [_ADJUST] = LAYOUT(
-        RESET  , _______, _______, _______, _______, _______,                   RGBRST , _______, _______, _______, _______, RGB_TOG,
-        _______, QWERTY , _______, _______, _______, _______,                   _______, RGB_SAD, RGB_HUI, RGB_SAI, _______, _______,
-        _______, AU_TOG , _______, _______, _______, _______,                   _______,RGB_RMOD, RGB_HUD, RGB_MOD, _______, _______,
-        _______, _______, _______, CK_TOGG, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
-        _______, _______, _______, _______, _______, COLEMAK, _______, _______, COLEMAC, _______, _______, _______, _______, _______
+        RESET  , _______, _______, _______, _______, _______,                   RGB_TOG, _______, _______, _______, _______, RGBRST ,
+        _______, QWERTY , _______, RGB_VAI, _______, _______,                   RGB_SPI, RGB_HUI, _______, _______, _______, _______,
+        _______, _______, RGB_SAD, RGB_VAD, RGB_SAI, _______,                   RGB_SPD, RGB_HUD, KC_MPLY, KC_VOLU, _______, _______,
+        _______, _______, _______, _______, _______, _______, _______, _______,RGB_RMOD, RGB_MOD, KC_MPRV, KC_VOLD, KC_MNXT, _______,
+        _______, _______, _______, _______, _______, COLEMAK, _______, _______, COLEMAC, _______, _______, KC_MUTE, _______, _______
     )
 };
 
@@ -506,13 +483,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                     rgblight_decrease_hue();
                 }
             }
-            else if (IS_LAYER_ON(_MEDIA)) {
-                if (clockwise) {
-                    tap_code16(KC_VOLD);
-                } else {
-                    tap_code16(KC_VOLU);
-                }
-            }
             // DEFAULT
             else {
                 if (clockwise) {
@@ -548,14 +518,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 rgblight_step();
             } else {
                 rgblight_step_reverse();
-            }
-        }
-        // Media layer
-        else if (IS_LAYER_ON(_MEDIA)) {
-            if (clockwise) {
-                tap_code(KC_MNXT);
-            } else {
-                tap_code(KC_MPRV);
             }
         }
         // DEFAULT
@@ -599,7 +561,7 @@ static void render_status(void) {
   
 
   // Define layers here
-  oled_write_P(PSTR("Layer"), false);
+  oled_write_P(PSTR("Layer\n"), false);
   switch (get_highest_layer(layer_state)) {
     case _QWERTY:
       oled_write_P(PSTR("QWRTY"), false);
@@ -628,11 +590,8 @@ static void render_status(void) {
     case _MWIN:
       oled_write_P(PSTR("MWIN "), false);
       break;
-    case _MEDIA:
-      oled_write_P(PSTR("MEDIA"), false);
-      break;
     case _ADJUST:
-      oled_write_P(PSTR("ADJ  "), false);
+      oled_write_P(PSTR("ADJST"), false);
       break;
     default:
       oled_write_P(PSTR("UNDEF"), false);
@@ -640,7 +599,7 @@ static void render_status(void) {
 
   // Host Keyboard LED Status
     uint8_t led_state = host_keyboard_leds();
-    oled_write_P(PSTR("-----"), false);
+    oled_write_P(PSTR("\n-----\n"), false);
     oled_write_P(IS_LED_ON(led_state, USB_LED_NUM_LOCK) ? PSTR("NUMLK") : PSTR("     "), false);
     oled_write_P(IS_LED_ON(led_state, USB_LED_CAPS_LOCK) ? PSTR("CAPLK") : PSTR("     "), false);
     oled_write_P(IS_LED_ON(led_state, USB_LED_SCROLL_LOCK) ? PSTR("SCRLK") : PSTR("     "), false);
