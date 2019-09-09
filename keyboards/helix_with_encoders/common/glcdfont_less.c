@@ -1,8 +1,4 @@
-// This is the 'classic' fixed-space bitmap font for Adafruit_GFX since 1.0.
-// See gfxfont.h for newer custom bitmap font info.
-
-#ifndef FONT5X7_H
-#define FONT5X7_H
+#pragma once
 
 #ifdef __AVR__
  #include <avr/io.h>
@@ -13,7 +9,8 @@
  #define PROGMEM
 #endif
 
-// Standard ASCII 5x7 font
+// Helidox 8x6 font with RGBKB SOL Logo
+// Online editor: http://teripom.x0.com/
 
 static const unsigned char font[] PROGMEM = {
   0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
@@ -241,4 +238,3 @@ static const unsigned char font[] PROGMEM = {
   0x3F, 0x1F, 0x0F, 0x07, 0x03, 0x00,
   0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
 };
-#endif // FONT5X7_H
