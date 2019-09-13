@@ -1,17 +1,11 @@
 #include QMK_KEYBOARD_H
-#include "avatak.h"
 
 extern keymap_config_t keymap_config;
 
-/*
- {\
-    HALL = NEW_SAFE_RANGE,
-    JESU,
-    POP,
-    PRELUDE,
-    WEASLE
-};
-*/
+// Each layer gets a name for readability, which is then used in the keymap matrix below.
+// The underscores don't mean anything - you can have a layer called STUFF or any other name.
+// Layer names don't all need to be of the same length, obviously, and you can also skip them
+// entirely and just use numbers.
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
@@ -29,40 +23,35 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * `-----------------------------------------------------------------------------------'
  */
 [_COLEMAK] = LAYOUT_wrapper( \
-    KC_GRV,  __NUMBER_L_________________________________, __NUMBER_R_________________________________, KC_BSPC, \
-    KC_TAB,  __COLEMAK_L1_______________________________, __COLEMAK_R1_______________________________, KC_BSLS, \
+    KC_TAB,  __COLEMAK_L1_______________________________, __COLEMAK_R1_______________________________, KC_BSPC, \
     NAVESC,  __COLEMAK_L2_______________________________, __COLEMAK_R2_______________________________, KC_QUOT, \
-    KC_LSFT, __COLEMAK_L3_______________________________, __COLEMAK_R3_______________________________, KC_RSFT, \
+    KC_LSFT, __COLEMAK_L3_______________________________, __COLEMAK_R3_______________________________, KC_RSFT , \
     KC_LCTL, KC_LGUI, KC_LALT, _______, NAVSPC , NAVSPC , TEXSPC , TEXSPC , _______, ALTSHFT, ALTCTL , ADJUST \
 ),
 
 
 [_COLEMAC] = LAYOUT_wrapper( \
-    KC_GRV , __NUMBER_L_________________________________, __NUMBER_R_________________________________, KC_BSPC, \
-    KC_TAB , __COLEMAC_L1_______________________________, __COLEMAC_R1_______________________________, KC_BSLS, \
+    KC_TAB , __COLEMAC_L1_______________________________, __COLEMAC_R1_______________________________, KC_BSPC, \
     MNAVESC, __COLEMAC_L2_______________________________, __COLEMAC_R2_______________________________, KC_QUOT, \
     KC_LSFT, __COLEMAC_L3_______________________________, __COLEMAC_R3_______________________________, KC_RSFT, \
     KC_LCTL, KC_LALT, KC_LGUI, _______, MNAVSPC, MNAVSPC, TEXSPC , TEXSPC , _______, ALTSHFT, ALTCTL , ADJUST \
 ),
 
 [_NAV] =  LAYOUT_wrapper( \
-    _______, __NAV_L0___________________________________, _______, _______, _______, _______, _______, _______,\
-    _______, __NAV_L1___________________________________, __NAV_R1___________________________________, S(LCTL(LALT(KC_S))),\
+    WINQUIT, __NAV_L1___________________________________, __NAV_R1___________________________________, S(LCTL(LALT(KC_S))),\
     _______, __NAV_L2___________________________________, __NAV_R2___________________________________, S(KC_F10), \
     _______, __NAV_L3___________________________________, __NAV_R3___________________________________, _______, \
     ADJUST , _______, _______, _______, _______, _______, KC_ENT , KC_ENT , _______, _______, _______, KC_F12 \
 ),
 
 [_MNAV] =  LAYOUT_wrapper( \
-    _______, __NAV_L0___________________________________, _______, _______, _______, _______, _______, _______,\
     MACWIN , __MNAV_L1__________________________________, __MNAV_R1__________________________________, _______,\
     _______, __MNAV_L2__________________________________, __MNAV_R2__________________________________, _______, \
     _______, __MNAV_L3__________________________________, __MNAV_R3__________________________________, _______, \
-    ADJUST , _______, _______, _______, _______, _______, KC_ENT , KC_ENT , _______, _______, _______, S(LALT(KC_T)) \
+    ADJUST , _______, _______, _______, _______, _______, KC_ENT , KC_ENT , _______, _______, _______, KC_F12 \
 ),
 
 [_TEX] =  LAYOUT_wrapper( \
-    _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,\
     _______, __TEX_L1___________________________________, __TEX_R1___________________________________, _______,\
     _______, __TEX_L2___________________________________, __TEX_R2___________________________________, _______, \
     _______, __TEX_L3___________________________________, __TEX_R3___________________________________, _______, \
@@ -70,15 +59,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 ),
 
 [_SYM] =  LAYOUT_wrapper( \
-    _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, KC_F12 ,\
     _______, __FUNC_L___________________________________, __FUNC_R___________________________________, KC_F11 ,\
-    KC_GRV , __SYM_L____________________________________, __SYM_R____________________________________, _______, \
+    KC_GRV , __SYM_L____________________________________, __SYM_R____________________________________, KC_F12, \
     _______, __NUMBER_L_________________________________, __NUMBER_R_________________________________, _______, \
     _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______ \
 ),
 
 [_MWIN] = LAYOUT_wrapper( \
-    _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,\
     _______, _______, _______, _______, _______, _______, __MWIN_R1__________________________________, _______,\
     _______, _______, _______, _______, _______, _______, __MWIN_R2__________________________________, _______,\
     _______, _______, _______, _______, _______, _______, __MWIN_R3__________________________________, _______,\
@@ -100,10 +87,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 
 [_ADJUST] =  LAYOUT( \
-  //  RGBRST , PRELUDE, HALL   , JESU   , WEASLE, RGB_M_P, RGB_M_R, RGB_M_SW, RGB_M_G, _______, BL_STEP, _______,
-    _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,\
-    _______, RGB_TOG, RGB_VAD, CK_UP  , RGB_VAI, _______, _______, _______, CK_UP  , _______, BL_TOGG, RESET  ,\
-    _______, AU_TOG ,RGB_RMOD, CK_DOWN, RGB_MOD, _______, _______, _______, CK_DOWN, KC_VOLU, _______, RGBRST , \
+    //RGBRST , PRELUDE, HALL   , JESU   , WEASLE, RGB_M_P, RGB_M_R, RGB_M_SW, RGB_M_G, _______, BL_STEP, _______,
+    RGBRST , _______, _______, _______, _______, RGB_M_P, RGB_M_R, RGB_M_SW, RGB_M_G, _______, BL_STEP, _______,\
+    _______, RGB_TOG, RGB_VAD, RGB_HUI, RGB_VAI, _______, _______, _______, CK_UP  , _______, BL_TOGG, RESET  ,\
+    _______, AU_TOG ,RGB_RMOD, RGB_HUD, RGB_MOD, _______, _______, _______, CK_DOWN, KC_VOLU, _______, RGBRST , \
     _______, _______, RGB_SAD, CK_TOGG, RGB_SAI, _______, _______, _______, KC_MPRV, KC_VOLD, KC_MNXT, _______, \
     _______, _______, _______, _______, COLEMAK, COLEMAK, COLEMAC, COLEMAC, _______, KC_MUTE, _______, _______ \
 )
@@ -170,6 +157,13 @@ void encoder_update_user(uint8_t index, bool clockwise) {
         }
         else if (IS_LAYER_ON(_ADJUST)) {
             if (clockwise) {
+                rgblight_increase_hue();
+            } else {
+                rgblight_decrease_hue();
+            }
+        }
+        else if (IS_LAYER_ON(_MEDIA)) {
+            if (clockwise) {
                 tap_code(KC_VOLU);
             } else {
                 tap_code(KC_VOLD);
@@ -193,9 +187,9 @@ void encoder_update_user(uint8_t index, bool clockwise) {
         }
         else if (IS_LAYER_ON(_ADJUST)) {
             if (clockwise) {
-                tap_code(KC_MNXT);
+                rgblight_step();
             } else {
-                tap_code(KC_MPRV);
+                rgblight_step_reverse();
             }
         }
         else if (IS_LAYER_ON(_SYM)) {
@@ -214,22 +208,3 @@ void encoder_update_user(uint8_t index, bool clockwise) {
         }
     }
   }
-/*
-float tone_jesu[][2] = SONG(JESU_JOY);
-float tone_ff[][2] = SONG(_FF_PRELUDE);
-float tone_pop[][2] = SONG(POP_GOES_THE_WEASLE);
-float tone_hall[][2] = SONG(HALL_OF_THE_MOUNTAIN_KING);
-
-bool process_record_keymap(uint16_t keycode, keyrecord_t *record) {
-    switch (keycode) {
-        case SHENT:
-            if (record->event.pressed) {
-                register_code16(KC_SFTENT);
-            } else {
-                unregister_code16(KC_SFTENT);
-            }
-            break;
-    }
-    return true;
-}
-*/
