@@ -43,6 +43,9 @@ enum userspace_custom_keycodes {
 #define GUI_SCLN GUI_T(KC_SCLN)
 #define GUI_SLSH GUI_T(KC_SLASH)
 
+#define WINQUIT LALT(KC_F4)
+#define MACQUIT LGUI(KC_Q)
+
 // Layer switching
 #define ADJUST MO(_ADJUST)
 #define MACWIN MO(_MWIN)

@@ -1,5 +1,7 @@
 #include QMK_KEYBOARD_H
 
+#include "avatak.h"
+
 extern keymap_config_t keymap_config;
 
 // Each layer gets a name for readability, which is then used in the keymap matrix below.
@@ -87,11 +89,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 
 [_ADJUST] =  LAYOUT( \
-    //RGBRST , PRELUDE, HALL   , JESU   , WEASLE, RGB_M_P, RGB_M_R, RGB_M_SW, RGB_M_G, _______, BL_STEP, _______,
-    RGBRST , _______, _______, _______, _______, RGB_M_P, RGB_M_R, RGB_M_SW, RGB_M_G, _______, BL_STEP, _______,\
-    _______, RGB_TOG, RGB_VAD, RGB_HUI, RGB_VAI, _______, _______, _______, CK_UP  , _______, BL_TOGG, RESET  ,\
-    _______, AU_TOG ,RGB_RMOD, RGB_HUD, RGB_MOD, _______, _______, _______, CK_DOWN, KC_VOLU, _______, RGBRST , \
-    _______, _______, RGB_SAD, CK_TOGG, RGB_SAI, _______, _______, _______, KC_MPRV, KC_VOLD, KC_MNXT, _______, \
+    RGBRST , _______, _______, CK_UP  , _______, BL_STEP, _______, _______, _______, _______, BL_TOGG, RESET  ,\
+    _______, AU_TOG , _______, CK_DOWN, _______, _______, _______, _______, KC_MPLY, KC_VOLU, _______, RGBRST , \
+    _______, _______, _______, CK_TOGG, _______, _______, _______, _______, KC_MPRV, KC_VOLD, KC_MNXT, _______, \
     _______, _______, _______, _______, COLEMAK, COLEMAK, COLEMAC, COLEMAC, _______, KC_MUTE, _______, _______ \
 )
 

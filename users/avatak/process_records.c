@@ -100,7 +100,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             break;
         case DISPMATH:
             if (record->event.pressed) {
-                SEND_STRING("\\[" SS_TAP(X_ENTER) SS_TAP(X_ENTER)"\\]" SS_TAP(X_UP) SS_TAP(X_TAB));
+                SEND_STRING("\\[\\]" SS_TAP(X_ENTER) SS_TAP(X_ENTER) SS_TAP(X_UP));
+                tap_code(KC_TAB);
             }
             break;
         case ENUMERATE:
@@ -130,7 +131,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             break;
         case LINEMATH:
             if (record->event.pressed) {
-                SEND_STRING("\\(\\)" SS_TAP(X_LEFT) SS_TAP(X_LEFT) "   " SS_TAP(X_LEFT));
+                SEND_STRING("\\(\\)" SS_TAP(X_LEFT) SS_TAP(X_LEFT) "  " SS_TAP(X_LEFT));
             }
             break;
         case SECTION:

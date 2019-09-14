@@ -17,7 +17,7 @@ enum layer_number {
 };
 
 
-/*  Custom keycode definitions */ 
+/*  Custom keycode definitions */
 
   /* Layer changes */
 
@@ -33,7 +33,7 @@ enum layer_number {
       #define TEXSPC LT(_TEX, KC_SPC)
 
   /* Custom combination keycodes */
-      
+
       #define ALTBSPC LALT(KC_BSPC)
       #define ALTCTL LALT(KC_LCTL)
       #define ALTCTLS S(LALT(KC_LCTL))
@@ -53,7 +53,7 @@ enum layer_number {
       #define MACHOME LGUI(KC_LEFT)
       #define TABLEFT LCTL(LSFT(KC_TAB))
       #define TABRGHT LCTL(KC_TAB)
-      
+
   /* Dual function keys */
 
       #define CTLSCLN CTL_T(KC_SCLN)
@@ -454,7 +454,7 @@ const rgb_matrix_f rgb_matrix_functions[6][2] = {
         }
 
 // RIGHT KNOB
-    
+
     else if (index == 1) {
         //  NAV LAYER
         if (IS_LAYER_ON(_NAV)) {
@@ -522,7 +522,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 }
             #endif
             break;
-    
+
     // For LaTeX specifically
 
         case ALIGN:
@@ -537,7 +537,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             break;
         case DISPMTH:
             if (record->event.pressed) {
-                SEND_STRING("\\[" SS_TAP(X_ENTER) SS_TAP(X_ENTER)"\\]" SS_TAP(X_UP) SS_TAP(X_TAB));
+                SEND_STRING("\\[\n\\]" SS_TAP(X_UP) "    ");
             }
             break;
         case ENUM:
@@ -567,7 +567,14 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             break;
         case LINEMTH:
             if (record->event.pressed) {
-                SEND_STRING("\\(\\)" SS_TAP(X_LEFT) SS_TAP(X_LEFT) "   " SS_TAP(X_LEFT));
+                tap_code(KC_BSLS);
+                register_code(KC_LSFT);
+                tap_code(KC_9);
+                unregister_code(KC_LSFT);
+                tap_code(KC_BSLS);
+                register_code(KC_LSFT);
+                tap_code(KC_0);
+                unregister_code(KC_LSFT);
             }
             break;
         case SECTN:
@@ -631,7 +638,7 @@ static void render_status(void) {
       break;
     case _MEDIA:
       oled_write_P(PSTR("MEDIA"), false);
-      break; 
+      break;
     case _ADJUST:
       oled_write_P(PSTR("ADJST"), false);
       break;
