@@ -575,6 +575,11 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 register_code(KC_LSFT);
                 tap_code(KC_0);
                 unregister_code(KC_LSFT);
+                tap_code(KC_LEFT);
+                tap_code(KC_LEFT);
+                tap_code(KC_SPC);
+                tap_code(KC_LEFT);
+                tap_code(KC_SPC);
             }
             break;
         case SECTN:
@@ -596,7 +601,10 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     oled_rotation_t oled_init_user(oled_rotation_t rotation) {
         if (is_keyboard_master())
             return OLED_ROTATION_270;
-        return rotation;
+        else if (!is_keyboard_master())
+            return OLED_ROTATION_180;
+        else 
+          return rotation;
     }
 
 static void render_logo(void) {
