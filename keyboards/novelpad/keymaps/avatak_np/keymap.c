@@ -17,22 +17,49 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include QMK_KEYBOARD_H
 
+enum layer_number {
+    _BASE = 0,
+    _RAISE, 
+    _LOWER,
+};
+
+#define LOWZERO LT(_LOWER,KC_P0)
+#define RASEENT LT(_RAISE, KC_ENT)
+#define SHFTTAB S(KC_TAB)
+
 enum custom_keycodes {
     WK_RED = SAFE_RANGE,
     WK_GREEN,
     WK_BLUE
 };
 
-const uint16_t h,h PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-    [0] = LAYOUT(
-        KC_NLCK, KC_PSLS, KC_PAST, KC_ESC,
-        KC_P7,   KC_P8,   KC_P9,   KC_PMNS,
-        KC_P4,   KC_P5,   KC_P6,   KC_PPLS,
-        KC_P1,   KC_P2,   KC_P3,   KC_TAB,
-        MO(1),   KC_P0,   KC_PDOT, KC_ENT
+const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
+    [_BASE] = LAYOUT(
+        KC_NLCK, KC_PSLS, KC_PAST, KC_BSPC,
+        KC_P7  , KC_P8  , KC_P9  , KC_PMNS,
+        KC_P4  , KC_P5  , KC_P6  , KC_PPLS,
+        KC_P1  , KC_P2  , KC_P3  , KC_TAB ,
+        LOWZERO, KC_COMM, KC_PDOT, RASEENT
     ),
 
-    [1] = LAYOUT(
+
+    [_LOWER] = LAYOUT(
+        _______, _______, _______, RESET  ,
+        _______, KC_PGUP, _______, _______,
+        KC_HOME, KC_PGDN, KC_END , SHFTTAB,
+        _______, _______, _______, KC_TAB ,
+        _______, _______, _______, _______
+    ),
+
+    [_RAISE] = LAYOUT(
+        _______, _______, _______, RESET  ,
+        _______, _______, _______, _______,
+        _______, KC_UP  , _______, _______,
+        KC_LEFT, KC_DOWN, KC_RGHT, SHFTTAB,
+        _______, _______, _______, _______
+    ),
+
+    [3] = LAYOUT(
         _______, BL_STEP, RGB_M_SW, RESET,
         RGB_TOG, RGB_MOD, RGB_M_P,  RGB_M_SN,
         RGB_HUI, RGB_SAI, RGB_VAI,  RGB_M_K,
