@@ -25,6 +25,7 @@ enum layer_number {
 
 #define LOWZERO LT(_LOWER,KC_P0)
 #define RASEENT LT(_RAISE, KC_ENT)
+#define SHFTENT S(KC_ENT)
 #define SHFTTAB S(KC_TAB)
 
 enum custom_keycodes {
@@ -48,7 +49,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         _______, KC_PGUP, _______, _______,
         KC_HOME, KC_PGDN, KC_END , SHFTTAB,
         _______, _______, _______, KC_TAB ,
-        _______, _______, _______, _______
+        _______, _______, _______, SHFTENT
     ),
 
     [_RAISE] = LAYOUT(
