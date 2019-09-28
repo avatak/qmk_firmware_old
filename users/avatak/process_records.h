@@ -80,3 +80,16 @@ enum userspace_custom_keycodes {
 #define MW_ULFT LCTL(LALT(KC_U))
 #define MW_UPPR LCTL(LALT(KC_UP))
 #define MW_URIT LCTL(LALT(KC_I))
+
+// Linux (Manjaro KDE) Window Adjustment using my own assigned shortcuts
+
+#define LW_LEFT LGUI(KC_LEFT)
+#define LW_RGHT LGUI(KC_RIGHT)
+#define LW_UP   LGUI(KC_UP)
+#define LW_DOWN LGUI(KC_DOWN)
+#define LW_ULFT S(LGUI(KC_LEFT))
+#define LW_LLFT S(LGUI(KC_HOME))
+#define LW_URGT S(LGUI(KC_RIGHT))
+#define LW_LRGT S(LGUI(KC_END))
+#define LW_FULL LGUI(KC_PGUP)
+#define LW_NXTW S(LGUI(KC_TAB))
