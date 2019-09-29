@@ -55,10 +55,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 #define SOFT_SERIAL_PIN D3  // or D1, D2, D3, E6
 
-#define ENCODERS_PAD_A { D5, F1 }
-#define ENCODERS_PAD_B { C7, F0 }
+#define ENCODERS_PAD_A { C7, F0 }
+#define ENCODERS_PAD_B { D5, B7 }
 
-#define OLED_DISPLAY_128X64
+// #define OLED_DISPLAY_128X64
 
 // #define BACKLIGHT_PIN B7
 // #define BACKLIGHT_BREATHING

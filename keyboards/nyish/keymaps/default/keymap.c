@@ -70,7 +70,8 @@ enum custom_layers {
     
     
 /* Dual function keys */
-
+    
+    #define ALTZ ALT_T(KC_Z)
     #define CTLSCLN CTL_T(KC_SCLN)
     #define CTLSLSH CTL_T(KC_SLSH)
     #define GUISCLN GUI_T(KC_SCLN)
@@ -119,10 +120,10 @@ enum custom_keycodes {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_COLEMAK] = LAYOUT( /* Base */
         KC_GRV , KC_1   , KC_2   , KC_3   , KC_4   , KC_5   ,                       KC_6   , KC_7   , KC_8   , KC_9   , KC_0   , KC_BSPC, \
-        KC_TAB , KC_Q   , KC_W   , KC_F   , KC_P   , KC_B   ,                       KC_J   , KC_L   , KC_U   , KC_Y   , KC_SCLN, KC_BSLS, \
+        KC_TAB , KC_Q   , KC_W   , KC_F   , KC_P   , KC_B   ,                       KC_J   , KC_L   , KC_U   , KC_Y   , GUISCLN, KC_BSLS, \
         NAVESC , KC_A   , KC_R   , KC_S   , KC_T   , KC_G   ,                       KC_K   , KC_N   , KC_E   , KC_I   , KC_O   , KC_QUOT, \
-        KC_LSFT, KC_Z   , KC_X   , KC_C   , KC_D   , KC_V   ,                       KC_M   , KC_H   , KC_COMM, KC_DOT , KC_SLSH, KC_RSFT, \
-        KC_LCTL, KC_LALT, KC_LGUI, ADJUST ,          NAVSPC ,                       TEXSPC ,          KC_F12 , ALTSHFT, ALTCTL , ADJUST , \
+        KC_LSFT, ALTZ   , KC_X   , KC_C   , KC_D   , KC_V   ,                       KC_M   , KC_H   , KC_COMM, KC_DOT , CTLSLSH, KC_RSFT, \
+        KC_LCTL, KC_LGUI, KC_LALT, ADJUST ,          NAVSPC ,                       TEXSPC ,          KC_F12 , ALTSHFT, ALTCTL , ADJUST , \
                                                                 NUMPAD , SYMENT \
      ),
 
@@ -311,12 +312,12 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             break;
         case ITEMZ:
             if (record->event.pressed) {
-                SEND_STRING("\\begin{itemize}"SS_TAP(X_ENTER) SS_TAP(X_ENTER) "\\end{itemize}" SS_TAP(X_UP) SS_TAP(X_TAB) "\\item ");
+                SEND_STRING("\\begin{itemize}"SS_TAP(X_ENTER) SS_TAP(X_ENTER) "\\end{itemize}" SS_TAP(X_UP) SS_TAP(X_TAB) "\\item "); 
             }
             break;
         case LFTRGHT:
             if (record->event.pressed) {
-                SEND_STRING("\\left(  \\right)" SS_LCTRL(SS_TAP(X_LEFT) SS_TAP(X_LEFT)) SS_TAP(X_LEFT));
+SEND_STRING("\\left(  \\right)" SS_LCTRL(SS_TAP(X_LEFT) SS_TAP(X_LEFT)) SS_TAP(X_LEFT)); 
             }
             break;
         case LEMMA:
@@ -383,12 +384,12 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 if (clockwise) {
                     tap_code(KC_DOWN);
                 } else {
-                    tap_code(KC_UP);
+                tap_code(KC_UP);        
                 }
             }
         }
 
-    else if (index == 2) {
+    else if (index == 1) {
       if (clockwise) {
         tap_code(KC_TAB);
       } else {
@@ -400,7 +401,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
 // RIGHT KNOB
     
-    else if (index == 3) {
+    else if (index == 2) {
         //  NAV LAYER
         if (IS_LAYER_ON(_NAV) | IS_LAYER_ON(_MNAV)) {
             if (clockwise) {
@@ -434,7 +435,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             }
         }
     }
-  else if (index == 4) {
+  else if (index == 3) {
       if (clockwise) {
         tap_code(KC_PGDN);
       } else {
