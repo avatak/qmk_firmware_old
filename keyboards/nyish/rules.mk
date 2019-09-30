@@ -43,5 +43,5 @@ HD44780_ENABLE = no 		# Enable support for HD44780 based LCDs (+400)
 
 SPLIT_KEYBOARD = yes
 ENCODER_ENABLE = yes		# Enable encoder support
-# OLED_DRIVER_ENABLE = yes	# Enable OLED support
+OLED_DRIVER_ENABLE = yes	# Enable OLED support
 # OLED_DISPLAY_128X64 = yes

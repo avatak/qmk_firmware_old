@@ -17,3 +17,9 @@
 #pragma once
 
 // place overrides here
+
+
+#ifdef AUDIO_ENABLE
+    #define C6_AUDIO
+    #define NO_MUSIC_MODE
+#endif

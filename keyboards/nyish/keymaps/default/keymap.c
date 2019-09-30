@@ -141,7 +141,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         _______, _______, CTLPGUP, KC_PGUP, CTLPGDN, _______,                       _______, TABLEFT, KC_UP  , TABRGHT, _______, WINSRCH, \
         _______, _______, KC_HOME, KC_PGDN, KC_END , _______,                       CTLLEFT, KC_LEFT, KC_DOWN, KC_RGHT, CTLRGHT, WINRCLK, \
         _______, _______, _______, KC_CAPS, KC_INS , _______,                       CTLBSPC, KC_BSPC, KC_DEL , CTLDEL , CTLZERO, _______, \
-        _______, _______, _______, _______,          _______,                       KC_ENT ,          _______, _______, _______, _______, \
+        _______, _______, _______, _______,          _______,                       KC_ENT ,          _______, _______, _______, KC_F12 , \
                                                                 _______, _______ \
      ),
 
@@ -317,7 +317,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             break;
         case LFTRGHT:
             if (record->event.pressed) {
-SEND_STRING("\\left(  \\right)" SS_LCTRL(SS_TAP(X_LEFT) SS_TAP(X_LEFT)) SS_TAP(X_LEFT)); 
+                SEND_STRING("\\left(  \\right)" SS_LCTRL(SS_TAP(X_LEFT) SS_TAP(X_LEFT)) SS_TAP(X_LEFT)); 
             }
             break;
         case LEMMA:
@@ -391,11 +391,9 @@ SEND_STRING("\\left(  \\right)" SS_LCTRL(SS_TAP(X_LEFT) SS_TAP(X_LEFT)) SS_TAP(X
 
     else if (index == 1) {
       if (clockwise) {
-        tap_code(KC_TAB);
+        tap_code(KC_PGDN);
       } else {
-        register_code(KC_LSFT);
-        tap_code(KC_TAB);
-        unregister_code(KC_LSFT);
+        tap_code(KC_PGUP);
       }
     }
 
@@ -447,19 +445,16 @@ SEND_STRING("\\left(  \\right)" SS_LCTRL(SS_TAP(X_LEFT) SS_TAP(X_LEFT)) SS_TAP(X
 
 
 // OLED Driver Logic
-#ifdef OLED_DRIVER_ENABLE 
-    /*
+#ifdef OLED_DRIVER_ENABLE
     oled_rotation_t oled_init_user(oled_rotation_t rotation) {
         if (is_keyboard_master())
-            return OLED_ROTATION_270;
+            return OLED_ROTATION_90;
         else if (!is_keyboard_master())
             return OLED_ROTATION_180;
         else 
           return rotation;
     }
-    */
 
-/*
 static void render_logo(void) {
     static const char PROGMEM sol_logo[] = {
         0x80,0x81,0x82,0x83,0x84,0x85,0x86,0x87,0x88,0x89,0x8a,0x8b,0x8c,0x8d,0x8e,0x8f,0x90,0x91,0x92,0x93,0x94,
@@ -468,7 +463,6 @@ static void render_logo(void) {
     };
     oled_write_P(sol_logo, false);
 }
-*/
 
 static void render_status(void) {
   // Render to mode icon
@@ -479,38 +473,28 @@ static void render_status(void) {
     0xdb,0xdc,0xdd,0xde,0xdf,0
   };
   oled_write_P(sol_icon, false);
-  */
-
+*/
   // Define layers here
-  oled_write_P(PSTR("Layer: "), false);
+  oled_write_P(PSTR("Layer\n"), false);
   uint8_t layer = layer_state ? biton(layer_state) : biton32(default_layer_state);
   switch (layer) {
     case _COLEMAK:
-      oled_write_P(PSTR("Colemak"), false);
+      oled_write_P(PSTR("COLMK"), false);
       break;
-    case _COLEMAC:
-      oled_write_P(PSTR("Colemak (OSX)"), false);
+    case _NAV:
+      oled_write_P(PSTR("NAV  "), false);
       break;
     case _TEX:
       oled_write_P(PSTR("LaTeX"), false);
       break;
     case _SYM:
-      oled_write_P(PSTR("Symbol  "), false);
-      break;
-    case _NAV:
-      oled_write_P(PSTR("Navigation  "), false);
-      break;
-    case _MNAV:
-      oled_write_P(PSTR("Navigation (OSX) "), false);
+      oled_write_P(PSTR("SYM  "), false);
       break;
     case _NUM:
-      oled_write_P(PSTR("Numpad  "), false);
-      break;
-    case _MWIN:
-      oled_write_P(PSTR("Window Adj (OSX) "), false);
+      oled_write_P(PSTR("NUM  "), false);
       break;
     case _ADJUST:
-      oled_write_P(PSTR("Adjust"), false);
+      oled_write_P(PSTR("ADJST"), false);
       break;
     default:
       oled_write_P(PSTR("UNDEF"), false);
@@ -518,20 +502,28 @@ static void render_status(void) {
 
   // Host Keyboard LED Status
     uint8_t led_state = host_keyboard_leds();
-    oled_write_P(PSTR("\n---------------\n"), false);
-    oled_write_P(IS_LED_ON(led_state, USB_LED_NUM_LOCK) ? PSTR("NUMLOCK") : PSTR("     "), false);
-    oled_write_P(IS_LED_ON(led_state, USB_LED_CAPS_LOCK) ? PSTR("CAPSLOCK") : PSTR("     "), false);
+    oled_write_P(PSTR("\n-----\n"), false);
+    oled_write_P(IS_LED_ON(led_state, USB_LED_NUM_LOCK) ? PSTR("NUMLK") : PSTR("     "), false);
+    oled_write_P(IS_LED_ON(led_state, USB_LED_CAPS_LOCK) ? PSTR("CAPLK") : PSTR("     "), false);
     oled_write_P(IS_LED_ON(led_state, USB_LED_SCROLL_LOCK) ? PSTR("SCRLK") : PSTR("     "), false);
 
+#ifdef RGB_OLED_MENU
+    static char buffer[31] = { 0 };
+    snprintf(buffer, sizeof(buffer), "h%3d s%3d v%3d s%3d m%3d e%3d ", rgb_matrix_config.hsv.h, rgb_matrix_config.hsv.s, rgb_matrix_config.hsv.v, rgb_matrix_config.speed, rgb_matrix_config.mode, rgb_matrix_get_flags());
+    buffer[4 + rgb_encoder_state * 5] = '<';
+
+    oled_write_P(PSTR("-----"), false);
+    oled_write(buffer, false);
+#endif
 }
 
 void oled_task_user(void) {
-  //if (is_keyboard_master()) {
+  if (is_keyboard_master()) {
     render_status();
-  //} else {
-  //    render_logo();
-  //  oled_scroll_left();
-  //}
+  } else {
+    render_logo();
+    oled_scroll_left();
+  }
 }
 
 #endif
