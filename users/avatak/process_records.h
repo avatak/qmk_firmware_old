@@ -24,6 +24,7 @@ enum userspace_custom_keycodes {
 // Mod Combos
 #define ALTBSPC LALT(KC_BSPC)
 #define ALTCTL LALT(KC_LCTL)
+#define ALTCTLS S(LALT(KC_LCTL))
 #define ALTDEL LALT(KC_DEL)
 #define ALTLEFT LALT(KC_LEFT)
 #define ALTRIGHT LALT(KC_RIGHT)
@@ -48,6 +49,7 @@ enum userspace_custom_keycodes {
 
 // Layer switching
 #define ADJUST MO(_ADJUST)
+#define LNXWIN MO(_LWIN)
 #define MACWIN MO(_MWIN)
 #define MEDIA MO(_MEDIA)
 #define MNAVESC LT(_MNAV, KC_ESC)
