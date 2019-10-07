@@ -185,11 +185,19 @@ void encoder_update_user(uint8_t index, bool clockwise) {
             }
         }
         else if (IS_LAYER_ON(_ADJUST)) {
-            if (clockwise) {
-                tap_code(KC_VOLU);
-            } else {
-                tap_code(KC_VOLD);
-            }
+            #ifdef RGBLIGHT_ENABLE
+                if (clockwise) {
+                    rgblight_increase_hue();
+                } else {
+                    rgblight_decrease_hue();
+                }
+            #else 
+                if (clockwise) {
+                    tap_code(KC_VOLU);
+                } else {
+                    tap_code(KC_VOLD);
+                }
+            #endif
         }
         else
             if (clockwise) {
@@ -208,11 +216,19 @@ void encoder_update_user(uint8_t index, bool clockwise) {
             }
         }
         else if (IS_LAYER_ON(_ADJUST)) {
-            if (clockwise) {
-                tap_code(KC_MNXT);
-            } else {
-                tap_code(KC_MPRV);
-            }
+            #ifdef RGBLIGHT_ENABLE
+                if (clockwise) {
+                    rgblight_step();    
+                } else {
+                    rgblight_step_reverse();    
+                }
+            #else 
+                if (clockwise) {
+                    tap_code(KC_MNXT);
+                } else {
+                    tap_code(KC_MPRV);
+                }
+            #endif
         }
         else if (IS_LAYER_ON(_SYM)) {
             if (clockwise) {

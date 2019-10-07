@@ -30,7 +30,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      ),
 
     [_NAV] = LAYOUT_wrapper(/* Base */
-        _______, _______, _______, _______, _______, _______,                   _______, _______, _______, _______, _______, _______,\
+        _______, _______, _______, _______, WINQUIT, _______,                   _______, _______, _______, _______, _______, _______,\
         LNXWIN , __NAV_L1___________________________________,                   __NAV_R1___________________________________, _______,\
         _______, __NAV_L2___________________________________,                   __NAV_R2___________________________________, _______,\
         _______, __NAV_L3___________________________________,                   __NAV_R3___________________________________, _______,\
@@ -161,84 +161,4 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         }
     }
   }
-#endif
-
-
-
-
-// OLED Driver Logic
-#ifdef OLED_DRIVER_ENABLE
-    oled_rotation_t oled_init_user(oled_rotation_t rotation) {
-        if (is_keyboard_master())
-            return OLED_ROTATION_270;
-        else if (!is_keyboard_master())
-            return OLED_ROTATION_180;
-        else 
-          return rotation;
-    }
-
-static void render_logo(void) {
-    static const char PROGMEM sol_logo[] = {
-        0x80,0x81,0x82,0x83,0x84,0x85,0x86,0x87,0x88,0x89,0x8a,0x8b,0x8c,0x8d,0x8e,0x8f,0x90,0x91,0x92,0x93,0x94,
-        0xa0,0xa1,0xa2,0xa3,0xa4,0xa5,0xa6,0xa7,0xa8,0xa9,0xaa,0xab,0xac,0xad,0xae,0xaf,0xb0,0xb1,0xb2,0xb3,0xb4,
-        0xc0,0xc1,0xc2,0xc3,0xc4,0xc5,0xc6,0xc7,0xc8,0xc9,0xca,0xcb,0xcc,0xcd,0xce,0xcf,0xd0,0xd1,0xd2,0xd3,0xd4,0
-    };
-    oled_write_P(sol_logo, false);
-}
-
-static void render_status(void) {
-  // Render to mode icon
-  static const char PROGMEM sol_icon[] = {
-    0x9b,0x9c,0x9d,0x9e,0x9f,
-    0xbb,0xbc,0xbd,0xbe,0xbf,
-    0xdb,0xdc,0xdd,0xde,0xdf,0
-  };
-  oled_write_P(sol_icon, false);
-
-  // Define layers here
-  oled_write_P(PSTR("\nLayer\n"), false);
-  uint8_t layer = layer_state ? biton(layer_state) : biton32(default_layer_state);
-  switch (layer) {
-    case _COLEMAK:
-      oled_write_P(PSTR("COLMK"), false);
-      break;
-    case _NAV:
-      oled_write_P(PSTR("NAV  "), false);
-      break;
-    case _TEX:
-      oled_write_P(PSTR("LaTeX"), false);
-      break;
-    case _SYM:
-      oled_write_P(PSTR("SYM  "), false);
-      break;
-    case _NUM:
-      oled_write_P(PSTR("NUM  "), false);
-      break;
-    case _MEDIA:
-      oled_write_P(PSTR("MEDIA"), false);
-      break;
-    case _ADJUST:
-      oled_write_P(PSTR("ADJST"), false);
-      break;
-    default:
-      oled_write_P(PSTR("UNDEF"), false);
-  }
-
-  // Host Keyboard LED Status
-    uint8_t led_state = host_keyboard_leds();
-    oled_write_P(PSTR("\n-----\n"), false);
-    oled_write_P(IS_LED_ON(led_state, USB_LED_NUM_LOCK) ? PSTR("NUMLK") : PSTR("     "), false);
-    oled_write_P(IS_LED_ON(led_state, USB_LED_CAPS_LOCK) ? PSTR("CAPLK") : PSTR("     "), false);
-    oled_write_P(IS_LED_ON(led_state, USB_LED_SCROLL_LOCK) ? PSTR("SCRLK") : PSTR("     "), false);
-}
-
-void oled_task_user(void) {
-  if (is_keyboard_master()) {
-    render_status();
-  } else {
-    render_logo();
-    oled_scroll_left();
-  }
-}
-
 #endif
