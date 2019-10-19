@@ -8,11 +8,12 @@
 enum userspace_layers {
     _COLEMAK = 0,
     _COLEMAC,
-    _NAV, 
+    _NAV,
     _MNAV,
     _TEX,
     _SYM,
     _NUM,
+    _LWIN,
     _MWIN,
     _MEDIA,
     _MOUSE,

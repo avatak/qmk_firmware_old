@@ -42,10 +42,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
  */
 #define MATRIX_ROW_PINS \
-    { B7, D0, C0, C7, C1 }
+    { B4, B3, A5, A6, A7 }
 
 #define MATRIX_COL_PINS \
-    { F6, F5, F4, F3, F2, F1, F0, E6, E7, B0, B1, B2, B3, B4, B5 }
+    { A2, A1, A0, B8, B13, B14, B15, B9, B10, B11, B12, A14, A13, A15, A8 }
 
 #define UNUSED_PINS
 
@@ -58,9 +58,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define AUDIO_VOICES
 
 
-#define ENCODERS_PAD_A { C4, C3 } 
+#define ENCODERS_PAD_A { B2, B0 } 
 
-#define ENCODERS_PAD_B { C5, C2 }
+#define ENCODERS_PAD_B { B0, A4 }
 
 /*
  * Split Keyboard specific options, make sure you have 'SPLIT_KEYBOARD = yes' in your rules.mk, and define SOFT_SERIAL_PIN.

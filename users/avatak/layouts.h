@@ -74,3 +74,7 @@
 #define __MWIN_R2__________________________________  MW_LEFT, MW_L23 , MW_CENT, MW_R23 , MW_RGHT
 #define __MWIN_R3__________________________________  MW_L13 , MW_LLFT, MW_LOWR, MW_LRIT, MW_R13
 
+// LINUX WINDOW ADJUSTMENT
+#define __LWIN_R1__________________________________  _______, LW_ULFT, LW_UP  , LW_URGT, _______
+#define __LWIN_R2__________________________________  _______, LW_LEFT, LW_NXTW, LW_RGHT, _______
+#define __LWIN_R3__________________________________  _______, LW_LLFT, LW_DOWN, LW_LRGT, _______

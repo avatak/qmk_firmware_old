@@ -47,7 +47,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 [_NAV] =  LAYOUT_wrapper( \
     TG(_NUM), __NAV_L0___________________________________, _______, _______, _______, _______, _______, _______,\
-    _______, __NAV_L1___________________________________, __NAV_R1___________________________________, S(LCTL(LALT(KC_S))),\
+    MO(_LWIN), __NAV_L1___________________________________, __NAV_R1___________________________________, S(LCTL(LALT(KC_S))),\
     _______, __NAV_L2___________________________________, __NAV_R2___________________________________, S(KC_F10), \
     _______, __NAV_L3___________________________________, __NAV_R3___________________________________, _______, \
     ADJUST , _______, _______, _______, _______, _______, KC_ENT , KC_ENT , _______, _______, _______, KC_F12 \
@@ -91,6 +91,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______, _______, _______, _______, _______, _______, __MWIN_R2__________________________________, _______,\
     _______, _______, _______, _______, _______, _______, __MWIN_R3__________________________________, _______,\
     _______, _______, _______, _______, _______, _______, MW_FULL, MW_FULL, _______, _______, _______, _______ \
+),
+
+[_LWIN] = LAYOUT_wrapper( \
+    _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,\
+    _______, _______, _______, _______, _______, _______, __LWIN_R1__________________________________, _______,\
+    _______, _______, _______, _______, _______, _______, __LWIN_R2__________________________________, _______,\
+    _______, _______, _______, _______, _______, _______, __LWIN_R3__________________________________, _______,\
+    _______, _______, _______, _______, _______, _______, LW_FULL, LW_FULL, _______, _______, _______, _______ \
 ),
 
 /* Adjust (Lower + Raise)
@@ -177,11 +185,19 @@ void encoder_update_user(uint8_t index, bool clockwise) {
             }
         }
         else if (IS_LAYER_ON(_ADJUST)) {
-            if (clockwise) {
-                tap_code(KC_VOLU);
-            } else {
-                tap_code(KC_VOLD);
-            }
+            #ifdef RGBLIGHT_ENABLE
+                if (clockwise) {
+                    rgblight_increase_hue();
+                } else {
+                    rgblight_decrease_hue();
+                }
+            #else 
+                if (clockwise) {
+                    tap_code(KC_VOLU);
+                } else {
+                    tap_code(KC_VOLD);
+                }
+            #endif
         }
         else
             if (clockwise) {
@@ -200,11 +216,19 @@ void encoder_update_user(uint8_t index, bool clockwise) {
             }
         }
         else if (IS_LAYER_ON(_ADJUST)) {
-            if (clockwise) {
-                tap_code(KC_MNXT);
-            } else {
-                tap_code(KC_MPRV);
-            }
+            #ifdef RGBLIGHT_ENABLE
+                if (clockwise) {
+                    rgblight_step();    
+                } else {
+                    rgblight_step_reverse();    
+                }
+            #else 
+                if (clockwise) {
+                    tap_code(KC_MNXT);
+                } else {
+                    tap_code(KC_MPRV);
+                }
+            #endif
         }
         else if (IS_LAYER_ON(_SYM)) {
             if (clockwise) {
