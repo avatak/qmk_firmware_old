@@ -57,6 +57,8 @@ enum userspace_custom_keycodes {
 #define MNAVSPC LT(_MNAV, KC_SPC)
 #define MOUSE TT(_MOUSE)
 #define NAVSPC LT(_NAV, KC_SPC)
+#define NUM_TAP TT(_NUM)
+#define NUM_TOG TG(_NUM) 
 #define SYMENT LT(_SYM, KC_ENT)
 #define SYMSPC LT(_SYM, KC_SPC)
 #define TEXSPC LT(_TEX, KC_SPC)
