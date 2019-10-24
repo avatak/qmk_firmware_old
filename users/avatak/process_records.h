@@ -65,6 +65,7 @@ enum userspace_custom_keycodes {
 
 #define MACEND LGUI(KC_RIGHT)
 #define MACHOME LGUI(KC_LEFT)
+#define MACMENU LCTL(KC_F2)
 #define TABRIGHT LCTL(KC_TAB)
 #define TABLEFT S(LCTL(KC_TAB))
 
