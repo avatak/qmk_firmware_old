@@ -38,6 +38,7 @@ enum userspace_custom_keycodes {
 #define CTL_SCLN CTL_T(KC_SCLN)
 #define CTL_SLSH CTL_T(KC_SLASH)
 #define CTLSHIFT LCTL(KC_LSFT)
+#define CTLSHFT LCTL(KC_LSFT)
 
 #define GUILEFT LGUI(KC_LEFT)
 #define GUIRIGHT LGUI(KC_RIGHT)
@@ -58,7 +59,7 @@ enum userspace_custom_keycodes {
 #define MOUSE TT(_MOUSE)
 #define NAVSPC LT(_NAV, KC_SPC)
 #define NUM_TAP TT(_NUM)
-#define NUM_TOG TG(_NUM) 
+#define NUM_TOG TG(_NUM)
 #define SYMENT LT(_SYM, KC_ENT)
 #define SYMSPC LT(_SYM, KC_SPC)
 #define TEXSPC LT(_TEX, KC_SPC)
