@@ -40,9 +40,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define QMK_SPEAKER C6
 // sudo avrdude -c usbtiny -p m32u4 -P usb -U flash:w:"keebio_nyquist_rev2_avatak.hex":a -U lfuse:w:0x5E:m -U hfuse:w:0xD9:m -U efuse:w:0xC3:m -U lock:w:0x3F:m
 
-//#define AUDIO_VOICES
+#define AUDIO_VOICES
 #define C6_AUDIO
-//#define AUDIO_CLICKY
+#define AUDIO_CLICKY
 #define NO_MUSIC
 
 #ifdef RGBLIGHT_ENABLE

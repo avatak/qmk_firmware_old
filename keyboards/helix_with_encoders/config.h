@@ -1,5 +1,5 @@
 /*
-Copyright 2019 Michael Shultz
+gCopyright 2019 Michael Shultz
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -31,6 +31,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define MATRIX_ROWS 10
 #define MATRIX_COLS 7
 
+#define USB_MAX_POWER_CONSUMPTION 400
+
 /*
  * Keyboard Matrix Assignments
  *
@@ -45,8 +47,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define MATRIX_COL_PINS { F4, F5, F6, F7, B1, B3, B2 }
 #define UNUSED_PINS
 
-#define ENCODERS_PAD_A { C7 }
-#define ENCODERS_PAD_B { D5 }
+#define ENCODERS_PAD_A { D5 }
+#define ENCODERS_PAD_B { F0 }
 #define ENCODER_RESOLUTION 4
 
 #define IGNORE_MOD_TAP_INTERRUPT
