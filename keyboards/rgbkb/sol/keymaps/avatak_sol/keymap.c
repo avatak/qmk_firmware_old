@@ -443,6 +443,14 @@ const rgb_matrix_f rgb_matrix_functions[6][2] = {
                     rgblight_decrease_hue();
                 }
             }
+            // MEDIA layer
+            else if (IS_LAYER_ON(_ADJUST)) {
+                if (clockwise) {
+                    tap_code(KC_VOLU);
+                } else {
+                    tap_code(KC_VOLD);
+                }
+            }
             // DEFAULT
             else {
                 if (clockwise) {
@@ -480,6 +488,14 @@ const rgb_matrix_f rgb_matrix_functions[6][2] = {
                 rgblight_step_reverse();
             }
         }
+        // MEDIA layer
+            else if (IS_LAYER_ON(_ADJUST)) {
+                if (clockwise) {
+                    tap_code(KC_MNXT);
+                } else {
+                    tap_code(KC_MPRV);
+                }
+            }
         // DEFAULT
         else {
             if (clockwise) {

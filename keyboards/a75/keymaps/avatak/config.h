@@ -21,7 +21,8 @@
 #ifdef AUDIO_ENABLE
 #   define C6_AUDIO
 #   define AUDIO_CLICKY
+#   define AUDIO_VOICES
 #endif
 
-#define ENCODERS_PAD_A { C5, F6 }
-#define ENCODERS_PAD_B { C7, F7 }
+#define ENCODERS_PAD_A { C7, F7 }
+#define ENCODERS_PAD_B { C5, F6 }

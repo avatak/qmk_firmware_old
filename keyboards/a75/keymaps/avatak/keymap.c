@@ -16,6 +16,21 @@
 #include QMK_KEYBOARD_H
 #include "avatak.h"
 
+enum keyboard_custom_keycodes {
+    
+    HALLOFM = NEW_SAFE_RANGE,
+    JESUJOY,
+    PRELUDE,
+    VOICEDN,
+    VOICEUP,
+    ZELDA_T,
+};
+
+float tone_prelude[][2] = SONG(_FF_PRELUDE);
+float tone_mountain[][2] = SONG(HALL_OF_THE_MOUNTAIN_KING_SLOW);
+float tone_jesu[][2] = SONG(JESU_JOY_SLOW);
+float tone_treasure[][2] = SONG(ZELDA_TREASURE);
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     /* Base */
     [_COLEMAK] = LAYOUT_wrapper(
@@ -50,6 +65,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         _______, _______, _______, _______, _______, _______, _______, _______, _______, KC_ENT , _______, _______, _______, _______, KC_F12  \
     ),
 
+    [_TEX] = LAYOUT_wrapper(
+        _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, \
+        _______, __TEX_L1___________________________________, _______, _______, _______, __TEX_R1___________________________________, _______, \
+        _______, __TEX_L2___________________________________, _______, _______, _______, __TEX_R2___________________________________, _______, \
+        _______, __TEX_L3___________________________________, _______, _______, _______, __TEX_R3___________________________________, _______, \
+        _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, KC_F12  \
+    ),
+
     [_SYM] = LAYOUT_wrapper(
         _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, \
         _______, __FUNC_L___________________________________, _______, _______, _______, __FUNC_R___________________________________, KC_F11 , \
@@ -59,13 +82,51 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
 
     [_ADJUST] = LAYOUT_wrapper(
-        RESET  , _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, \
-        _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, \
-        _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, \
-        _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, \
+        RESET  , HALLOFM, PRELUDE, JESUJOY, ZELDA_T, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, \
+        _______, _______, _______, CK_UP  , _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, \
+        _______, AU_TOG , VOICEDN, CK_DOWN, VOICEUP, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, \
+        _______, _______, _______, CK_TOGG, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, \
         _______, _______, _______, _______, _______, COLEMAK, _______, _______, _______, COLEMAC, _______, _______, _______, _______, _______ \
     ),
 };
+
+bool process_record_keymap(uint16_t keycode, keyrecord_t *record) {
+    switch(keycode) {
+        case HALLOFM:
+            if (record->event.pressed) {
+                PLAY_SONG(tone_mountain);
+            }
+            break;
+        case JESUJOY:
+            if (record->event.pressed) {
+                PLAY_SONG(tone_jesu);
+            }
+            break;
+        case PRELUDE:
+            if (record->event.pressed) {
+                PLAY_SONG(tone_prelude);
+            }
+            break;
+        case VOICEDN:
+            if (record->event.pressed) {
+                voice_deiterate();
+                PLAY_SONG(tone_treasure);
+            }
+            break;
+        case VOICEUP:
+            if (record->event.pressed) {
+                voice_iterate();
+                PLAY_SONG(tone_treasure);
+            }
+            break;
+        case ZELDA_T:
+            if (record->event.pressed) {
+                PLAY_SONG(tone_treasure);
+            }
+            break;
+    }
+    return true;
+}
 
 #ifdef ENCODER_ENABLE
     void encoder_update_user(uint8_t index, bool clockwise) {
