@@ -76,13 +76,14 @@
     Q__NOTE(_E5),     \
     Q__NOTE(_GS5),     \
     HD_NOTE(_C6),
-
+*/
+#undef ZELDA_TREASURE
 #define ZELDA_TREASURE \
     Q__NOTE(_A4 ), \
     Q__NOTE(_AS4), \
     Q__NOTE(_B4 ), \
     HD_NOTE(_C5 ), \
-*/
+
 
 /* Prelude music from Final Fantasy */
 #define _FF_PRELUDE \
