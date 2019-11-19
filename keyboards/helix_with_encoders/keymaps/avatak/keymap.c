@@ -169,7 +169,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         _______, _______, _______, _______, _______, _______,                   _______, KC_P7  , KC_P8  , KC_P9  , KC_PMNS, _______,
         _______, _______, _______, _______, _______, _______,                 S(KC_TAB), KC_P4  , KC_P5  , KC_P6  , KC_PPLS, _______,
         _______, _______, _______, _______, _______, _______, _______, _______, KC_TAB , KC_P1  , KC_P2  , KC_P3  , KC_EQL , _______,
-        _______, _______, _______, _______, _______, _______,_______,S(KC_ENT), KC_ENT , KC_P0  , KC_COMM, KC_PDOT, _______, _______
+        _______, _______, _______, _______, _______, _______,_______,S(KC_ENT), KC_ENT , KC_P0  , KC_COMM, KC_PDOT, S(KC_9), S(KC_0)
     ),
 
    /* Adjustment layer
@@ -258,7 +258,9 @@ bool os_redo(void) {
             // TEX Layer
             else if (IS_LAYER_ON(_TEX)) {
                 if (clockwise) {
-                    os_redo();
+                    register_code(KC_LGUI);
+                    tap_code(KC_Z);
+                    unregister_code(KC_LGUI);
                 }
                 else {
                     os_undo();
