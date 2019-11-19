@@ -152,7 +152,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_NAV] =  LAYOUT( \
       _______, _______, _______, _______, ALT_F4 , _______, _______, _______, _______, _______, _______, _______, _______, _______,\
       _______, _______, CTLPGUP, KC_PGUP, CTLPGDN, _______, _______, _______, _______, TABLEFT, KC_UP  , TABRGHT, _______, S(LCTL(LALT(KC_S))),
-      _______, _______, KC_HOME, KC_PGDN, KC_END , _______, _______, _______, CTLLEFT, KC_LEFT, KC_DOWN, KC_RGHT, CTLRGHT, S(KC_F10),\
+      _______, _______, KC_HOME, KC_PGDN, KC_END , _______, _______, _______, CTLLEFT, KC_LEFT, KC_DOWN, KC_RGHT, CTLRGHT, KC_APP ,\
       _______, _______, _______, KC_CAPS, KC_INS , _______, _______, _______, CTLBSPC, KC_BSPC, KC_DEL , CTLDEL , CTLZERO, _______,\
       _______, _______, _______, _______, _______, _______, _______, _______, KC_ENT,  _______, _______, _______, _______, KC_F12,\
                                                    _______, _______, _______, KC_ENT \
@@ -179,8 +179,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [_TEX] =  LAYOUT( \
       _______, KC_F1  , KC_F2  , KC_F3  , KC_F4  , KC_F5  , _______, _______, KC_F6  , KC_F7  , KC_F8  , KC_F9  , KC_F10 , KC_F11 ,\
-      _______, SECTN  , ENUM   , ITEMZ  , LFTRGHT, _______, _______, _______, _______, KC_LBRC, KC_RBRC, LINEMTH, DISPMTH, KC_F12,\
-      _______, ALIGN  , ARRAY  , _______, ITEM   , _______, _______, _______, _______, KC_LCBR, KC_RCBR, S(KC_9), S(KC_0), _______,\
+      _______, SECTN  , ENUM   , ITEMZ  , LFTRGHT, _______, _______, _______, _______, KC_LBRC, KC_RBRC, LINEMTH, DISPMTH, KC_F12 ,\
+      _______, ALIGN  , ARRAY  , _______, ITEM   , _______, _______, _______, _______, KC_LCBR, KC_RCBR, S(KC_9), S(KC_0), KC_APP ,\
       _______, LEMMA  , THEOREM, _______, _______, _______, _______, _______, KC_MINS, KC_UNDS, S(KC_EQL),KC_EQL, KC_BSLS, _______,\
       _______, _______, _______, _______, _______, MO(_SYM), _______, _______, _______, _______, _______, _______, _______, _______,\
                                                    MO(_SYM), _______, _______, _______\
