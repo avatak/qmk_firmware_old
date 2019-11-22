@@ -193,7 +193,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_TEX] = LAYOUT(
         _______, _______, _______, _______, _______, _______,                   _______, _______, _______, _______, _______, _______,
         _______, SECTN  , ENUM   , ITEMZ  , LFTRGHT, _______,                   _______, KC_LBRC, KC_RBRC, LINEMTH, DISPMTH, _______, \
-        _______, ALIGN  , ARRAY  , _______, ITEM   , _______,                   _______, KC_LCBR, KC_RCBR, S(KC_9), S(KC_0), _______, \
+        _______, ALIGN  , ARRAY  , _______, ITEM   , _______,                   _______, KC_LCBR, KC_RCBR, S(KC_9), S(KC_0), KC_APP , \
         _______, LEMMA  , THEOREM, _______, _______, _______, _______, _______, KC_MINS, KC_UNDS, S(KC_EQL),KC_EQL, KC_BSLS, _______, \
         _______, _______, _______, _______, _______, SYMBOL , _______, _______, _______, _______, _______, _______, _______, _______
     ),
@@ -282,7 +282,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     */
 
     [_ADJUST] = LAYOUT(
-        RESET  , _______, _____ __, _______, _______, _______,                   RGB_TOG, _______, _______, _______, _______, RGBRST ,
+        RESET  , _______, _______, _______, _______, _______,                   RGB_TOG, _______, _______, _______, _______, RGBRST ,
         _______, TIMETST, _______, RGB_VAI, _______, _______,                   RGB_SPI, RGB_HUI, _______, _______, _______, _______,
         _______, _______, RGB_SAD, RGB_VAD, RGB_SAI, _______,                   RGB_SPD, RGB_HUD, KC_MPLY, KC_VOLU, _______, _______,
         _______, _______, _______, _______, _______, _______, _______, _______,RGB_RMOD, RGB_MOD, KC_MPRV, KC_VOLD, KC_MNXT, _______,
@@ -592,14 +592,6 @@ switch (get_highest_layer(layer_state)) {
     oled_write_P(IS_LED_ON(led_state, USB_LED_CAPS_LOCK) ? PSTR("CAPLK") : PSTR("     "), false);
     oled_write_P(IS_LED_ON(led_state, USB_LED_SCROLL_LOCK) ? PSTR("SCRLK") : PSTR("     "), false);
 
-#ifdef RGB_OLED_MENU
-    static char buffer[31] = { 0 };
-    snprintf(buffer, sizeof(buffer), "h%3d s%3d v%3d s%3d m%3d e%3d ", rgb_matrix_config.hsv.h, rgb_matrix_config.hsv.s, rgb_matrix_config.hsv.v, rgb_matrix_config.speed, rgb_matrix_config.mode, rgb_matrix_get_flags());
-    buffer[4 + rgb_encoder_state * 5] = '<';
-
-    oled_write_P(PSTR("-----"), false);
-    oled_write(buffer, false);
-#endif
 }
 
 void oled_task_user(void) {

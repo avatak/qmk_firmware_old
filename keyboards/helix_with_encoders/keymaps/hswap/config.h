@@ -18,12 +18,14 @@
 
 // place overrides here
 
-//#define B7_AUDIO
+#define B7_AUDIO
 //#define AUDIO_CLICKY
-//#define NO_MUSIC_MODE
+#define NO_MUSIC_MODE
 
 #undef ENCODERS_PAD_A
 #undef ENCODERS_PAD_B
 
-#define ENCODERS_PAD_A { D5 }
-#define ENCODERS_PAD_B { F0 }
+#define ENCODERS_PAD_A { F0 }
+#define ENCODERS_PAD_B { D5 }
+
+#define TAPPING_TOGGLE 2
