@@ -1,4 +1,4 @@
-/* Copyright 2019 Kumao Kobo <kumaokobo@gmail.com>
+/* Copyright 2019 ashpil
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -16,14 +16,9 @@
 
 #pragma once
 
-#ifdef KEYBOARD_kudox_rev1
-    #include "rev1.h"
-#endif
-#ifdef KEYBOARD_kudox_rev2
-    #include "rev2.h"
-#endif
-#ifdef KEYBOARD_kudox_columner
-    #include "columner.h"
-#endif
+// place overrides here
 
-#include "quantum.h"
+
+/* Add combos */
+#define COMBO_COUNT 1
+#define COMBO_TERM 200
