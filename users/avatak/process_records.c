@@ -117,7 +117,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case ITEMIZE:
             if (record->event.pressed) {
                 SEND_STRING("\\begin{itemize}"SS_TAP(X_ENTER) SS_TAP(X_ENTER) "\\end{itemize}" SS_TAP(X_UP) SS_TAP(X_TAB) "\\item ");
-            `
+            }
             break;
         case LEFTRIGHT:
             if (record->event.pressed) {
