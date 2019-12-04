@@ -27,6 +27,8 @@ enum layer_number {
 #define RASEENT LT(_RAISE, KC_ENT)
 #define SHFTENT S(KC_ENT)
 #define SHFTTAB S(KC_TAB)
+#define UNDO LCTL(KC_Z)
+#define REDO S(LCTL(KC_Z))
 
 enum custom_keycodes {
     WK_RED = SAFE_RANGE,
@@ -40,7 +42,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_P7  , KC_P8  , KC_P9  , KC_PMNS,
         KC_P4  , KC_P5  , KC_P6  , KC_PPLS,
         KC_P1  , KC_P2  , KC_P3  , KC_TAB ,
-        LOWZERO, KC_COMM, KC_PDOT, RASEENT
+        LOWZERO, KC_SPC , KC_PDOT, RASEENT
     ),
 
 
@@ -48,8 +50,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         _______, _______, _______, RESET  ,
         _______, KC_PGUP, _______, _______,
         KC_HOME, KC_PGDN, KC_END , SHFTTAB,
-        _______, _______, _______, KC_TAB ,
-        _______, _______, _______, SHFTENT
+        UNDO   , REDO   , _______, KC_TAB ,
+        _______, _______, KC_COMM, SHFTENT
     ),
 
     [_RAISE] = LAYOUT(
