@@ -163,7 +163,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_NAV] = LAYOUT(
         _______, _______, _______, _______, ALT_F4 , _______,                   _______, _______, _______, _______, _______, _______, \
         _______, _______, CTLPGUP, KC_PGUP, CTLPGDN, _______,                   _______, TABLEFT, KC_UP  , TABRGHT, _______, S(LCTL(LALT(KC_S))), \
-        _______, _______, KC_HOME, KC_PGDN, KC_END , _______,                   CTLLEFT, KC_LEFT, KC_DOWN, KC_RGHT, CTLRGHT, S(KC_F10), \
+        _______, _______, KC_HOME, KC_PGDN, KC_END , _______,                   CTLLEFT, KC_LEFT, KC_DOWN, KC_RGHT, CTLRGHT, KC_APP , \
         _______, _______, _______, KC_CAPS, KC_INS , _______, _______, _______, CTLBSPC, KC_BSPC, KC_DEL , CTLDEL , CTLZERO, _______, \
         _______, _______, _______, _______, _______, _______, _______, _______, KC_ENT , _______, _______, _______, _______, KC_F12 \
     ),
