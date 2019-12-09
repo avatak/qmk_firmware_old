@@ -18,6 +18,8 @@
 
 // place overrides here
 
-//#define B7_AUDIO
-//#define AUDIO_CLICKY
+#define B7_AUDIO
+#define AUDIO_CLICKY
 //#define NO_MUSIC_MODE
+
+#define SPLIT_USB_DETECT
