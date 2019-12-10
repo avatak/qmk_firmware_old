@@ -1,4 +1,4 @@
-/* Copyright 2019 Michael Shultz
+/* Copyright 2019 Ethan Durrant (emdarcher)
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -13,11 +13,18 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+#include "rev3.h"
 
-#pragma once
+void matrix_init_kb(void) {
+  // put your keyboard start-up code here
+  // runs once when the firmware starts up
 
-// place overrides here
+  //set the indicator LED pin to Output
+  setPinOutput(B5);
+  //set HIGH for off.
+  writePinHigh(B5);
 
-//#define B7_AUDIO
-//#define AUDIO_CLICKY
-//#define NO_MUSIC_MODE
+  //call any user functions
+  matrix_init_user();
+}
+
