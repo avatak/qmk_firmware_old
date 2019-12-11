@@ -48,7 +48,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_TAB , __COLEMAC_L1_______________________________, KC_INS , MACMENU, __COLEMAC_R1_______________________________, KC_BSLS, \
     MNAVESC, __COLEMAC_L2_______________________________, _______, _______ , __COLEMAC_R2_______________________________, KC_QUOT,  \
     KC_LSFT, __COLEMAC_L3_______________________________, KC_CAPS, NUM_TOG, __COLEMAC_R3_______________________________, KC_RSFT, \
-    ADJUST , KC_LCTL, _______, KC_LALT, KC_LGUI, MNAVSPC, NUM_TAP, SYMENT , TEXSPC , _______, _______, _______, _______, ADJUST  \
+    ADJUST , KC_LCTL, _______, KC_LALT, KC_LGUI, MNAVSPC, NUM_TAP, SYMENT , TEXSPC , _______, _______, _______, CTLSHFT, ADJUST  \
 ),
 
 [_NAV] = LAYOUT_wrap(
