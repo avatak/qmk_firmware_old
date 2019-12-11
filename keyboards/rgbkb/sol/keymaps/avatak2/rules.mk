@@ -7,6 +7,7 @@
 # To keep things clean and tidy, as well as make upgrades easier, only place overrides from the defaults in this file.
 
 OLED_DRIVER_ENABLE      = yes        # Enable the OLED Driver
+ENCODER_ENABLE 			= yes 
 
 # Special RGB Matrix, OLED, & Encoder Control Menu!
 RGB_OLED_MENU           = no       # Enabled by setting this to the encoder index (0-5) you wish to use to control the menu.
