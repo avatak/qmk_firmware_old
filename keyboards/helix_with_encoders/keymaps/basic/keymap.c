@@ -124,7 +124,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             }
             key_triggered = !key_triggered;
             break;
-        } else { 
+        } else {
             if (record->event.pressed) {
                 tap_code(KC_END);
                 register_code(KC_LSFT);
@@ -135,6 +135,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 tap_code(KC_X);
                 unregister_code(KC_LCTL);
             }
+            key_triggered = !key_triggered;
             break;
         }
     }
