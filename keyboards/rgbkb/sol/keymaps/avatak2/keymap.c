@@ -291,6 +291,7 @@ const rgb_matrix_f rgb_matrix_functions[6][2] = {
 };
 #endif
 
+/*
 #ifdef ENCODER_ENABLE
 
 static pin_t encoders_pad_a[] = ENCODERS_PAD_A;
@@ -345,6 +346,112 @@ void encoder_update_user(uint8_t index, bool clockwise) {
       tap_code16(keycode);
   }
 }
+#endif
+
+*/
+
+#ifdef ENCODER_ENABLE
+    void encoder_update_user(uint8_t index, bool clockwise) {
+
+    // LEFT KNOB
+
+        if (index == 0) {
+            // NAV LAYER
+            if (IS_LAYER_ON(_NAV)) {
+                if (clockwise) {
+                    tap_code(KC_TAB);
+                } else {
+                    register_code(KC_LSFT);
+                    tap_code(KC_TAB);
+                    unregister_code(KC_LSFT);
+                }
+            }
+            // TEX Layer
+            else if (IS_LAYER_ON(_TEX)) {
+                if (clockwise) {
+                    register_code(KC_LSFT);
+                    register_code(KC_LCTL);
+                    tap_code(KC_Z);
+                    unregister_code(KC_LSFT);
+                    unregister_code(KC_LCTL);
+                }
+                else {
+                    register_code(KC_LCTL);
+                    tap_code(KC_Z);
+                    unregister_code(KC_LSFT);
+                }
+            }
+            // ADJUST layer
+            else if (IS_LAYER_ON(_ADJUST)) {
+                if (clockwise) {
+                    rgblight_increase_hue();
+                } else {
+                    rgblight_decrease_hue();
+                }
+            }
+            // MEDIA layer
+            else if (IS_LAYER_ON(_ADJUST)) {
+                if (clockwise) {
+                    tap_code(KC_VOLU);
+                } else {
+                    tap_code(KC_VOLD);
+                }
+            }
+            // DEFAULT
+            else {
+                if (clockwise) {
+                    tap_code(KC_DOWN);
+                } else {
+                    tap_code(KC_UP);
+                }
+            }
+        }
+
+// RIGHT KNOB
+
+    else if (index == 1) {
+        //  NAV LAYER
+        if (IS_LAYER_ON(_NAV)) {
+            if (clockwise) {
+                tap_code(KC_PGDN);
+            } else {
+                tap_code(KC_PGUP);
+            }
+        }
+        // Symbol layer
+        else if (IS_LAYER_ON(_SYM)) {
+            if (clockwise) {
+                tap_code(KC_SPC);
+            } else {
+                tap_code(KC_BSPC);
+            }
+        }
+        // Adjust layer
+        else if (IS_LAYER_ON(_ADJUST)) {
+            if (clockwise) {
+                rgblight_step();
+            } else {
+                rgblight_step_reverse();
+            }
+        }
+        // MEDIA layer
+            else if (IS_LAYER_ON(_ADJUST)) {
+                if (clockwise) {
+                    tap_code(KC_MNXT);
+                } else {
+                    tap_code(KC_MPRV);
+                }
+            }
+        // DEFAULT
+        else {
+            if (clockwise) {
+                tap_code(KC_RGHT);
+            } else {
+                tap_code(KC_LEFT);
+            }
+        }
+    }
+  }
 #endif
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
@@ -471,6 +578,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     oled_rotation_t oled_init_user(oled_rotation_t rotation) {
     if (is_keyboard_master())
         return OLED_ROTATION_270;
+    else
+        return OLED_ROTATION_180;
     return rotation;
 }
 

@@ -21,5 +21,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #pragma once
 
 
+#undef ENCODERS_PAD_A 
+#undef ENCODERS_PAD_B 
+
+#define ENCODERS_PAD_A { D6 }
+#define ENCODERS_PAD_B { D2 }
 // place overrides here
 
