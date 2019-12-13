@@ -91,6 +91,7 @@ enum custom_keycodes {
     ARRAY,
     COLEMAC,
     COLEMAK,
+    CUTROW,
     DISPMTH,
     ENUM,
     ITEM,
@@ -213,7 +214,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     RESET  , _______, _______, _______, _______, _______, _______, _______, RGB_TOG, _______, _______, _______, _______, RGBRST , \
     _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, \
     _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, \
-    _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, \
+    _______, _______, _______, CUTROW , _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, \
     _______, _______, _______, _______, _______, _______, _______, _______, _______, RGB_TOG, _______, _______, _______, _______, \
                                                  _______, _______, _______, _______ \
   ),
@@ -454,9 +455,34 @@ void encoder_update_user(uint8_t index, bool clockwise) {
   }
 #endif
 
+bool key_triggered = false;
+
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     static uint16_t reset_timer;
     switch (keycode) {
+        case CUTROW:
+            if (key_triggered == false) {
+                if (record->event.pressed) {
+                    register_code(KC_LCTL);
+                    tap_code(KC_V);
+                    unregister_code(KC_LCTL);  
+                }
+                key_triggered = true;
+                break;
+            } else {
+                if (record->event.pressed) {
+                    tap_code(KC_END);
+                    register_code(KC_LSFT);
+                    tap_code(KC_HOME);
+                    unregister_code(KC_LSFT);
+                } else {
+                    register_code(KC_LCTL);
+                    tap_code(KC_X);
+                    unregister_code(KC_LCTL);
+                }
+                key_triggered = false;
+                break;
+            }
         case RGBRST:
             #if defined(RGBLIGHT_ENABLE)
                 if (record->event.pressed) {
