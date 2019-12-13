@@ -28,7 +28,7 @@ enum custom_layers {
 };
 
 /* Custom keycode definitions */
-  
+  #define ADJUST MO(_ADJUST)
 
 
 /* Defines the keycodes used by our macros in process_record_user (defined below the layer defines)
@@ -113,7 +113,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             }
             break;
         case MACRO_2: 
-        /* Sort of pointless to do it in two steps, but just to illustrate another thing you can do:
+        /* Sort of pointless to do the second thing in two steps, but I just wanted to illustrate an action that takes place when the key is released:
          * Selects entire row of text when held, then when the key is released it cuts the text.
          */
         if (key_triggered) {
@@ -129,7 +129,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 tap_code(KC_END);
                 register_code(KC_LSFT);
                 tap_code(KC_HOME);
-                unregister_code
+                unregister_code(KC_LSFT);
             } else {
                 register_code(KC_LCTL);
                 tap_code(KC_X);
@@ -152,69 +152,17 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     /* Left hand encoder */
 
         if (index == 0) {
-            if (IS_LAYER_ON(_NAV)) { /* Navigation layer: Tab, or shift+tab, for navigation */
-                if (clockwise) {
-                    tap_code(KC_TAB);
-                } else {
-                    register_code(KC_LSFT);
-                    tap_code(KC_TAB);
-                    unregister_code(KC_LSFT);
-                }
-            } 
-            else if (IS_LAYER_ON(_TEX)) {    /* LaTeX Layer: Undo and redo */
-                if (clockwise) {
-                    register_code(KC_LSFT);
-                    register_code(KC_LCTL);
-                    tap_code(KC_Z);
-                    unregister_code(KC_LCTL);
-                    unregister_code(KC_LSFT);
-                } else {
-                    register_code(KC_LCTL);
-                    tap_code(KC_Z);
-                    unregister_code(KC_LCTL);
-                }
-            }
-            else if (IS_LAYER_ON(_ADJUST)) { /* Adjust layer: Change rgb hue */
-                if (clockwise) {
-                    rgblight_increase_hue();
-                } else {
-                    rgblight_decrease_hue();
-                }
-            }
-            else {                          /* Default, base layer: Down and Up */
+                  /* Default, base layer: Down and Up */
                 if (clockwise) {
                     tap_code(KC_DOWN);
                 } else {
                     tap_code(KC_UP);
                 }
             }
-        }
 
 /* Right hand encoder */
 
     else if (index == 1) {
-        if (IS_LAYER_ON(_NAV)) { /* Navigation layer: Page up, Page down */
-            if (clockwise) {
-                tap_code(KC_PGDN);
-            } else {
-                tap_code(KC_PGUP);
-            }
-        }
-        else if (IS_LAYER_ON(_SYM)) { /* Symbol layer:  <- Bacespace  |  Space -> (I forget why this was useful to me once)    */
-            if (clockwise) {
-                tap_code(KC_SPC);
-            } else {
-                tap_code(KC_BSPC);
-            }
-        }
-        else if (IS_LAYER_ON(_ADJUST)) { /* Cycle back and forth through RGB Modes  */
-            if (clockwise) {
-                rgblight_step();
-            } else {
-                rgblight_step_reverse();
-            }
-        }
-        else {                          /* Base layer: Left and Right */
             if (clockwise) {
                 tap_code(KC_RGHT);
             } else {
@@ -222,7 +170,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             }
         }
     }
-  }
 #endif
 
 
@@ -270,20 +217,11 @@ switch (get_highest_layer(layer_state)) {
     case _QWERTY:
         oled_write_P(PSTR("QWRTY"), false);
         break;    
-    case _COLEMAK:
-        oled_write_P(PSTR("COLMK"), false);
+    case _LOWER:
+        oled_write_P(PSTR("LOWER"), false);
         break;
-    case _TEX:
-        oled_write_P(PSTR("LaTeX"), false);
-        break;
-    case _SYM:
-        oled_write_P(PSTR("SYM  "), false);
-        break;
-    case _NAV:
-        oled_write_P(PSTR("NAV  "), false);
-        break;
-    case _NUM:
-        oled_write_P(PSTR("NUM  "), false);
+    case _RAISE:
+        oled_write_P(PSTR("RAISE"), false);
         break;
     case _ADJUST:
         oled_write_P(PSTR("ADJST"), false);
