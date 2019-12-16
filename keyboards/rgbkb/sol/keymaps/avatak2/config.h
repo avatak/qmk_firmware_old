@@ -20,11 +20,19 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #pragma once
 
+// place overrides here
 
 #undef ENCODERS_PAD_A 
 #undef ENCODERS_PAD_B 
 
 #define ENCODERS_PAD_A { D6 }
 #define ENCODERS_PAD_B { D2 }
-// place overrides here
+
+#define TAPPING_TERM 150
+
+#define TAPPING_TOGGLE 2
+
+
+#define PERMISSIVE_HOLD
+#define IGNORE_MOD_TAP_INTERRUPT
 

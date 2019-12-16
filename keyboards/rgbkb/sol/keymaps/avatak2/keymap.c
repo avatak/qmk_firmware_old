@@ -628,7 +628,7 @@ static void render_status(void) {
   oled_write_P(sol_icon, false);
 
   // Define layers here
-  oled_write_P(PSTR("Layer"), false);
+  oled_write_P(PSTR("\nLayer\n"), false);
   uint8_t layer = layer_state ? biton(layer_state) : biton32(default_layer_state);
   switch (layer) {
     case _COLEMAK:
@@ -652,7 +652,7 @@ static void render_status(void) {
 
   // Host Keyboard LED Status
     uint8_t led_state = host_keyboard_leds();
-    oled_write_P(PSTR("-----"), false);
+    oled_write_P(PSTR("\n-----\n"), false);
     oled_write_P(IS_LED_ON(led_state, USB_LED_NUM_LOCK) ? PSTR("NUMLK") : PSTR("     "), false);
     oled_write_P(IS_LED_ON(led_state, USB_LED_CAPS_LOCK) ? PSTR("CAPLK") : PSTR("     "), false);
     oled_write_P(IS_LED_ON(led_state, USB_LED_SCROLL_LOCK) ? PSTR("SCRLK") : PSTR("     "), false);
