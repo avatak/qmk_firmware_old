@@ -116,8 +116,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         /* Sort of pointless to do the second thing in two steps, but I just wanted to illustrate an action that takes place when the key is released:
          * Selects entire row of text when held, then when the key is released it cuts the text.
          */
-        if (key_triggered) {
-            if (record->event.pressed) {
+        if (key_triggered == true) {
+            if (record->event.pressed) { // paste, then reset "key_triggered"
                 register_code(KC_LCTL);
                 tap_code(KC_V);
                 unregister_code(KC_LCTL);  
@@ -125,12 +125,12 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             key_triggered = !key_triggered;
             break;
         } else {
-            if (record->event.pressed) {
+            if (record->event.pressed) { // Select row of text when pushed
                 tap_code(KC_END);
                 register_code(KC_LSFT);
                 tap_code(KC_HOME);
                 unregister_code(KC_LSFT);
-            } else {
+            } else { // Cut when key is released
                 register_code(KC_LCTL);
                 tap_code(KC_X);
                 unregister_code(KC_LCTL);
