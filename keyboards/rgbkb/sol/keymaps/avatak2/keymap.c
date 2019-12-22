@@ -126,7 +126,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_TAB , KC_Q   , KC_W   , KC_F   , KC_P   , KC_B   , LENC_DN, RENC_DN, KC_J   , KC_L   , KC_U   , KC_Y   , GUISCLN, KC_BSLS, \
         NAVESC , KC_A   , KC_R   , KC_S   , KC_T   , KC_G   , XXXXXXX, XXXXXXX, KC_K   , KC_N   , KC_E   , KC_I   , KC_O   , KC_QUOT, \
         KC_LSFT, KC_Z   , KC_X   , KC_C   , KC_D   , KC_V   , XXXXXXX, XXXXXXX, KC_M   , KC_H   , KC_COMM, KC_DOT , CTLSLSH, KC_RSFT, \
-        ADJUST , KC_LCTL, CTLSHFT, KC_LGUI, KC_LALT, NAVSPC , _______, _______, TEXSPC , MO_NAV , KC_HYPR, ALTSHFT, ALTCTL , MEDIA  ,
+        ADJUST , KC_LCTL, KC_LGUI, KC_LALT, KC_LALT, NAVSPC , NUM_TAP, SYMENT , TEXSPC , MO_NAV , KC_HYPR, CTLSHFT, ALTCTL , MEDIA  ,
                                                      NAVSPC , NUM_TAP, SYMENT , TEXSPC \
         ),
 
@@ -149,8 +149,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         _______, _______, _______, _______, ALT_F4 , _______, _______, _______, _______, _______, _______, _______, _______, _______,
         _______, _______, CTLPGUP, KC_PGUP, CTLPGDN, _______, _______, _______, _______, TABLEFT, KC_UP  , TABRGHT, _______, S(LCTL(LALT(KC_S))),
         _______, _______, KC_HOME, KC_PGDN, KC_END , _______, _______, _______, CTLLEFT, KC_LEFT, KC_DOWN, KC_RGHT, CTLRGHT, KC_APP ,
-        _______, _______, _______, KC_CAPS, KC_INS , _______, _______, _______, CTLBSPC, KC_BSPC, KC_DEL , CTLDEL , CTLZERO, _______,
-        _______, _______, _______, _______, _______, KC_SLCK, _______, _______, KC_ENT , _______, _______, _______, _______, KC_F12 ,
+        _______, _______, _______, KC_CAPS, KC_INS , KC_SLCK, _______, _______, CTLBSPC, KC_BSPC, KC_DEL , CTLDEL , CTLZERO, _______,
+        _______, _______, _______, _______, _______, _______, _______, _______, KC_ENT , _______, _______, _______, _______, KC_F12 ,
                                                      _______, _______, _______, KC_ENT
             ),
 
@@ -173,15 +173,49 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      */
 
     [_TEX] = LAYOUT(
-        _______, KC_F1, KC_F2, KC_F3, KC_F4, KC_F5, _______, _______, KC_F6, KC_F7, KC_F8, KC_F9, KC_F10, KC_F11, _______, SECTN, ENUM, ITEMZ, LFTRGHT, _______, _______, _______, _______, KC_LBRC, KC_RBRC, LINEMTH, DISPMTH, KC_F12, _______, ALIGN, ARRAY, _______, ITEM, _______, _______, _______, _______, KC_LCBR, KC_RCBR, S(KC_9), S(KC_0), KC_APP, _______, LEMMA, THEOREM, _______, _______, _______, _______, _______, KC_MINS, KC_UNDS, S(KC_EQL), KC_EQL, KC_BSLS, _______, _______, _______, _______, _______, _______, MO(_SYM), _______, _______, _______, _______, _______, _______, _______, _______, MO(_SYM), _______, _______, _______),
+        _______, KC_F1  , KC_F2  , KC_F3  , KC_F4  , KC_F5  , _______, _______, KC_F6  , KC_F7  , KC_F8  , KC_F9  , KC_F10 , KC_F11 ,
+        _______, SECTN  , ENUM   , ITEMZ  , LFTRGHT, _______, _______, _______, _______, KC_LBRC, KC_RBRC, LINEMTH, DISPMTH, KC_F12 ,
+        _______, ALIGN  , ARRAY  , _______, ITEM   , _______, _______, _______, _______, KC_LCBR, KC_RCBR, S(KC_9), S(KC_0), KC_APP ,
+        _______, LEMMA  , THEOREM, _______, _______, _______, _______, _______, KC_MINS, KC_UNDS,S(KC_EQL), KC_EQL, KC_BSLS, _______,
+        _______, _______, _______, _______, _______,MO(_SYM), _______, _______, _______, _______, _______, _______, _______, _______,
+                                                    MO(_SYM), _______, _______, _______
+            ),
 
-    [_SYM] = LAYOUT(_______, KC_F1, KC_F2, KC_F3, KC_F4, KC_F5, _______, _______, KC_F6, KC_F7, KC_F8, KC_F9, KC_F10, KC_F11, _______, KC_F1, KC_F2, KC_F3, KC_F4, KC_F5, _______, _______, KC_F6, KC_F7, KC_F8, KC_F9, KC_F10, KC_F11, KC_TILD, KC_EXLM, KC_AT, KC_HASH, KC_DLR, KC_PERC, _______, _______, KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, KC_F12, KC_GRV, KC_1, KC_2, KC_3, KC_4, KC_5, _______, _______, KC_6, KC_7, KC_8, KC_9, KC_0, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______),
+    [_SYM] = LAYOUT(
+        _______, KC_F1  , KC_F2  , KC_F3  , KC_F4  , KC_F5  , _______, _______, KC_F6  , KC_F7  , KC_F8  , KC_F9  , KC_F10 , KC_F11 ,
+        _______, KC_F1  , KC_F2  , KC_F3  , KC_F4  , KC_F5  , _______, _______, KC_F6  , KC_F7  , KC_F8  , KC_F9  , KC_F10 , KC_F11 ,
+        KC_TILD, KC_EXLM, KC_AT  , KC_HASH, KC_DLR , KC_PERC, _______, _______, KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, KC_F12 ,
+        KC_GRV , KC_1   , KC_2   , KC_3   , KC_4   , KC_5   , _______, _______, KC_6   , KC_7   , KC_8   , KC_9   , KC_0   , _______,
+        _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
+                                                     _______, _______, _______, _______
+            ),
 
-    [_NUM] = LAYOUT(_______, _______, _______, _______, _______, _______, _______, _______, _______, KC_NLCK, KC_PSLS, KC_PAST, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, KC_P7, KC_P8, KC_P9, KC_PMNS, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, KC_P4, KC_P5, KC_P6, KC_PPLS, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, KC_P1, KC_P2, KC_P3, KC_TAB, S(KC_TAB), _______, _______, _______, _______, _______, _______, _______, _______, KC_PENT, KC_P0, KC_COMM, KC_PDOT, KC_PEQL, _______, _______, _______, S(KC_PENT), KC_PENT),
+    [_NUM] = LAYOUT(
+        _______, _______, _______, _______, _______, _______, _______, _______, _______, KC_NLCK, KC_PSLS, KC_PAST, _______, _______,
+        _______, _______, _______, _______, _______, _______, _______, _______, _______, KC_P7  , KC_P8  , KC_P9  , KC_PMNS, _______,
+        _______, _______, _______, _______, _______, _______, _______, _______, _______, KC_P4  , KC_P5  , KC_P6  , KC_PPLS, _______,
+        _______, _______, _______, _______, _______, _______, _______, _______, _______, KC_P1  , KC_P2  , KC_P3  , KC_TAB , S(KC_TAB),
+        _______, _______, _______, _______, _______, _______, _______, _______, KC_PENT, KC_P0  , KC_COMM, KC_PDOT, KC_PEQL, _______,
+                                                     _______, _______, S(KC_PENT), KC_PENT
+            ),
 
-    [_MEDIA] = LAYOUT(_______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, RESET, _______, _______, _______, KC_VOLU, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, KC_MPRV, KC_VOLD, KC_MNXT, _______, _______, _______, _______, _______, KC_MPLY, KC_VOLU, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, KC_MPRV, KC_VOLD, KC_MNXT, _______, _______, _______, _______, _______, _______, _______, _______, KC_MSTP, KC_MPLY, KC_MPLY, _______, KC_MUTE, _______, _______, _______, _______, KC_MSTP, KC_MPLY),
+    [_MEDIA] = LAYOUT(
+        _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, RESET  ,
+        _______, _______, _______, KC_VOLU, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
+        _______, _______, KC_MPRV, KC_VOLD, KC_MNXT, _______, _______, _______, _______, _______, KC_MPLY, KC_VOLU, _______, _______,
+        _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, KC_MPRV, KC_VOLD, KC_MNXT, _______,
+        _______, _______, _______, _______, _______, _______, _______, KC_MSTP, KC_MPLY, KC_MPLY, _______, KC_MUTE, _______, _______,
+                                                     _______, _______, KC_MSTP, KC_MPLY
+            ),
 
-    [_ADJUST] = LAYOUT(RESET, _______, _______, _______, _______, _______, _______, _______, RGB_TOG, _______, _______, _______, _______, RGBRST, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, CUTROW, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, RGB_TOG, _______, _______, _______, _______, _______, _______, _______, _______),
+    [_ADJUST] = LAYOUT(
+        RESET  , _______, _______, _______, _______, _______, _______, _______, RGB_TOG, _______, _______, _______, _______, RGBRST ,
+        _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
+        _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
+        _______, _______, _______, CUTROW , _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
+        _______, _______, _______, _______, _______, _______, _______, _______, _______, RGB_TOG, _______, _______, _______, _______,
+                                                     _______, _______, _______, _______
+    ),
 
 };
 
@@ -535,6 +569,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     return true;
 }
 
+
 // OLED Driver Logic
 #ifdef OLED_DRIVER_ENABLE
 oled_rotation_t oled_init_user(oled_rotation_t rotation) {
@@ -546,8 +581,16 @@ oled_rotation_t oled_init_user(oled_rotation_t rotation) {
         return rotation;
 }
 
+// Render to mode icon
+  static const char PROGMEM sol_icon[] = {
+    0x9b,0x9c,0x9d,0x9e,0x9f,
+    0xbb,0xbc,0xbd,0xbe,0xbf,
+    0xdb,0xdc,0xdd,0xde,0xdf,0
+  };
+
+
 void render_layer_state(void) {
-    oled_write_P(PSTR("Layer"), false);
+    oled_write_P(PSTR("\nLayer"), false);
     oled_write_P(PSTR("-----"), false);
     uint8_t layer = layer_state ? biton(layer_state) : biton32(default_layer_state);
     switch (layer) {
@@ -580,14 +623,14 @@ void render_keylock_status(uint8_t led_usb_state) {
     oled_write_P(PSTR("Locks"), false);
     oled_write_P(PSTR("-----"), false);
     oled_write_P(IS_LED_ON(led_state, USB_LED_NUM_LOCK) ? PSTR("N") : PSTR(" "), false);
-    oled_write_P(PSTR("|"), false);
-    oled_write_P(IS_LED_ON(led_state, USB_LED_NUM_LOCK) ? PSTR("C") : PSTR(" "), false);
-    oled_write_P(PSTR("|"), false);
-    oled_write_P(IS_LED_ON(led_state, USB_LED_NUM_LOCK) ? PSTR("S") : PSTR(" "), false);
+    oled_write_P(PSTR(" "), false);
+    oled_write_P(IS_LED_ON(led_state, USB_LED_CAPS_LOCK) ? PSTR("C") : PSTR(" "), false);
+    oled_write_P(PSTR(" "), false);
+    oled_write_P(IS_LED_ON(led_state, USB_LED_SCROLL_LOCK) ? PSTR("S") : PSTR(" "), false);
 }
 
 void render_mod_status(uint8_t modifiers) {
-    oled_write_P(PSTR("Mods "), false);
+    oled_write_P(PSTR("\nMods "), false);
     oled_write_P(PSTR("-----"), false);
     oled_write_P((modifiers & MOD_MASK_SHIFT) ? PSTR("S") : PSTR(" "), false);
     oled_write_P((modifiers & MOD_MASK_CTRL) ? PSTR("C") : PSTR(" "), false);
@@ -599,7 +642,7 @@ void render_status_main(void) {
     /* Show Keyboard Layout  */
     render_layer_state();
     render_keylock_status(host_keyboard_leds());
-    render_mod_status(get_mods() | get_oneshot_mods());
+    render_mod_status(get_mods());
 }
 
 static void render_logo(void) {
@@ -613,6 +656,7 @@ static void render_logo(void) {
 
 void oled_task_user(void) {
     if (is_keyboard_master()) {
+        oled_write_P(sol_icon, false);
         render_status_main();  // Renders the current keyboard state (layer, lock, caps, scroll, etc)
     } else {
         render_logo();
