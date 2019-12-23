@@ -1,0 +1,10 @@
+#define ENCODERS_PAD_A { F4, F6 }
+#define ENCODERS_PAD_B { F5, F7 }
+
+#define TAPPING_TERM 150
+
+#define TAPPING_TOGGLE 2
+
+
+#define PERMISSIVE_HOLD
+#define IGNORE_MOD_TAP_INTERRUPT
