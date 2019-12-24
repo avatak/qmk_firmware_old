@@ -1,5 +1,11 @@
-#define ENCODERS_PAD_A { F4, F6 }
-#define ENCODERS_PAD_B { F5, F7 }
+//#undef RGB_DI_PIN
+
+#define ENCODERS_PAD_B { F6, F4 } 
+#define ENCODERS_PAD_A { F7, F5 }
+
+
+
+#define ENCODER_RESOLUTION 4
 
 #define TAPPING_TERM 150
 
