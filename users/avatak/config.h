@@ -1,9 +1,9 @@
 #pragma once
 
-#if defined(TAPPING_TERM)
-#   undef TAPPING_TERM
+#if !defined(TAPPING_TERM)
+#   define TAPPING_TERM 150
 #endif
-#define TAPPING_TERM 195
+
 
 #if !defined(TAPPING_TOGGLE)
 #   define TAPPING_TOGGLE 2

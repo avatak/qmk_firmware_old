@@ -81,5 +81,5 @@ void led_set_user(uint8_t usb_led) {
 qk_tap_dance_action_t tap_dance_actions[] = {
     // double tap for caps
     [TD_SCAPS] = ACTION_TAP_DANCE_DOUBLE(KC_LSFT, KC_CAPS),
-    
+
 };
