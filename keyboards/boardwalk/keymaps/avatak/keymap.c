@@ -40,7 +40,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_TAB , __COLEMAK_L1_______________________________, KC_INS , KC_RBRC, __COLEMAK_R1_______________________________, KC_BSLS, \
     NAVESC , __COLEMAK_L2_______________________________, _______, _______, __COLEMAK_R2_______________________________, KC_QUOT,  \
     KC_LSFT, __COLEMAK_L3_______________________________, KC_CAPS, NUM_TOG, __COLEMAK_R3_______________________________, KC_RSFT, \
-    ADJUST , KC_LCTL, _______, KC_LGUI, KC_LALT, NAVSPC , NUM_TAP, SYMENT , TEXSPC , _______, _______, _______, _______, ADJUST  \
+    ADJUST , KC_LCTL, _______, KC_LGUI, KC_LALT, NAVSPC , NUM_TAP, SYMENT , TEXSPC , S(KC_LCTL), _______, ALTCTL, _______, ADJUST  \
  ),
 
 [_COLEMAC] = LAYOUT_wrap(
