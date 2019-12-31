@@ -371,7 +371,7 @@ void encoder_update_user(uint8_t index, bool clockwise) {
             }
         }
         // MEDIA layer
-        else if (IS_LAYER_ON(_ADJUST)) {
+        else if (IS_LAYER_ON(_MEDIA)) {
             if (clockwise) {
                 tap_code(KC_VOLU);
             } else {
@@ -424,7 +424,7 @@ void encoder_update_user(uint8_t index, bool clockwise) {
             }
         }
         // MEDIA layer
-        else if (IS_LAYER_ON(_ADJUST)) {
+        else if (IS_LAYER_ON(_MEDIA)) {
             if (clockwise) {
                 tap_code(KC_MNXT);
             } else {

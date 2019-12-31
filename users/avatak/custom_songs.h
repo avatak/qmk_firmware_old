@@ -118,6 +118,7 @@
   M__NOTE(_BF4, 128 ),
 
 
+/*
 #define POP_GOES_THE_WEASLE \
     H__NOTE(_F3), Q__NOTE(_F3), H__NOTE(_G3), Q__NOTE(_G3), \
     Q__NOTE(_A3), Q__NOTE(_C4), Q__NOTE(_A3), H__NOTE(_F3), Q__NOTE(_C3), \
@@ -127,13 +128,14 @@
     Q__NOTE(_A3), Q__NOTE(_C4), Q__NOTE(_A3), HD_NOTE(_F3), \
     HD_NOTE(_D4), H__NOTE(_G3), Q__NOTE(_BF3), \
     HD_NOTE(_A3), HD_NOTE(_F3),
+    */
 
 #define HALL_OF_THE_MOUNTAIN_KING \
     Q__NOTE(_B2), Q__NOTE(_CS3), Q__NOTE(_D3), Q__NOTE(_E3), Q__NOTE(_FS3), Q__NOTE(_D3), H__NOTE(_FS3), \
     Q__NOTE(_F3), Q__NOTE(_CS3), H__NOTE(_F3), Q__NOTE(_E3), Q__NOTE(_C3), H__NOTE(_E3), \
     Q__NOTE(_B2), Q__NOTE(_CS3), Q__NOTE(_D3), Q__NOTE(_E3), Q__NOTE(_FS3), Q__NOTE(_D3), Q__NOTE(_FS3), Q__NOTE(_B3), \
     Q__NOTE(_A3), Q__NOTE(_F3), Q__NOTE(_D3), Q__NOTE(_F3), W__NOTE(_A3),
-
+/*
 #define HALL_OF_THE_MOUNTAIN_KING_SLOW \
     QD_NOTE(_B2), QD_NOTE(_CS3), QD_NOTE(_D3), QD_NOTE(_E3), QD_NOTE(_FS3), QD_NOTE(_D3), HD_NOTE(_FS3), \
     QD_NOTE(_F3), QD_NOTE(_CS3), HD_NOTE(_F3), QD_NOTE(_E3), QD_NOTE(_C3), HD_NOTE(_E3), \
@@ -150,6 +152,7 @@
     QD_NOTE(_C3), \
     QD_NOTE(_D4), QD_NOTE(_C4), QD_NOTE(_B3), QD_NOTE(_A3), QD_NOTE(_G3), QD_NOTE(_D3), QD_NOTE(_G3), QD_NOTE(_F3), \
     HD_NOTE(_G3),
+    */
 
 #define JESU_JOY \
     Q__NOTE(_B3), Q__NOTE(_G3), Q__NOTE(_A3), Q__NOTE(_B3), Q__NOTE(_D4), Q__NOTE(_C4), Q__NOTE(_C4), Q__NOTE(_E4), Q__NOTE(_D4), \
@@ -161,3 +164,8 @@
     Q__NOTE(_C3), \
     Q__NOTE(_D4), Q__NOTE(_C4), Q__NOTE(_B3), Q__NOTE(_A3), Q__NOTE(_G3), Q__NOTE(_D3), Q__NOTE(_G3), Q__NOTE(_F3), \
     H__NOTE(_G3),
+
+#undef COIN_SOUND
+#define COIN_SOUND \
+    E__NOTE(_A5  ),      \
+    HD_NOTE(_E6  ),

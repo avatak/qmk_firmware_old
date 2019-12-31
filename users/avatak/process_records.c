@@ -1,53 +1,7 @@
 #include "avatak.h"
 
 #ifdef AUDIO_ENABLE
-//    float tone_puzzle[][2] = SONG(ZELDA_PUZZLE);
-//    float tone_treasure[][2] = SONG(ZELDA_TREASURE);
-/*
-    float tone_mushroom[][2] = SONG(\
-        S__NOTE(_C5 ), \
-        S__NOTE(_G4 ), \
-        S__NOTE(_C5 ), \
-        S__NOTE(_E5 ), \
-        S__NOTE(_G5 ), \
-        S__NOTE(_C6 ), \
-        S__NOTE(_G5 ), \
-        S__NOTE(_GS4), \
-        S__NOTE(_C5 ), \
-        S__NOTE(_DS5), \
-        S__NOTE(_GS5), \
-        S__NOTE(_DS5), \
-        S__NOTE(_GS5), \
-        S__NOTE(_C6 ), \
-        S__NOTE(_DS6), \
-        S__NOTE(_GS6), \
-        S__NOTE(_DS6), \
-        S__NOTE(_AS4), \
-        S__NOTE(_D5 ), \
-        S__NOTE(_F5 ), \
-        S__NOTE(_AS5), \
-        S__NOTE(_D6 ), \
-        S__NOTE(_F6 ), \
-        S__NOTE(_AS6), \
-        S__NOTE(_F6 ),
-        );
-*/
-    float tone_coin[][2] = SONG(\
-        E__NOTE(_A5  ), \
-        HD_NOTE(_E6  ),
-        );
-/*
-    float tone_mountain[][2] = SONG(\
-        Q__NOTE(_B2), QD_NOTE(_DF3), Q__NOTE(_D3), QD_NOTE(_E3), \
-        QD_NOTE(_GF3), QD_NOTE(_D3), H__NOTE(_GF3), MUSICAL_NOTE(NOTE_REST, ), \
-        QD_NOTE(_F3), QD_NOTE(_DF3), H__NOTE(_F3), BD_NOTE(_REST), \
-        QD_NOTE(_E3), QD_NOTE(_C3), H__NOTE(_E3), BD_NOTE(_REST), E__NOTE(_REST), \
-        Q__NOTE(_B2), QD_NOTE(_DF3), Q__NOTE(_D3), QD_NOTE(_E3), \
-        Q__NOTE(_GF3), QD_NOTE(_D3), Q__NOTE(_GF3), \
-        QD_NOTE(_B3), QD_NOTE(_A3), Q__NOTE(_GF3), QD_NOTE(_D3), Q__NOTE(_GF3), W__NOTE(_A3),\
-
-    );
-*/
+    float tone_coin[][2] = SONG(COIN_SOUND);
 #endif
 
 __attribute__ ((weak))

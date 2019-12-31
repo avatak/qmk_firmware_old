@@ -33,7 +33,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_TAB,  __COLEMAK_L1_______________________________, __COLEMAK_R1_______________________________, KC_BSLS, \
     NAVESC,  __COLEMAK_L2_______________________________, __COLEMAK_R2_______________________________, KC_QUOT, \
     KC_LSFT, __COLEMAK_L3_______________________________, __COLEMAK_R3_______________________________, KC_RSFT, \
-    KC_LCTL, KC_LGUI, KC_LALT, _______, NAVSPC , NAVSPC , TEXSPC , TEXSPC , _______, ALTSHFT, ALTCTL , ADJUST \
+    KC_LCTL, KC_LGUI, KC_LALT, ADJUST , NAVSPC , NAVSPC , TEXSPC , TEXSPC , _______, ALTSHFT, ALTCTL , ADJUST \
 ),
 
 
@@ -117,7 +117,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 [_ADJUST] =  LAYOUT( \
   //  RGBRST , PRELUDE, HALL   , JESU   , WEASLE, RGB_M_P, RGB_M_R, RGB_M_SW, RGB_M_G, _______, BL_STEP, _______,
-    _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,\
+    _______, BL_TOGG, BL_STEP, _______, _______, _______, _______, _______, _______, _______, _______, _______,\
     _______, RGB_TOG, RGB_VAD, CK_UP  , RGB_VAI, _______, _______, _______, CK_UP  , _______, BL_TOGG, RESET  ,\
     _______, AU_TOG ,RGB_RMOD, CK_DOWN, RGB_MOD, _______, _______, _______, CK_DOWN, KC_VOLU, _______, RGBRST , \
     _______, _______, RGB_SAD, CK_TOGG, RGB_SAI, _______, _______, _______, KC_MPRV, KC_VOLD, KC_MNXT, _______, \
