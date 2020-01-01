@@ -33,7 +33,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_TAB,  __COLEMAK_L1_______________________________, __COLEMAK_R1_______________________________, KC_BSLS, \
     NAVESC,  __COLEMAK_L2_______________________________, __COLEMAK_R2_______________________________, KC_QUOT, \
     KC_LSFT, __COLEMAK_L3_______________________________, __COLEMAK_R3_______________________________, KC_RSFT, \
-    KC_LCTL, KC_LGUI, KC_LALT, ADJUST , NAVSPC , NAVSPC , TEXSPC , TEXSPC , _______, ALTSHFT, ALTCTL , ADJUST \
+    KC_LCTL, KC_LGUI, KC_LALT, _______, NAVSPC , NAVSPC , TEXSPC , TEXSPC , _______, ALTSHFT, ALTCTL , ADJUST \
 ),
 
 
@@ -48,7 +48,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_NAV] =  LAYOUT_wrapper( \
     TG(_NUM), __NAV_L0___________________________________, _______, _______, _______, _______, _______, _______,\
     MO(_LWIN), __NAV_L1___________________________________, __NAV_R1___________________________________, S(LCTL(LALT(KC_S))),\
-    _______, __NAV_L2___________________________________, __NAV_R2___________________________________, S(KC_F10), \
+    _______, __NAV_L2___________________________________, __NAV_R2___________________________________, KC_APP , \
     _______, __NAV_L3___________________________________, __NAV_R3___________________________________, _______, \
     ADJUST , _______, _______, _______, _______, _______, KC_ENT , KC_ENT , _______, _______, _______, KC_F12 \
 ),

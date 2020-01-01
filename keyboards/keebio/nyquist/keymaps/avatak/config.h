@@ -26,12 +26,13 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // #define EE_HANDS
 
 #define TAPPING_TOGGLE 2
+#define TAPPING_TERM 150
 
 #define IGNORE_MOD_TAP_INTERRUPT
 #define PERMISSIVE_HOLD
 
-#define ENCODERS_PAD_A { F4 }
-#define ENCODERS_PAD_B { B2 }
+#define ENCODERS_PAD_A { B2 }
+#define ENCODERS_PAD_B { F4 }
 #define ENCODER_RESOLUTION 4
 
 #define QMK_ESC_OUTPUT D2 // usually COL
