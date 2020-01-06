@@ -23,6 +23,7 @@ enum userspace_custom_keycodes {
 
 // Mod Combos
 #define ALTBSPC LALT(KC_BSPC)
+#define ALT_COM ALT_T(KC_COMM)
 #define ALTCTL LALT(KC_LCTL)
 #define ALTCTLS S(LALT(KC_LCTL))
 #define ALTDEL LALT(KC_DEL)
