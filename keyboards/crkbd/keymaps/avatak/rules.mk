@@ -1,6 +1,6 @@
 
 RGBLIGHT_ENABLE = yes       # Enable WS2812 RGB underlight.
-ENCODERS_ENABLE = yes
+ENCODER_ENABLE = yes
 
 # If you want to change the display of OLED, you need to change here
 SRC +=  ./lib/glcdfont.c \
