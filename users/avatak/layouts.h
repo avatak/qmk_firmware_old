@@ -23,7 +23,7 @@
 
 #define __COLEMAC_R1_______________________________ KC_J   , KC_L   , KC_U   , KC_Y   , CTL_SCLN
 #define __COLEMAC_R2_______________________________ KC_K   , KC_N   , KC_E   , KC_I   , KC_O
-#define __COLEMAC_R3_______________________________ KC_M   , KC_H   , KC_COMM, KC_DOT , GUI_SLSH
+#define __COLEMAC_R3_______________________________ KC_M   , KC_H   , ALT_COM, KC_DOT , GUI_SLSH
 
 // NAVIGATION LAYER
 #define __NAV_L0___________________________________ S(LALT(KC_1)), S(LALT(KC_2)), S(LALT(KC_3)), LALT(KC_F4), _______
