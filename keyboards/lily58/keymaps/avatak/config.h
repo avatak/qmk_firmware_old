@@ -32,6 +32,21 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #define USE_SERIAL_PD2
 
+#undef TAPPING_TERM
+#define TAPPING_TERM 150
+
+#define TAPPING_TOGGLE 2
+
+
+#define PERMISSIVE_HOLD
+#define IGNORE_MOD_TAP_INTERRUPT
+
+#define B7_AUDIO
+#define NO_MUSIC_MODE
+
+#define ENCODERS_PAD_A { F0 }
+#define ENCODERS_PAD_B { D5 }
+
 //#define TAPPING_FORCE_HOLD
 //#define TAPPING_TERM 100
 
@@ -43,8 +58,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define RGBLIGHT_SAT_STEP 17
 #define RGBLIGHT_VAL_STEP 17
 
-#define ENCODERS_PAD_A { F0 }
-#define ENCODERS_PAD_B { D5 }
+
 
 // Underglow
 /*

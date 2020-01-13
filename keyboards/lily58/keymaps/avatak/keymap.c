@@ -1,4 +1,6 @@
 #include QMK_KEYBOARD_H
+#include "avatak.h"
+
 
 #ifdef PROTOCOL_LUFA
   #include "lufa.h"
@@ -37,10 +39,18 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [_COLEMAK] = LAYOUT_wrapper( \
         KC_GRV , __NUMBER_L_________________________________,                   __NUMBER_R_________________________________, KC_BSPC, \
-        KC_TAB , __COLEMAK_L1_______________________________,                   __COLEMAK_R1_______________________________, _______, \
-        NAVESC , __COLEMAK_L2_______________________________,                   __COLEMAK_R2_______________________________, _______, \
-        KC_LSFT, __COLEMAK_L3_______________________________, _______, _______, __COLEMAK_R3_______________________________, _______, \
-                                   KC_LGUI, KC_LALT, NAVSPC , _______, SYMENT , TEXSPC , _______, _______ \
+        KC_TAB , __COLEMAK_L1_______________________________,                   __COLEMAK_R1_______________________________, KC_BSLS, \
+        NAVESC , __COLEMAK_L2_______________________________,                   __COLEMAK_R2_______________________________, KC_QUOT, \
+        KC_LSFT, __COLEMAK_L3_______________________________, KC_SPC ,KC_SPC , __COLEMAK_R3_______________________________, KC_RSFT, \
+                                   KC_LGUI, KC_LALT, NAVSPC , KC_SPC, SYMENT , TEXSPC , ALTCTL , ALTSHFT \
+    ),
+
+    [_COLEMAC] = LAYOUT_wrapper( \
+        KC_GRV , __NUMBER_L_________________________________,                   __NUMBER_R_________________________________, KC_BSPC, \
+        KC_TAB , __COLEMAC_L1_______________________________,                   __COLEMAC_R1_______________________________, KC_BSLS, \
+        MNAVESC, __COLEMAC_L2_______________________________,                   __COLEMAC_R2_______________________________, KC_QUOT, \
+        KC_LSFT, __COLEMAC_L3_______________________________, _______, _______, __COLEMAC_R3_______________________________, KC_RSFT, \
+                                   KC_LGUI, KC_LALT, MNAVSPC, _______, SYMENT , TEXSPC , _______, _______ \
     ),
 
 
@@ -65,7 +75,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         _______, __TEX_L1___________________________________,                   __TEX_R1___________________________________, _______, \
         _______, __TEX_L2___________________________________,                   __TEX_R2___________________________________, _______, \
         _______, __TEX_L3___________________________________, _______, _______, __TEX_R3___________________________________, ADJUST , \
-                                   _______, _______, _______, _______, _______, KC_ENT , _______, _______ \
+                                   _______, _______, MO(_SYM), _______, _______, _______, _______, _______ \
     ),
 
     [_SYM] = LAYOUT_wrapper( \
@@ -161,9 +171,9 @@ void encoder_update_user(uint8_t index, bool clockwise) {
     }
   } else if (index == 1) { /* Second encoder */  
     if (clockwise) {
-      tap_code(KC_UP);
+      tap_code(KC_RIGHT);
     } else {
-      tap_code(KC_DOWN);
+      tap_code(KC_LEFT);
     }
   }
 } 
