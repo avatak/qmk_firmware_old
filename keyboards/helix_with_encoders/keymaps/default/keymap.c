@@ -30,24 +30,26 @@ enum custom_layers {
 };
 
 /*  Custom keycode definitions */
-
 /* Layer changes */
 
     #define ADJUST MO(_ADJUST)
     #define MACWIN MO(_MWIN)
+    #define MEDIA MO(_MEDIA)
     #define MNAVESC LT(_MNAV, KC_ESC)
     #define MNAVSPC LT(_MNAV, KC_SPC)
+    #define MO_NAV MO(_NAV)
     #define NAVESC LT(_NAV, KC_ESC)
     #define NAVSPC LT(_NAV, KC_SPC)
-    #define NUMPAD TT(_NUM)
+    #define NUM_TAP TT(_NUM)
+    #define NUM_TOG TG(_NUM)
     #define SYMENT LT(_SYM, KC_ENT)
     #define SYMBOL MO(_SYM)
     #define TEXSPC LT(_TEX, KC_SPC)
-
-/* Custom combination keycodes */
-
+    
+    /* Custom combination keycodes */
+    
     #define ALTBSPC LALT(KC_BSPC)
-    #define ALTCTL LALT(KC_LCTL)
+    #define ALTCTL LCTL(KC_LALT)
     #define ALTCTLS S(LALT(KC_LCTL))
     #define ALTDEL LALT(KC_DEL)
     #define ALT_F4 LALT(KC_F4)
@@ -60,14 +62,16 @@ enum custom_layers {
     #define CTLPGDN LCTL(KC_PGDN)
     #define CTLPGUP LCTL(KC_PGUP)
     #define CTLRGHT LCTL(KC_RGHT)
+    #define CTLSHFT LCTL(KC_LSFT)
     #define CTLZERO LCTL(KC_0)
     #define MACEND LGUI(KC_RIGHT)
     #define MACHOME LGUI(KC_LEFT)
     #define TABLEFT LCTL(LSFT(KC_TAB))
     #define TABRGHT LCTL(KC_TAB)
-
-/* Dual function keys */
-
+    
+    /* Dual function keys */
+    
+    #define ALT_COM ALT_T(KC_COMM)
     #define CTLSCLN CTL_T(KC_SCLN)
     #define CTLSLSH CTL_T(KC_SLSH)
     #define GUISCLN GUI_T(KC_SCLN)
@@ -134,7 +138,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_TAB , KC_Q   , KC_W   , KC_F   , KC_P   , KC_B   ,                   KC_J   , KC_L   , KC_U   , KC_Y   , GUISCLN, KC_BSLS,
         NAVESC , KC_A   , KC_R   , KC_S   , KC_T   , KC_G   ,                   KC_K   , KC_N   , KC_E   , KC_I   , KC_O   , KC_QUOT,
         KC_LSFT, KC_Z   , KC_X   , KC_C   , KC_D   , KC_V   , _______, _______, KC_M   , KC_H   , KC_COMM, KC_DOT , CTLSLSH, KC_RSFT,
-        ADJUST , KC_LCTL, _______, KC_LGUI, KC_LALT, NAVSPC , NUMPAD , SYMENT , TEXSPC , ALTCTL , ALTSHFT, _______, _______, ADJUST
+        ADJUST , KC_LCTL, _______, KC_LGUI, KC_LALT, NAVSPC , NUM_TAP, SYMENT , TEXSPC , KC_SPC , KC_SPC , KC_SPC , ALTSHFT, ADJUST
     ),
 
 
@@ -143,7 +147,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_TAB , KC_Q   , KC_W   , KC_F   , KC_P   , KC_B   ,                   KC_J   , KC_L   , KC_U   , KC_Y   , CTLSCLN, KC_BSLS,
         MNAVESC, KC_A   , KC_R   , KC_S   , KC_T   , KC_G   ,                   KC_K   , KC_N   , KC_E   , KC_I   , KC_O   , KC_QUOT,
         KC_LSFT, KC_Z   , KC_X   , KC_C   , KC_D   , KC_V   , _______, _______, KC_M   , KC_H   , KC_COMM, KC_DOT , GUISLSH, KC_RSFT,
-        ADJUST , KC_LCTL, _______, KC_LALT, KC_LGUI, MNAVSPC, NUMPAD , SYMENT , TEXSPC , ALTCTL , ALTSHFT, _______, _______, ADJUST
+        ADJUST , KC_LCTL, _______, KC_LALT, KC_LGUI, MNAVSPC, NUM_TAP, SYMENT , TEXSPC , ALTCTL , ALTSHFT, _______, _______, ADJUST
     ),
 
     /* NAVIGATION
@@ -521,14 +525,78 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
 // OLED Driver Logic
 #ifdef OLED_DRIVER_ENABLE
-    oled_rotation_t oled_init_user(oled_rotation_t rotation) {
-        if (is_keyboard_master())
-            return OLED_ROTATION_270;
-        else if (!is_keyboard_master())
-            return OLED_ROTATION_180;
-        else
-          return rotation;
-    }
+oled_rotation_t oled_init_user(oled_rotation_t rotation) {
+    if (is_keyboard_master())
+        return OLED_ROTATION_270;
+    else if (!is_keyboard_master())
+        return OLED_ROTATION_180;
+    else
+        return rotation;
+}
+
+// Render to mode icon
+  static const char PROGMEM sol_icon[] = {
+    0x9b,0x9c,0x9d,0x9e,0x9f,
+    0xbb,0xbc,0xbd,0xbe,0xbf,
+    0xdb,0xdc,0xdd,0xde,0xdf,0
+  };
+
+
+void render_layer_state(void) {
+    oled_write_P(PSTR("\nLayer"), false);
+    oled_write_P(PSTR("-----"), false);
+    uint8_t layer = layer_state ? biton(layer_state) : biton32(default_layer_state);
+    switch (layer) {
+        case _COLEMAK:
+            oled_write_P(PSTR("COLMK"), false);
+            break;
+        case _NAV:
+            oled_write_P(PSTR("  NAV"), false);
+            break;
+        case _TEX:
+            oled_write_P(PSTR("LaTeX"), false);
+            break;
+        case _SYM:
+            oled_write_P(PSTR("SYMBL"), false);
+            break;
+        case _NUM:
+            oled_write_P(PSTR("NUMPD"), false);
+            break;
+        case _ADJUST:
+            oled_write_P(PSTR("ADJST"), false);
+            break;
+        default:
+            oled_write_P(PSTR("UNDEF"), false);
+        }
+    oled_write_P(PSTR("\n"), false);
+}
+
+void render_keylock_status(uint8_t led_usb_state) {
+    uint8_t led_state = host_keyboard_leds();
+    oled_write_P(PSTR("Locks"), false);
+    oled_write_P(PSTR("-----"), false);
+    oled_write_P(IS_LED_ON(led_state, USB_LED_NUM_LOCK) ? PSTR("N") : PSTR(" "), false);
+    oled_write_P(PSTR(" "), false);
+    oled_write_P(IS_LED_ON(led_state, USB_LED_CAPS_LOCK) ? PSTR("C") : PSTR(" "), false);
+    oled_write_P(PSTR(" "), false);
+    oled_write_P(IS_LED_ON(led_state, USB_LED_SCROLL_LOCK) ? PSTR("S") : PSTR(" "), false);
+}
+
+void render_mod_status(uint8_t modifiers) {
+    oled_write_P(PSTR("\nMods "), false);
+    oled_write_P(PSTR("-----"), false);
+    oled_write_P((modifiers & MOD_MASK_SHIFT) ? PSTR("S") : PSTR(" "), false);
+    oled_write_P((modifiers & MOD_MASK_CTRL) ? PSTR("C") : PSTR(" "), false);
+    oled_write_P((modifiers & MOD_MASK_ALT) ? PSTR("A") : PSTR(" "), false);
+    oled_write_P((modifiers & MOD_MASK_GUI) ? PSTR("G") : PSTR(" "), false);
+}
+
+void render_status_main(void) {
+    /* Show Keyboard Layout  */
+    render_layer_state();
+    render_keylock_status(host_keyboard_leds());
+    render_mod_status(get_mods());
+}
 
 static void render_logo(void) {
     static const char PROGMEM sol_logo[] = {
@@ -539,79 +607,14 @@ static void render_logo(void) {
     oled_write_P(sol_logo, false);
 }
 
-static void render_status(void) {
-  // Render to mode icon
-  static const char PROGMEM sol_icon[] = {
-    0x9b,0x9c,0x9d,0x9e,0x9f,
-    0xbb,0xbc,0xbd,0xbe,0xbf,
-    0xdb,0xdc,0xdd,0xde,0xdf,0
-  };
-  oled_write_P(sol_icon, false);
-
-
-
-
-// Define layers here
-oled_write_P(PSTR("Layer\n"), false);
-switch (get_highest_layer(layer_state)) {
-    case _COLEMAK:
-        oled_write_P(PSTR("COLMK"), false);
-        break;
-    case _COLEMAC:
-        oled_write_P(PSTR("CLMAC"), false);
-        break;
-    case _TEX:
-        oled_write_P(PSTR("LaTeX"), false);
-        break;
-    case _SYM:
-        oled_write_P(PSTR("SYM  "), false);
-        break;
-    case _NAV:
-        oled_write_P(PSTR("NAV  "), false);
-        break;
-    case _MNAV:
-        oled_write_P(PSTR("MNAV "), false);
-        break;
-    case _NUM:
-        oled_write_P(PSTR("NUM  "), false);
-        break;
-    case _MWIN:
-        oled_write_P(PSTR("MWIN "), false);
-        break;
-    case _ADJUST:
-        oled_write_P(PSTR("ADJST"), false);
-        break;
-    default:
-        oled_write_P(PSTR("UNDEF"), false);
-}
-
-  // Host Keyboard LED Status
-    uint8_t led_state = host_keyboard_leds();
-    oled_write_P(PSTR("\n-----\n"), false);
-    oled_write_P(IS_LED_ON(led_state, USB_LED_NUM_LOCK) ? PSTR("NUMLK") : PSTR("     "), false);
-    oled_write_P(IS_LED_ON(led_state, USB_LED_CAPS_LOCK) ? PSTR("CAPLK") : PSTR("     "), false);
-    oled_write_P(IS_LED_ON(led_state, USB_LED_SCROLL_LOCK) ? PSTR("SCRLK") : PSTR("     "), false);
-
-#ifdef RGB_OLED_MENU
-    static char buffer[31] = { 0 };
-    snprintf(buffer, sizeof(buffer), "h%3d s%3d v%3d s%3d m%3d e%3d ", rgb_matrix_config.hsv.h, rgb_matrix_config.hsv.s, rgb_matrix_config.hsv.v, rgb_matrix_config.speed, rgb_matrix_config.mode, rgb_matrix_get_flags());
-    buffer[4 + rgb_encoder_state * 5] = '<';
-
-    oled_write_P(PSTR("-----"), false);
-    oled_write(buffer, false);
-#endif
-}
-
 void oled_task_user(void) {
-  if (is_keyboard_master()) {
-    render_status();
-  } else {
-    render_logo();
-    oled_scroll_left();
-  }
+    if (is_keyboard_master()) {
+        oled_write_P(sol_icon, false);
+        render_status_main();  // Renders the current keyboard state (layer, lock, caps, scroll, etc)
+    } else {
+        render_logo();
+        //oled_scroll_left();
+    }
 }
 
 #endif
-
-
-

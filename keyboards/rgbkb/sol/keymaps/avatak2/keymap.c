@@ -61,7 +61,7 @@ enum layer_number { _COLEMAK = 0, _NAV, _TEX, _SYM, _NUM, _MEDIA, _ADJUST };
 #define GUISCLN GUI_T(KC_SCLN)
 #define GUISLSH GUI_T(KC_SLSH)
 
-*/ Keycodes for moving windows around on osx using magnet */
+/* Keycodes for moving windows around on osx using magnet */
 /*
 #define MW_CENT LCTL(LALT(KC_F))
 #define MW_CSQR LCTL(LALT(KC_C))

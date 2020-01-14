@@ -18,6 +18,9 @@
 
 // place overrides here
 
+#undef OLED_FONT_H
+#define OLED_FONT_H "keyboards/helix_with_encoders/glcdfont.c"
+
 #define B7_AUDIO
 #define AUDIO_CLICKY
 //#define NO_MUSIC_MODE
