@@ -61,7 +61,7 @@ enum layer_number { _COLEMAK = 0, _NAV, _TEX, _SYM, _NUM, _MEDIA, _ADJUST };
 #define GUISCLN GUI_T(KC_SCLN)
 #define GUISLSH GUI_T(KC_SLSH)
 
-/* Keycodes for moving windows around on osx using magnet */
+*/ Keycodes for moving windows around on osx using magnet */
 /*
 #define MW_CENT LCTL(LALT(KC_F))
 #define MW_CSQR LCTL(LALT(KC_C))
@@ -192,11 +192,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
             ),
 
     [_NUM] = LAYOUT(
-        _______, _______, _______, _______, _______, _______, _______, _______, _______, KC_NLCK, KC_PSLS, KC_PAST, _______, _______,
-        _______, _______, _______, _______, _______, _______, _______, _______, _______, KC_P7  , KC_P8  , KC_P9  , KC_PMNS, _______,
-        _______, _______, _______, _______, _______, _______, _______, _______, _______, KC_P4  , KC_P5  , KC_P6  , KC_PPLS, _______,
-        _______, _______, _______, _______, _______, _______, _______, _______, _______, KC_P1  , KC_P2  , KC_P3  , KC_TAB , S(KC_TAB),
-        _______, _______, _______, _______, _______, _______, _______, _______, KC_PENT, KC_P0  , KC_COMM, KC_PDOT, KC_PEQL, _______,
+        _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, KC_NLCK, KC_PSLS, KC_PAST, _______,
+        _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, KC_P7  , KC_P8  , KC_P9  , KC_PMNS,
+        _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, KC_P4  , KC_P5  , KC_P6  , KC_PPLS,
+        _______, _______, _______, _______, _______, _______, _______, _______, _______, KC_TAB , KC_P1  , KC_P2  , KC_P3  , KC_TAB ,
+        _______, _______, _______, _______, _______, _______, _______, _______, KC_PENT, _______, KC_P0  , KC_COMM, KC_PDOT, KC_PEQL,
                                                      _______, _______, S(KC_PENT), KC_PENT
             ),
 
