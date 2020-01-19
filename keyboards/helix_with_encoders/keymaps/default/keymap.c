@@ -45,9 +45,9 @@ enum custom_layers {
     #define SYMENT LT(_SYM, KC_ENT)
     #define SYMBOL MO(_SYM)
     #define TEXSPC LT(_TEX, KC_SPC)
-    
+
     /* Custom combination keycodes */
-    
+
     #define ALTBSPC LALT(KC_BSPC)
     #define ALTCTL LCTL(KC_LALT)
     #define ALTCTLS S(LALT(KC_LCTL))
@@ -68,9 +68,9 @@ enum custom_layers {
     #define MACHOME LGUI(KC_LEFT)
     #define TABLEFT LCTL(LSFT(KC_TAB))
     #define TABRGHT LCTL(KC_TAB)
-    
+
     /* Dual function keys */
-    
+
     #define ALT_COM ALT_T(KC_COMM)
     #define CTLSCLN CTL_T(KC_SCLN)
     #define CTLSLSH CTL_T(KC_SLSH)
@@ -137,8 +137,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_GRV , KC_1   , KC_2   , KC_3   , KC_4   , KC_5   ,                   KC_6   , KC_7   , KC_8   , KC_9   , KC_0   , KC_BSPC,
         KC_TAB , KC_Q   , KC_W   , KC_F   , KC_P   , KC_B   ,                   KC_J   , KC_L   , KC_U   , KC_Y   , GUISCLN, KC_BSLS,
         NAVESC , KC_A   , KC_R   , KC_S   , KC_T   , KC_G   ,                   KC_K   , KC_N   , KC_E   , KC_I   , KC_O   , KC_QUOT,
-        KC_LSFT, KC_Z   , KC_X   , KC_C   , KC_D   , KC_V   , _______, _______, KC_M   , KC_H   , KC_COMM, KC_DOT , CTLSLSH, KC_RSFT,
-        ADJUST , KC_LCTL, _______, KC_LGUI, KC_LALT, NAVSPC , NUM_TAP, SYMENT , TEXSPC , KC_SPC , KC_SPC , KC_SPC , ALTSHFT, ADJUST
+        KC_LSFT, KC_Z   , KC_X   , KC_C   , KC_D   , KC_V   , _______, _______, KC_M   , KC_H   , ALT_COM, KC_DOT , CTLSLSH, KC_RSFT,
+        ADJUST , KC_LCTL, _______, KC_LGUI, KC_LALT, NAVSPC , NUM_TAP, SYMENT , TEXSPC , KC_HYPR, KC_SPC , ALTSHFT, ALTCTL , ADJUST
     ),
 
 
@@ -146,7 +146,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_GRV , KC_1   , KC_2   , KC_3   , KC_4   , KC_5   ,                   KC_6   , KC_7   , KC_8   , KC_9   , KC_0   , KC_BSPC,
         KC_TAB , KC_Q   , KC_W   , KC_F   , KC_P   , KC_B   ,                   KC_J   , KC_L   , KC_U   , KC_Y   , CTLSCLN, KC_BSLS,
         MNAVESC, KC_A   , KC_R   , KC_S   , KC_T   , KC_G   ,                   KC_K   , KC_N   , KC_E   , KC_I   , KC_O   , KC_QUOT,
-        KC_LSFT, KC_Z   , KC_X   , KC_C   , KC_D   , KC_V   , _______, _______, KC_M   , KC_H   , KC_COMM, KC_DOT , GUISLSH, KC_RSFT,
+        KC_LSFT, KC_Z   , KC_X   , KC_C   , KC_D   , KC_V   , _______, _______, KC_M   , KC_H   , ALT_COM, KC_DOT , GUISLSH, KC_RSFT,
         ADJUST , KC_LCTL, _______, KC_LALT, KC_LGUI, MNAVSPC, NUM_TAP, SYMENT , TEXSPC , ALTCTL , ALTSHFT, _______, _______, ADJUST
     ),
 
@@ -266,9 +266,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_NUM] = LAYOUT(
         _______, _______, _______, _______, _______, _______,                   _______, KC_NLCK, KC_PAST, KC_PSLS, _______, _______,
         _______, _______, _______, _______, _______, _______,                   _______, KC_P7  , KC_P8  , KC_P9  , KC_PMNS, _______,
-        _______, _______, _______, _______, _______, _______,                 S(KC_TAB), KC_P4  , KC_P5  , KC_P6  , KC_PPLS, _______,
-        _______, _______, _______, _______, _______, _______, _______, _______, KC_TAB , KC_P1  , KC_P2  , KC_P3  , KC_EQL , _______,
-        _______, _______, _______, _______, _______, _______,_______,S(KC_ENT), KC_ENT , KC_P0  , KC_COMM, KC_PDOT, _______, _______
+        _______, _______, _______, _______, _______, _______,                   _______, KC_P4  , KC_P5  , KC_P6  , KC_PPLS, _______,
+        _______, _______, _______, _______, _______, _______, _______, _______, KC_EQL , KC_P1  , KC_P2  , KC_P3  , KC_TAB , S(KC_TAB),
+        _______, _______, _______, _______, _______, _______,_______,S(KC_ENT), KC_ENT , KC_P0  , KC_COMM, KC_PDOT, KC_ENT , S(KC_ENT)
     ),
 
    /* Adjustment layer
