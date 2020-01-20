@@ -27,6 +27,7 @@ enum custom_layers {
     _NUM,
     _MWIN,
     _ADJUST,
+    _LAST
 };
 
 /*  Custom keycode definitions */
@@ -168,7 +169,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         _______, _______, _______, _______, ALT_F4 , _______,                   _______, _______, _______, _______, _______, _______, \
         _______, _______, CTLPGUP, KC_PGUP, CTLPGDN, _______,                   _______, TABLEFT, KC_UP  , TABRGHT, _______, S(LCTL(LALT(KC_S))), \
         _______, _______, KC_HOME, KC_PGDN, KC_END , _______,                   CTLLEFT, KC_LEFT, KC_DOWN, KC_RGHT, CTLRGHT, KC_APP , \
-        _______, _______, _______, KC_CAPS, KC_INS , _______, _______, _______, CTLBSPC, KC_BSPC, KC_DEL , CTLDEL , CTLZERO, _______, \
+        _______, _______, _______, KC_CAPS, KC_INS , KC_SLCK, _______, _______, CTLBSPC, KC_BSPC, KC_DEL , CTLDEL , CTLZERO, _______, \
         _______, _______, _______, _______, _______, _______, _______, _______, KC_ENT , _______, _______, _______, _______, KC_F12 \
     ),
 
@@ -176,7 +177,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         _______, _______, _______, _______,LGUI(KC_Q), _______,                 _______, _______, _______, _______, _______, _______, \
         MACWIN , _______, CTLPGUP, KC_PGUP, CTLPGDN, _______,                   _______, TABLEFT, KC_UP  , TABRGHT, _______, _______, \
         _______, _______, MACHOME, KC_PGDN, MACEND , _______,                   ALTLEFT, KC_LEFT, KC_DOWN, KC_RGHT, ALTRGHT, _______, \
-        _______, _______, _______, KC_CAPS, KC_INS , _______, _______, _______, ALTBSPC, KC_BSPC, KC_DEL , ALTDEL , CTLZERO, _______, \
+        _______, _______, _______, KC_CAPS, KC_INS , KC_SLCK, _______, _______, ALTBSPC, KC_BSPC, KC_DEL , ALTDEL , CTLZERO, _______, \
         _______, _______, _______, _______, _______, _______, _______, _______, KC_ENT , _______, _______, _______, _______, S(LALT(KC_T)) \
     ),
 
@@ -550,11 +551,17 @@ void render_layer_state(void) {
         case _COLEMAK:
             oled_write_P(PSTR("COLMK"), false);
             break;
+        case _COLEMAC:
+            oled_write_P(PSTR("CLMAC"), false);
+            break;
         case _NAV:
             oled_write_P(PSTR("  NAV"), false);
             break;
         case _TEX:
             oled_write_P(PSTR("LaTeX"), false);
+            break;
+        case _MNAV:
+            oled_write_P(PSTR(" MNAV"), false);
             break;
         case _SYM:
             oled_write_P(PSTR("SYMBL"), false);
@@ -562,8 +569,11 @@ void render_layer_state(void) {
         case _NUM:
             oled_write_P(PSTR("NUMPD"), false);
             break;
+        case _MWIN:
+            oled_write_P(PSTR(" MWIN"), false);
+            break;
         case _ADJUST:
-            oled_write_P(PSTR("ADJST"), false);
+            oled_write_P(PSTR("  ADJ"), false);
             break;
         default:
             oled_write_P(PSTR("UNDEF"), false);
