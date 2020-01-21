@@ -65,6 +65,7 @@ enum userspace_custom_keycodes {
 #define SYMSPC LT(_SYM, KC_SPC)
 #define TEXSPC LT(_TEX, KC_SPC)
 
+#define MACTERM S(LALT(KC_T))
 #define MACEND LGUI(KC_RIGHT)
 #define MACHOME LGUI(KC_LEFT)
 #define MACMENU LCTL(KC_F2)
