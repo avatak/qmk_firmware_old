@@ -1,4 +1,4 @@
-/* Copyright 2019 westfoxtrot
+/* Copyright 2019 Nick Brassel (tzarc)
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -16,4 +16,7 @@
 
 #pragma once
 
-// place overrides here
+#include "eeprom.h"
+
+void eeprom_driver_init(void);
+void eeprom_driver_erase(void);
