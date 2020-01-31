@@ -28,7 +28,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_TAB,  __COLEMAK_L1_______________________________, __COLEMAK_R1_______________________________, KC_BSPC, \
     NAVESC,  __COLEMAK_L2_______________________________, __COLEMAK_R2_______________________________, KC_QUOT, \
     KC_LSFT, __COLEMAK_L3_______________________________, __COLEMAK_R3_______________________________, KC_RSFT , \
-    KC_LCTL, KC_LGUI, KC_LALT, _______, NAVSPC , NAVSPC , TEXSPC , TEXSPC , _______, ALTSHFT, ALTCTL , ADJUST \
+    KC_LCTL, KC_LGUI, KC_LALT, KC_SPC , NAVSPC , NAVSPC , TEXSPC , TEXSPC , KC_SPC , ALTSHFT, ALTCTL , ADJUST \
 ),
 
 
