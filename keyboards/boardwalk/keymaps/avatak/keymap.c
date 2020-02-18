@@ -18,6 +18,11 @@
 
 #define LAYOUT_wrap(...) LAYOUT_ortho_5x14(__VA_ARGS__)
 
+enum keymap_keycodes{
+    LNXFONT = NEW_SAFE_RANGE,
+    LNXWLFX, 
+};
+
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
@@ -115,10 +120,27 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 [_ADJUST] = LAYOUT_wrap(
     RESET  , _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, \
-    _______, RGB_TOG, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, \
-    _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, KC_MPLY, KC_VOLU, _______, _______, \
+    _______, RGB_TOG, _______, _______, _______, _______, _______, _______, _______, LNXFONT, _______, _______, _______, _______, \
+    _______, _______, _______, _______, _______, _______, _______, _______, _______, LNXWLFX, KC_MPLY, KC_VOLU, _______, _______, \
     _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, KC_MPRV, KC_VOLD, KC_MNXT, _______, \
     _______, _______, _______, _______, _______, COLEMAK, _______, _______, COLEMAC, _______, _______, KC_MUTE, _______, _______ \
 )
 
 };
+
+
+bool process_record_keymap(uint16_t keycode, keyrecord_t *record) {
+        switch (keycode) {
+        case LNXFONT:
+            if (record->event.pressed) {
+                SEND_STRING("setfont latarcyrheb-sun32"SS_TAP(X_ENTER));
+            }
+            break;
+        case LNXWLFX:
+            if (record->event.pressed) {
+                SEND_STRING("modprobe -r b44 b43 b43legacy ssb wl; modprobe wl; ip link set wlan0 up; systemctl enable iwd.service; systemctl start iwd.service"SS_TAP(X_ENTER));
+            }
+            break;
+        }
+    return true;
+}
