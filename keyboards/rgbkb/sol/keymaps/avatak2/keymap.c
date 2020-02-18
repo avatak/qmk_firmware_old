@@ -124,7 +124,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      */
     [_COLEMAK] = LAYOUT(\
         KC_GRV , KC_1   , KC_2   , KC_3   , KC_4   , KC_5   , LENC_UP, RENC_UP, KC_6   , KC_7   , KC_8   , KC_9   , KC_0   , KC_BSPC,\
-        KC_TAB , KC_Q   , KC_W   , KC_F   , KC_P   , KC_B   , LENC_DN, RENC_DN, KC_J   , KC_L   , KC_U   , KC_Y   , GUISCLN, KC_BSLS, \
+        KC_TAB , KC_Q   , KC_W   , KC_F   , KC_P   , KC_B   , NUM_TOG, RENC_DN, KC_J   , KC_L   , KC_U   , KC_Y   , GUISCLN, KC_BSLS, \
         NAVESC , KC_A   , KC_R   , KC_S   , KC_T   , KC_G   , XXXXXXX, XXXXXXX, KC_K   , KC_N   , KC_E   , KC_I   , KC_O   , KC_QUOT, \
         KC_LSFT, KC_Z   , KC_X   , KC_C   , KC_D   , KC_V   , XXXXXXX, XXXXXXX, KC_M   , KC_H   , ALT_COM, KC_DOT , CTLSLSH, KC_RSFT, \
         ADJUST , KC_LCTL, KC_LGUI, KC_LALT, KC_LALT, NAVSPC , NUM_TAP, SYMENT , TEXSPC , MO_NAV , KC_HYPR, CTLSHFT, ALTSHFT, MEDIA  ,
@@ -194,8 +194,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_NUM] = LAYOUT(
         _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, KC_NLCK, KC_PSLS, KC_PAST, _______,
         _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, KC_P7  , KC_P8  , KC_P9  , KC_PMNS,
-        _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, KC_P4  , KC_P5  , KC_P6  , KC_PPLS,
-        _______, _______, _______, _______, _______, _______, _______, _______, _______, KC_TAB , KC_P1  , KC_P2  , KC_P3  , KC_TAB ,
+        _______, _______, _______, _______, _______, _______, _______, _______, _______,S(KC_TAB),KC_P4  , KC_P5  , KC_P6  , KC_PPLS,
+        _______, _______, _______, _______, _______, _______, _______, _______, _______, KC_TAB , KC_P1  , KC_P2  , KC_P3  , KC_ENT ,
         _______, _______, _______, _______, _______, _______, _______, _______, KC_PENT, _______, KC_P0  , KC_COMM, KC_PDOT, KC_PEQL,
                                                      _______, _______, S(KC_PENT), KC_PENT
             ),
