@@ -24,10 +24,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // #define NO_ACTION_TAPPING
 // place overrides here
 
-#undef ENCODERS_PAD_A
-#undef ENCODERS_PAD_B
-#define ENCODERS_PAD_A { D6 }
-#define ENCODERS_PAD_B { D2 }
+//#undef ENCODERS_PAD_A
+//#undef ENCODERS_PAD_B
+//#define ENCODERS_PAD_A { D6 }
+//#define ENCODERS_PAD_B { D2 }
 
 #undef OLED_FONT_H
 #define OLED_FONT_H "keyboards/rgbkb/sol/keymaps/avatak1/glcdfont.c"
