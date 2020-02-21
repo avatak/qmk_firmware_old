@@ -341,7 +341,7 @@ void encoder_update_user(uint8_t index, bool clockwise) {
     if (index == 0) {
         // NAV LAYER
         if (IS_LAYER_ON(_NAV)) {
-            if (clockwise) {
+            if (!clockwise) {
                 tap_code(KC_TAB);
             } else {
                 register_code(KC_LSFT);
@@ -351,7 +351,7 @@ void encoder_update_user(uint8_t index, bool clockwise) {
         }
         // TEX Layer
         else if (IS_LAYER_ON(_TEX)) {
-            if (clockwise) {
+            if (!clockwise) {
                 register_code(KC_LSFT);
                 register_code(KC_LCTL);
                 tap_code(KC_Z);
@@ -365,7 +365,7 @@ void encoder_update_user(uint8_t index, bool clockwise) {
         }
         // ADJUST layer
         else if (IS_LAYER_ON(_ADJUST)) {
-            if (clockwise) {
+            if (!clockwise) {
                 rgblight_increase_hue();
             } else {
                 rgblight_decrease_hue();
@@ -373,7 +373,7 @@ void encoder_update_user(uint8_t index, bool clockwise) {
         }
         // MEDIA layer
         else if (IS_LAYER_ON(_MEDIA)) {
-            if (clockwise) {
+            if (!clockwise) {
                 tap_code(KC_VOLU);
             } else {
                 tap_code(KC_VOLD);
@@ -382,13 +382,13 @@ void encoder_update_user(uint8_t index, bool clockwise) {
         // DEFAULT
         else {
             if (LENC_ST == 0) {
-                if (clockwise) {
+                if (!clockwise) {
                     tap_code(KC_DOWN);
                 } else {
                     tap_code(KC_UP);
                 }
             } else if (LENC_ST == 1) {
-                if (clockwise) {
+                if (!clockwise) {
                     tap_code(KC_PGDN);
                 } else {
                     tap_code(KC_PGUP);
@@ -402,7 +402,7 @@ void encoder_update_user(uint8_t index, bool clockwise) {
     else if (index == 1) {
         //  NAV LAYER
         if (IS_LAYER_ON(_NAV)) {
-            if (clockwise) {
+            if (!clockwise) {
                 tap_code(KC_PGDN);
             } else {
                 tap_code(KC_PGUP);
@@ -410,7 +410,7 @@ void encoder_update_user(uint8_t index, bool clockwise) {
         }
         // Symbol layer
         else if (IS_LAYER_ON(_SYM)) {
-            if (clockwise) {
+            if (!clockwise) {
                 tap_code(KC_SPC);
             } else {
                 tap_code(KC_BSPC);
@@ -418,7 +418,7 @@ void encoder_update_user(uint8_t index, bool clockwise) {
         }
         // Adjust layer
         else if (IS_LAYER_ON(_ADJUST)) {
-            if (clockwise) {
+            if (!clockwise) {
                 rgblight_step();
             } else {
                 rgblight_step_reverse();
@@ -426,7 +426,7 @@ void encoder_update_user(uint8_t index, bool clockwise) {
         }
         // MEDIA layer
         else if (IS_LAYER_ON(_MEDIA)) {
-            if (clockwise) {
+            if (!clockwise) {
                 tap_code(KC_MNXT);
             } else {
                 tap_code(KC_MPRV);
@@ -434,7 +434,7 @@ void encoder_update_user(uint8_t index, bool clockwise) {
         }
         // DEFAULT
         else {
-            if (clockwise) {
+            if (!clockwise) {
                 tap_code(KC_RGHT);
             } else {
                 tap_code(KC_LEFT);
