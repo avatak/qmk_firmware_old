@@ -8,7 +8,7 @@
 #define LAYOUT_wrapper(...) LAYOUT(__VA_ARGS__)
 
 // COLEMAK MOD-DH
-#define __COLEMAK_L1_______________________________ ALT_Q  , KC_W   , KC_F   , KC_P   , KC_B
+#define __COLEMAK_L1_______________________________ KC_Q   , KC_W   , KC_F   , KC_P   , KC_B
 #define __COLEMAK_L2_______________________________ KC_A   , KC_R   , KC_S   , KC_T   , KC_G
 #define __COLEMAK_L3_______________________________ KC_Z   , KC_X   , KC_C   , KC_D   , KC_V
 
