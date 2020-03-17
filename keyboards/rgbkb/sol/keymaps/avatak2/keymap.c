@@ -10,7 +10,16 @@
 // Layer names don't all need to be of the same length, obviously, and you can also skip them
 // entirely and just use numbers.
 
-enum layer_number { _COLEMAK = 0, _NAV, _TEX, _SYM, _NUM, _MEDIA, _ADJUST };
+enum layer_number { 
+    _COLEMAK = 0, 
+    _NAV, 
+    _TEX, 
+    _SYM, 
+    _NUM, 
+    _MEDIA, 
+    _MOUSE, 
+    _ADJUST,
+};
 
 /*  Custom keycode definitions */
 
@@ -22,6 +31,7 @@ enum layer_number { _COLEMAK = 0, _NAV, _TEX, _SYM, _NUM, _MEDIA, _ADJUST };
 #define MNAVESC LT(_MNAV, KC_ESC)
 #define MNAVSPC LT(_MNAV, KC_SPC)
 #define MO_NAV MO(_NAV)
+#define TOGMOUS TG(_MOUSE)
 #define NAVESC LT(_NAV, KC_ESC)
 #define NAVSPC LT(_NAV, KC_SPC)
 #define NUM_TAP TT(_NUM)
@@ -85,9 +95,11 @@ enum layer_number { _COLEMAK = 0, _NAV, _TEX, _SYM, _NUM, _MEDIA, _ADJUST };
 enum custom_keycodes {
     ALIGN = SAFE_RANGE,
     ARRAY,
+    CLK_TOG,
     COLEMAC,
     COLEMAK,
     CUTROW,
+    DBL_CLK,
     DISPMTH,
     ENUM,
     ITEM,
@@ -123,8 +135,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      *                                    `-------------'  `-------------'
      */
     [_COLEMAK] = LAYOUT(\
-        KC_GRV , KC_1   , KC_2   , KC_3   , KC_4   , KC_5   , LENC_UP, RENC_UP, KC_6   , KC_7   , KC_8   , KC_9   , KC_0   , KC_BSPC,\
-        KC_TAB , KC_Q   , KC_W   , KC_F   , KC_P   , KC_B   , NUM_TOG, RENC_DN, KC_J   , KC_L   , KC_U   , KC_Y   , GUISCLN, KC_BSLS, \
+        KC_GRV , KC_1   , KC_2   , KC_3   , KC_4   , KC_5   , KC_INS , TOGMOUS, KC_6   , KC_7   , KC_8   , KC_9   , KC_0   , KC_BSPC,\
+        KC_TAB , KC_Q   , KC_W   , KC_F   , KC_P   , KC_B   , KC_CAPS, NUM_TOG, KC_J   , KC_L   , KC_U   , KC_Y   , GUISCLN, KC_BSLS, \
         NAVESC , KC_A   , KC_R   , KC_S   , KC_T   , KC_G   , XXXXXXX, XXXXXXX, KC_K   , KC_N   , KC_E   , KC_I   , KC_O   , KC_QUOT, \
         KC_LSFT, KC_Z   , KC_X   , KC_C   , KC_D   , KC_V   , XXXXXXX, XXXXXXX, KC_M   , KC_H   , ALT_COM, KC_DOT , CTLSLSH, KC_RSFT, \
         ADJUST , KC_LCTL, KC_LGUI, KC_LALT, KC_LALT, NAVSPC , NUM_TAP, SYMENT , TEXSPC , MO_NAV , KC_HYPR, CTLSHFT, ALTSHFT, MEDIA  ,
@@ -209,13 +221,22 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                      _______, _______, KC_MSTP, KC_MPLY
             ),
 
+    [_MOUSE] = LAYOUT(
+        _______, _______, _______, _______, _______, _______, _______,      _______, _______, _______, _______, _______, _______, _______,
+        _______, _______, _______, _______, _______, _______, _______,      _______, _______, _______, _______, _______, _______, _______,
+        _______, _______, KC_ACL0, KC_ACL1, KC_ACL2, _______, _______,      _______, _______, DBL_CLK, KC_BTN1, KC_BTN3, KC_BTN2, _______,
+        _______, _______, _______, _______, _______, _______, _______,      _______, _______, KC_WH_U, KC_WH_D, _______, _______, _______,
+        _______, _______, _______, _______, _______, _______, _______,      _______, _______, _______, _______, _______, _______, CLK_TOG,
+                                                     _______, _______,      _______, _______
+    ),
+
     [_ADJUST] = LAYOUT(
-        RESET  , _______, _______, _______, _______, _______, _______, _______, RGB_TOG, _______, _______, _______, _______, RGBRST ,
-        _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
-        _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
-        _______, _______, _______, CUTROW , _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
-        _______, _______, _______, _______, _______, _______, _______, _______, _______, RGB_TOG, _______, _______, _______, _______,
-                                                     _______, _______, _______, _______
+        RESET  , _______, _______, _______, _______, _______, _______,      _______, RGB_TOG, _______, _______, _______, _______, RGBRST ,
+        _______, _______, _______, _______, _______, _______, _______,      _______, RGB_SPI, _______, _______, _______, _______, _______,
+        _______, _______, _______, _______, _______, _______, _______,      _______, RGB_SPD, RGB_RMOD,_______, RGB_MOD, _______, _______,
+        _______, _______, _______, CUTROW , _______, _______, _______,      _______, _______, _______, _______, _______, _______, _______,
+        _______, _______, _______, _______, _______, _______, _______,      _______, _______, RGB_TOG, _______, _______, _______, _______,
+                                                     _______, _______,      _______, _______
     ),
 
 };
@@ -341,7 +362,7 @@ void encoder_update_user(uint8_t index, bool clockwise) {
     if (index == 0) {
         // NAV LAYER
         if (IS_LAYER_ON(_NAV)) {
-            if (!clockwise) {
+            if (clockwise) {
                 tap_code(KC_TAB);
             } else {
                 register_code(KC_LSFT);
@@ -349,9 +370,19 @@ void encoder_update_user(uint8_t index, bool clockwise) {
                 unregister_code(KC_LSFT);
             }
         }
+
+        // MOUSE LAYER
+        if (IS_LAYER_ON(_MOUSE)) {
+            if (clockwise) {
+                tap_code16(KC_MS_D);
+            } else {
+                tap_code16(KC_MS_U);
+            }
+        }
+
         // TEX Layer
         else if (IS_LAYER_ON(_TEX)) {
-            if (!clockwise) {
+            if (clockwise) {
                 register_code(KC_LSFT);
                 register_code(KC_LCTL);
                 tap_code(KC_Z);
@@ -365,7 +396,7 @@ void encoder_update_user(uint8_t index, bool clockwise) {
         }
         // ADJUST layer
         else if (IS_LAYER_ON(_ADJUST)) {
-            if (!clockwise) {
+            if (clockwise) {
                 rgblight_increase_hue();
             } else {
                 rgblight_decrease_hue();
@@ -373,7 +404,7 @@ void encoder_update_user(uint8_t index, bool clockwise) {
         }
         // MEDIA layer
         else if (IS_LAYER_ON(_MEDIA)) {
-            if (!clockwise) {
+            if (clockwise) {
                 tap_code(KC_VOLU);
             } else {
                 tap_code(KC_VOLD);
@@ -382,13 +413,13 @@ void encoder_update_user(uint8_t index, bool clockwise) {
         // DEFAULT
         else {
             if (LENC_ST == 0) {
-                if (!clockwise) {
+                if (clockwise) {
                     tap_code(KC_DOWN);
                 } else {
                     tap_code(KC_UP);
                 }
             } else if (LENC_ST == 1) {
-                if (!clockwise) {
+                if (clockwise) {
                     tap_code(KC_PGDN);
                 } else {
                     tap_code(KC_PGUP);
@@ -402,15 +433,25 @@ void encoder_update_user(uint8_t index, bool clockwise) {
     else if (index == 1) {
         //  NAV LAYER
         if (IS_LAYER_ON(_NAV)) {
-            if (!clockwise) {
+            if (clockwise) {
                 tap_code(KC_PGDN);
             } else {
                 tap_code(KC_PGUP);
             }
         }
+
+        // MOUSE LAYER
+        if (IS_LAYER_ON(_MOUSE)) {
+            if (clockwise) {
+                tap_code16(KC_MS_R);
+            } else {
+                tap_code16(KC_MS_L);
+            }
+        }
+
         // Symbol layer
         else if (IS_LAYER_ON(_SYM)) {
-            if (!clockwise) {
+            if (clockwise) {
                 tap_code(KC_SPC);
             } else {
                 tap_code(KC_BSPC);
@@ -418,7 +459,7 @@ void encoder_update_user(uint8_t index, bool clockwise) {
         }
         // Adjust layer
         else if (IS_LAYER_ON(_ADJUST)) {
-            if (!clockwise) {
+            if (clockwise) {
                 rgblight_step();
             } else {
                 rgblight_step_reverse();
@@ -426,7 +467,7 @@ void encoder_update_user(uint8_t index, bool clockwise) {
         }
         // MEDIA layer
         else if (IS_LAYER_ON(_MEDIA)) {
-            if (!clockwise) {
+            if (clockwise) {
                 tap_code(KC_MNXT);
             } else {
                 tap_code(KC_MPRV);
@@ -434,7 +475,7 @@ void encoder_update_user(uint8_t index, bool clockwise) {
         }
         // DEFAULT
         else {
-            if (!clockwise) {
+            if (clockwise) {
                 tap_code(KC_RGHT);
             } else {
                 tap_code(KC_LEFT);
@@ -445,9 +486,27 @@ void encoder_update_user(uint8_t index, bool clockwise) {
 #endif
 
 bool key_triggered = false;
+bool click_on = false;
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
+        case CLK_TOG:
+            if (record->event.pressed) {
+                if(!click_on) {
+                    register_code(KC_BTN1);
+                    click_on = !click_on;
+                } else {
+                    unregister_code(KC_BTN1);
+                    click_on = !click_on;
+                }
+            }
+            break;
+        case DBL_CLK:
+            if (record->event.pressed) {
+                tap_code16(KC_BTN1);
+                tap_code16(KC_BTN1);
+            }
+            break;
         case LENC_UP:
             if (record->event.pressed) {
                 LENC_ST = (LENC_ST + 1) % 2;
@@ -609,6 +668,12 @@ void render_layer_state(void) {
             break;
         case _NUM:
             oled_write_P(PSTR("NUMPD"), false);
+            break;
+        case _MOUSE:
+            oled_write_P(PSTR("MOUSE"), false);
+            break;
+        case _MEDIA:
+            oled_write_P(PSTR("MEDIA"), false);
             break;
         case _ADJUST:
             oled_write_P(PSTR("ADJST"), false);
