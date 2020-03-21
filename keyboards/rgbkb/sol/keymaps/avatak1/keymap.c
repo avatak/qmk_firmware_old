@@ -667,6 +667,9 @@ void render_layer_state(void) {
     oled_write_P(PSTR("-----"), false);
     uint8_t layer = layer_state ? biton(layer_state) : biton32(default_layer_state);
     switch (layer) {
+        case _ADJUST:
+            oled_write_P(PSTR("ADJST"), false);
+            break;
         case _COLEMAK:
             oled_write_P(PSTR("COLMK"), false);
             break;
@@ -679,11 +682,11 @@ void render_layer_state(void) {
         case _SYM:
             oled_write_P(PSTR("SYMBL"), false);
             break;
+        case _MEDIA:
+            oled_write_P(PSTR("MEDIA"), false);
+            break;
         case _NUM:
             oled_write_P(PSTR("NUMPD"), false);
-            break;
-        case _ADJUST:
-            oled_write_P(PSTR("ADJST"), false);
             break;
         default:
             oled_write_P(PSTR("UNDEF"), false);
