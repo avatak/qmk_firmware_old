@@ -55,7 +55,8 @@ enum layer_number {
       #define TABRGHT LCTL(KC_TAB)
 
   /* Dual function keys */
-
+      
+      #define ALTCOMM ALT_T(KC_COMM)
       #define CTLSCLN CTL_T(KC_SCLN)
       #define CTLSLSH CTL_T(KC_SLSH)
       #define GUISCLN GUI_T(KC_SCLN)
@@ -126,7 +127,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       KC_GRV , KC_1   , KC_2   , KC_3   , KC_4   , KC_5   , KC_INS ,       _______ ,  KC_6,    KC_7,    KC_8,    KC_9,    KC_0,   KC_BSPC, \
       KC_TAB , KC_Q   , KC_W   , KC_F   , KC_P   , KC_B   , KC_CAPS,       TG(_NUM), KC_J   , KC_L   , KC_U   , KC_Y   , GUISCLN, KC_BSLS, \
       NAVESC , KC_A   , KC_R   , KC_S   , KC_T   , KC_G   , XXXXXXX,       XXXXXXX,  KC_K   , KC_N   , KC_E   , KC_I   , KC_O   , KC_QUOT, \
-      KC_LSFT, KC_Z   , KC_X   , KC_C   , KC_D   , KC_V   , XXXXXXX,       XXXXXXX,  KC_M   , KC_H   , KC_COMM, KC_DOT , CTLSLSH, KC_RSHIFT, \
+      KC_LSFT, KC_Z   , KC_X   , KC_C   , KC_D   , KC_V   , XXXXXXX,       XXXXXXX,  KC_M   , KC_H   , ALTCOMM, KC_DOT , CTLSLSH, KC_RSHIFT, \
       ADJUST , KC_LCTL, KC_LGUI, KC_LALT,LCTL(KC_O), NAVSPC, TT(_NUM),     SYMENT ,  TEXSPC, LGUI(KC_TAB), KC_HYPR, S(KC_RALT),LCTL(KC_RALT), MO(_MEDIA) , \
                                                      NAVSPC, TT(_NUM),     SYMENT ,  TEXSPC \
   ),\
@@ -412,7 +413,7 @@ const rgb_matrix_f rgb_matrix_functions[6][2] = {
         if (index == 0) {
             // NAV LAYER
             if (IS_LAYER_ON(_NAV)) {
-                if (clockwise) {
+                if (!clockwise) {
                     tap_code(KC_TAB);
                 } else {
                     register_code(KC_LSFT);
@@ -422,7 +423,7 @@ const rgb_matrix_f rgb_matrix_functions[6][2] = {
             }
             // TEX Layer
             else if (IS_LAYER_ON(_TEX)) {
-                if (clockwise) {
+                if (!clockwise) {
                     register_code(KC_LSFT);
                     register_code(KC_LCTL);
                     tap_code(KC_Z);
@@ -437,7 +438,7 @@ const rgb_matrix_f rgb_matrix_functions[6][2] = {
             }
             // ADJUST layer
             else if (IS_LAYER_ON(_ADJUST)) {
-                if (clockwise) {
+                if (!clockwise) {
                     rgblight_increase_hue();
                 } else {
                     rgblight_decrease_hue();
@@ -445,7 +446,7 @@ const rgb_matrix_f rgb_matrix_functions[6][2] = {
             }
             // MEDIA layer
             else if (IS_LAYER_ON(_ADJUST)) {
-                if (clockwise) {
+                if (!clockwise) {
                     tap_code(KC_VOLU);
                 } else {
                     tap_code(KC_VOLD);
@@ -453,7 +454,7 @@ const rgb_matrix_f rgb_matrix_functions[6][2] = {
             }
             // DEFAULT
             else {
-                if (clockwise) {
+                if (!clockwise) {
                     tap_code(KC_DOWN);
                 } else {
                     tap_code(KC_UP);
@@ -466,7 +467,7 @@ const rgb_matrix_f rgb_matrix_functions[6][2] = {
     else if (index == 1) {
         //  NAV LAYER
         if (IS_LAYER_ON(_NAV)) {
-            if (clockwise) {
+            if (!clockwise) {
                 tap_code(KC_PGDN);
             } else {
                 tap_code(KC_PGUP);
@@ -474,7 +475,7 @@ const rgb_matrix_f rgb_matrix_functions[6][2] = {
         }
         // Symbol layer
         else if (IS_LAYER_ON(_SYM)) {
-            if (clockwise) {
+            if (!clockwise) {
                 tap_code(KC_SPC);
             } else {
                 tap_code(KC_BSPC);
@@ -482,7 +483,7 @@ const rgb_matrix_f rgb_matrix_functions[6][2] = {
         }
         // Adjust layer
         else if (IS_LAYER_ON(_ADJUST)) {
-            if (clockwise) {
+            if (!clockwise) {
                 rgblight_step();
             } else {
                 rgblight_step_reverse();
@@ -490,7 +491,7 @@ const rgb_matrix_f rgb_matrix_functions[6][2] = {
         }
         // MEDIA layer
             else if (IS_LAYER_ON(_ADJUST)) {
-                if (clockwise) {
+                if (!clockwise) {
                     tap_code(KC_MNXT);
                 } else {
                     tap_code(KC_MPRV);
@@ -498,7 +499,7 @@ const rgb_matrix_f rgb_matrix_functions[6][2] = {
             }
         // DEFAULT
         else {
-            if (clockwise) {
+            if (!clockwise) {
                 tap_code(KC_RGHT);
             } else {
                 tap_code(KC_LEFT);
