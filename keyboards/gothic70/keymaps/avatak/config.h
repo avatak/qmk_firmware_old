@@ -1,7 +1,7 @@
 //#undef RGB_DI_PIN
 
-#define ENCODERS_PAD_B { F5 } 
-#define ENCODERS_PAD_A { F4 }
+#define ENCODERS_PAD_A { F7, F5 } 
+#define ENCODERS_PAD_B { F6, F4 }
 
 
 

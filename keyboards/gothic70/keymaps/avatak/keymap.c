@@ -10,7 +10,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_COLEMAK] = LAYOUT_wrapper(
         KC_GRV ,    __NUMBER_L_________________________________,          __NUMBER_R_________________________________, KC_MINS, KC_EQL , KC_BSPC, KC_BSPC,               ROCYCLE, \
         KC_TAB ,    __COLEMAK_L1_______________________________,                   __COLEMAK_R1_______________________________, KC_LBRC, KC_RBRC, KC_BSLS,               _______,  \
-        NAVESC ,    __COLEMAK_L2_______________________________,                   __COLEMAK_R2_______________________________, KC_QUOT,     KC_ENT ,                    KC_INS , \
+        NAVESC ,    __COLEMAK_L2_______________________________,                   __COLEMAK_R2_______________________________, KC_QUOT,     KC_ENT ,                    ADJUST, \
         KC_LSFT,    __COLEMAK_L3_______________________________,          SYMENT , __COLEMAK_R3_______________________________,              KC_RSFT,               KC_UP  ,               \
     KC_LCTL, KC_LGUI,        KC_LALT,     NAVSPC ,    TT(_NUM) ,                          TEXSPC ,         S(KC_LCTL),          ALTCTL ,                   KC_LEFT, KC_DOWN, KC_RGHT           \
   ),
@@ -139,7 +139,7 @@ void encoder_update_user(uint8_t index, bool clockwise) {
         }
 
 // RIGHT KNOB
-/*
+
     else if (index == 1) {
         //  NAV LAYER
         if (IS_LAYER_ON(_NAV) | IS_LAYER_ON(_MNAV)) {
@@ -174,5 +174,4 @@ void encoder_update_user(uint8_t index, bool clockwise) {
             }
         }
     }
-    */
   }
