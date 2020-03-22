@@ -9,9 +9,9 @@ enum keymap_keycodes{
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_COLEMAK] = LAYOUT_wrapper(
         KC_GRV ,    __NUMBER_L_________________________________,          __NUMBER_R_________________________________, KC_MINS, KC_EQL , KC_BSPC, KC_BSPC,               ROCYCLE, \
-        KC_TAB ,    __COLEMAK_L1_______________________________,                   __COLEMAK_R1_______________________________, KC_LBRC, KC_RBRC, KC_BSLS,               _______,  \
-        NAVESC ,    __COLEMAK_L2_______________________________,                   __COLEMAK_R2_______________________________, KC_QUOT,     KC_ENT ,                    ADJUST, \
-        KC_LSFT,    __COLEMAK_L3_______________________________,          SYMENT , __COLEMAK_R3_______________________________,              KC_RSFT,               KC_UP  ,               \
+        KC_TAB ,    __COLEMAK_L1_______________________________,                   __COLEMAK_R1_______________________________, KC_LBRC, KC_RBRC, KC_BSLS,               ADJUST,  \
+        NAVESC ,    __COLEMAK_L2_______________________________,                   __COLEMAK_R2_______________________________, KC_QUOT,     KC_ENT ,                    S(LALT(LCTL(KC_S))), \
+        KC_LSFT,    __COLEMAK_L3_______________________________,          KC_MINS, __COLEMAK_R3_______________________________,              KC_RSFT,               KC_UP  ,               \
     KC_LCTL, KC_LGUI,        KC_LALT,     NAVSPC ,    TT(_NUM) ,                          TEXSPC ,         S(KC_LCTL),          ALTCTL ,                   KC_LEFT, KC_DOWN, KC_RGHT           \
   ),
 
@@ -29,8 +29,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         _______,    _______, _______, _______, WINQUIT, _______, _______,          _______, _______, _______, _______, _______, _______, _______, _______,               _______, \
         _______,    __NAV_L1___________________________________,                   __NAV_R1___________________________________, _______, _______, _______,               _______,  \
         _______,    __NAV_L2___________________________________,                   __NAV_R2___________________________________, KC_APP ,     KC_APP ,                    _______, \
-        _______,    __NAV_L3___________________________________,          KC_F12 , __NAV_R3___________________________________,              _______,           _______,                   \
-    _______, _______,        _______,     _______,      _______,                        KC_ENT ,          _______,          KC_F12 ,                   _______, _______, _______           \
+        _______,    __NAV_L3___________________________________,          KC_F12 , __NAV_R3___________________________________,              KC_MPLY,           KC_VOLU,                   \
+    _______, _______,        _______,     _______,      _______,                        KC_ENT ,          S(LCTL(LALT(KC_S))),          KC_F12 ,       KC_MPRV, KC_VOLD, KC_MNXT           \
   ),
 
   [_MNAV] = LAYOUT_wrapper(
