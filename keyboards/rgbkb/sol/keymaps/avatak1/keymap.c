@@ -13,6 +13,7 @@ enum layer_number {
   _SYM,
   _NUM,
   _MEDIA,
+  _MOUSE,
   _ADJUST
 };
 
@@ -31,6 +32,7 @@ enum layer_number {
       #define SYMENT LT(_SYM, KC_ENT)
       #define SYMBOL MO(_SYM)
       #define TEXSPC LT(_TEX, KC_SPC)
+      #define TOGMOUS TG(_MOUSE)
 
   /* Custom combination keycodes */
 
@@ -86,8 +88,10 @@ enum layer_number {
   enum custom_keycodes {
       ALIGN = SAFE_RANGE,
       ARRAY,
+      CLK_TOG,
       COLEMAC,
       COLEMAK,
+      DBL_CLK,
       DISPMTH,
       ENUM,
       ITEM,
@@ -124,7 +128,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    */
 
  [_COLEMAK] = LAYOUT( \
-      KC_GRV , KC_1   , KC_2   , KC_3   , KC_4   , KC_5   , KC_INS ,       _______ ,  KC_6,    KC_7,    KC_8,    KC_9,    KC_0,   KC_BSPC, \
+      KC_GRV , KC_1   , KC_2   , KC_3   , KC_4   , KC_5   , KC_INS ,       TOGMOUS,  KC_6,    KC_7,    KC_8,    KC_9,    KC_0,   KC_BSPC, \
       KC_TAB , KC_Q   , KC_W   , KC_F   , KC_P   , KC_B   , KC_CAPS,       TG(_NUM), KC_J   , KC_L   , KC_U   , KC_Y   , GUISCLN, KC_BSLS, \
       NAVESC , KC_A   , KC_R   , KC_S   , KC_T   , KC_G   , XXXXXXX,       XXXXXXX,  KC_K   , KC_N   , KC_E   , KC_I   , KC_O   , KC_QUOT, \
       KC_LSFT, KC_Z   , KC_X   , KC_C   , KC_D   , KC_V   , XXXXXXX,       XXXXXXX,  KC_M   , KC_H   , ALTCOMM, KC_DOT , CTLSLSH, KC_RSHIFT, \
@@ -272,6 +276,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                    KC_MUTE, _______, KC_MSTP, KC_MPLY\
       ),\
 
+[_MOUSE] = LAYOUT(
+        _______, _______, _______, _______, _______, _______, _______,      _______, _______, _______, _______, _______, _______, _______,
+        _______, _______, _______, _______, _______, _______, _______,      _______, _______, _______, _______, _______, _______, _______,
+        _______, _______, KC_ACL0, KC_ACL1, KC_ACL2, _______, _______,      _______, _______, DBL_CLK, KC_BTN1, KC_BTN3, KC_BTN2, _______,
+        _______, _______, _______, _______, _______, _______, _______,      _______, _______, KC_WH_U, KC_WH_D, _______, _______, _______,
+        _______, _______, _______, _______, _______, _______, _______,      _______, _______, _______, _______, _______, _______, CLK_TOG,
+                                                     _______, _______,      _______, _______
+    ),
 
   /* _ADJUST
    * ,--------------------------------------------------------------.      ,--------------------------------------------------------------.
@@ -421,6 +433,14 @@ const rgb_matrix_f rgb_matrix_functions[6][2] = {
                     unregister_code(KC_LSFT);
                 }
             }
+                    // MOUSE LAYER
+        else if (IS_LAYER_ON(_MOUSE)) {
+            if (!clockwise) {
+                tap_code16(KC_MS_D);
+            } else {
+                tap_code16(KC_MS_U);
+            }
+        }
             // TEX Layer
             else if (IS_LAYER_ON(_TEX)) {
                 if (!clockwise) {
@@ -497,6 +517,14 @@ const rgb_matrix_f rgb_matrix_functions[6][2] = {
                     tap_code(KC_MPRV);
                 }
             }
+        // MOUSE LAYER
+            else if (IS_LAYER_ON(_MOUSE)) {
+              if (!clockwise) {
+                tap_code16(KC_MS_R);
+              } else {
+                tap_code16(KC_MS_L);
+              }
+            }
         // DEFAULT
         else {
             if (!clockwise) {
@@ -509,6 +537,8 @@ const rgb_matrix_f rgb_matrix_functions[6][2] = {
   }
 #endif
 
+// bool key_triggered = false;
+bool click_on = false;
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
@@ -539,7 +569,23 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 }
             #endif
             break;
-
+        case CLK_TOG:
+            if (record->event.pressed) {
+                if(!click_on) {
+                    register_code(KC_BTN1);
+                    click_on = !click_on;
+                } else {
+                    unregister_code(KC_BTN1);
+                    click_on = !click_on;
+                }
+            }
+            break;
+        case DBL_CLK:
+            if (record->event.pressed) {
+                tap_code16(KC_BTN1);
+                tap_code16(KC_BTN1);
+            }
+            break;
     // For LaTeX specifically
 
         case ALIGN:
@@ -685,6 +731,9 @@ void render_layer_state(void) {
             break;
         case _MEDIA:
             oled_write_P(PSTR("MEDIA"), false);
+            break;
+        case _MOUSE:
+            oled_write_P(PSTR("MOUSE"), false);
             break;
         case _NUM:
             oled_write_P(PSTR("NUMPD"), false);

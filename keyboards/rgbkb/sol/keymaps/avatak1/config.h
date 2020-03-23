@@ -31,3 +31,11 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #undef OLED_FONT_H
 #define OLED_FONT_H "keyboards/rgbkb/sol/keymaps/avatak1/glcdfont.c"
+
+// Mouse settings
+
+#define MK_3_SPEED
+
+#define MK_C_OFFSET_0 4
+#define MK_C_OFFSET_1 32
+#define MK_C_OFFSET_2 64
