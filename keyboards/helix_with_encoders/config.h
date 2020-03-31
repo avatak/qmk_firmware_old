@@ -47,8 +47,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define MATRIX_COL_PINS { F4, F5, F6, F7, B1, B3, B2 }
 #define UNUSED_PINS
 
-#define ENCODERS_PAD_A { F0 }
-#define ENCODERS_PAD_B { D5 }
+#define ENCODERS_PAD_A { D5 }
+#define ENCODERS_PAD_B { F0 }
+
 #define ENCODER_RESOLUTION 4
 
 #define IGNORE_MOD_TAP_INTERRUPT
