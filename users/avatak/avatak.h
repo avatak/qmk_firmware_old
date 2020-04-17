@@ -12,6 +12,7 @@ enum userspace_layers {
     _MNAV,
     _TEX,
     _SYM,
+    _i3,
     _NUM,
     _LWIN,
     _MWIN,

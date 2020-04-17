@@ -34,8 +34,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       KC_TAB , __COLEMAK_L1_______________________________, KC_CAPS,      TG(_NUM), __COLEMAK_R1_______________________________, KC_BSLS, \
       NAVESC , __COLEMAK_L2_______________________________, XXXXXXX,       XXXXXXX, __COLEMAK_R2_______________________________, KC_QUOT, \
       KC_LSFT, __COLEMAK_L3_______________________________, XXXXXXX,       XXXXXXX, __COLEMAK_R3_______________________________, KC_RSFT, \
-      ADJUST , KC_LCTL, KC_LGUI, KC_LALT,LCTL(KC_O), NAVSPC, TT(_NUM),     SYMENT ,  TEXSPC, LGUI(KC_TAB), KC_HYPR, S(KC_RALT),LCTL(KC_RALT), ADJUST, \
-                                                     NAVSPC, TT(_NUM),     SYMENT ,  TEXSPC \
+      ADJUST , KC_LCTL, KC_LGUI, KC_LALT,LCTL(KC_O), NAVSPC, MO(_i3),     SYMENT ,  TEXSPC, LGUI(KC_TAB), KC_HYPR, S(KC_RALT),LCTL(KC_RALT), MEDIA, \
+                                                     NAVSPC, MO(_i3),     SYMENT ,  TEXSPC \
   ),\
 
   /* _NAV (Navigation layer)
@@ -120,6 +120,20 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,\
                                                    _______, _______, _______, _______\
       ),
+
+
+
+  [_i3] = LAYOUT_wrapper( \
+      _______, _______, _______, _______, _______, _______, _______,        _______, _______, _______, _______, _______, _______, _______,\
+      _______, _______, _______, _______, _______, _______, _______,        _______, _______, LGUI(KC_7), LGUI(KC_8), LGUI(KC_9), _______, _______,\
+      _______, _______, _______, _______, _______, _______, _______,        _______, _______, LGUI(KC_4), LGUI(KC_5), LGUI(KC_6), _______, _______,\
+      _______, _______, _______, _______, _______, _______, _______,        _______, _______, LGUI(KC_1), LGUI(KC_2), LGUI(KC_3), _______, _______,\
+      _______, _______, _______, _______, _______, _______, _______,        _______, _______, _______, _______, _______, _______, _______,\
+                                                   _______, _______,        _______, _______\
+      ),\
+
+
+
 
 
   /* Colemak Mod-DH (Base layer)
@@ -319,7 +333,7 @@ const rgb_matrix_f rgb_matrix_functions[6][2] = {
         if (index == 0) {
             // NAV LAYER
             if (IS_LAYER_ON(_NAV)) {
-                if (clockwise) {
+                if (!clockwise) {
                     tap_code(KC_TAB);
                 } else {
                     register_code(KC_LSFT);
@@ -329,7 +343,7 @@ const rgb_matrix_f rgb_matrix_functions[6][2] = {
             }
             // TEX Layer
             else if (IS_LAYER_ON(_TEX)) {
-                if (clockwise) {
+                if (!clockwise) {
                     register_code(KC_LSFT);
                     register_code(KC_LCTL);
                     tap_code(KC_Z);
@@ -344,7 +358,7 @@ const rgb_matrix_f rgb_matrix_functions[6][2] = {
             }
             // ADJUST layer
             else if (IS_LAYER_ON(_ADJUST)) {
-                if (clockwise) {
+                if (!clockwise) {
                     rgblight_increase_hue();
                 } else {
                     rgblight_decrease_hue();
@@ -352,7 +366,7 @@ const rgb_matrix_f rgb_matrix_functions[6][2] = {
             }
             // MEDIA layer
             else if (IS_LAYER_ON(_ADJUST)) {
-                if (clockwise) {
+                if (!clockwise) {
                     tap_code(KC_VOLU);
                 } else {
                     tap_code(KC_VOLD);
@@ -360,7 +374,7 @@ const rgb_matrix_f rgb_matrix_functions[6][2] = {
             }
             // DEFAULT
             else {
-                if (clockwise) {
+                if (!clockwise) {
                     tap_code(KC_DOWN);
                 } else {
                     tap_code(KC_UP);
@@ -373,7 +387,7 @@ const rgb_matrix_f rgb_matrix_functions[6][2] = {
     else if (index == 1) {
         //  NAV LAYER
         if (IS_LAYER_ON(_NAV)) {
-            if (clockwise) {
+            if (!clockwise) {
                 tap_code(KC_PGDN);
             } else {
                 tap_code(KC_PGUP);
@@ -381,7 +395,7 @@ const rgb_matrix_f rgb_matrix_functions[6][2] = {
         }
         // Symbol layer
         else if (IS_LAYER_ON(_SYM)) {
-            if (clockwise) {
+            if (!clockwise) {
                 tap_code(KC_SPC);
             } else {
                 tap_code(KC_BSPC);
@@ -389,7 +403,7 @@ const rgb_matrix_f rgb_matrix_functions[6][2] = {
         }
         // Adjust layer
         else if (IS_LAYER_ON(_ADJUST)) {
-            if (clockwise) {
+            if (!clockwise) {
                 rgblight_step();
             } else {
                 rgblight_step_reverse();
@@ -397,7 +411,7 @@ const rgb_matrix_f rgb_matrix_functions[6][2] = {
         }
         // MEDIA layer
             else if (IS_LAYER_ON(_ADJUST)) {
-                if (clockwise) {
+                if (!clockwise) {
                     tap_code(KC_MNXT);
                 } else {
                     tap_code(KC_MPRV);
@@ -405,7 +419,7 @@ const rgb_matrix_f rgb_matrix_functions[6][2] = {
             }
         // DEFAULT
         else {
-            if (clockwise) {
+            if (!clockwise) {
                 tap_code(KC_RGHT);
             } else {
                 tap_code(KC_LEFT);
@@ -414,143 +428,6 @@ const rgb_matrix_f rgb_matrix_functions[6][2] = {
     }
   }
 #endif
-
-/*
-bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-    switch (keycode) {
-        case COLEMAK:
-            if (record->event.pressed) {
-                set_single_persistent_default_layer(_COLEMAK);
-            }
-            break;
-        case RGB_MENU:
-            #ifdef RGB_OLED_MENU
-                if (record->event.pressed) {
-                    if (get_mods() & MOD_MASK_SHIFT) {
-                        rgb_encoder_state = (rgb_encoder_state - 1);
-                            if (rgb_encoder_state > 5) {
-                                rgb_encoder_state = 5;
-                            }
-                    } else {
-                        rgb_encoder_state = (rgb_encoder_state + 1) % 6;
-                    }
-              }
-            #endif
-            break;
-        case RGBRST:
-            #ifdef RGBLIGHT_ENABLE
-                if (record->event.pressed) {
-                    eeconfig_update_rgblight_default();
-                    rgblight_enable();
-                }
-            #endif
-            break;
-
-    // For LaTeX specifically
-
-        case ALIGN:
-            if (record->event.pressed) {
-                SEND_STRING("\\begin{align*}" SS_TAP(X_ENTER) SS_TAP(X_ENTER) "\\end{align*}" SS_TAP(X_UP) SS_TAP(X_TAB));
-            }
-            break;
-        case ARRAY:
-            if (record->event.pressed) {
-                SEND_STRING("\\begin{array}{c c}"SS_TAP(X_ENTER) SS_TAP(X_ENTER) "\\end{array}" SS_TAP(X_UP) SS_TAP(X_TAB));
-            }
-            break;
-        case DISPMTH:
-            if (record->event.pressed) {
-                SEND_STRING("\\[\n\\]" SS_TAP(X_UP) "    ");
-            }
-            break;
-        case ENUM:
-            if (record->event.pressed) {
-                SEND_STRING("\\begin{enumerate}" SS_TAP(X_ENTER) SS_TAP(X_ENTER) "\\end{enumerate}" SS_TAP(X_UP) SS_TAP(X_TAB) "\\item ");
-            }
-            break;
-        case ITEM:
-            if (record->event.pressed) {
-                SEND_STRING("\\item");
-            }
-            break;
-        case ITEMZ:
-            if (record->event.pressed) {
-                SEND_STRING("\\begin{itemize}"SS_TAP(X_ENTER) SS_TAP(X_ENTER) "\\end{itemize}" SS_TAP(X_UP) SS_TAP(X_TAB) "\\item ");
-            }
-            break;
-        case LFTRGHT:
-            if (record->event.pressed) {
-                SEND_STRING("\\left(  \\right)" SS_LCTRL(SS_TAP(X_LEFT) SS_TAP(X_LEFT)) SS_TAP(X_LEFT));
-            }
-            break;
-        case LEMMA:
-            if (record->event.pressed) {
-                SEND_STRING("\\begin{lemma}[]"SS_TAP(X_ENTER)SS_TAP(X_ENTER)"\\end{lemma}"SS_TAP(X_UP)SS_TAP(X_TAB));
-            }
-            break;
-        case LINEMTH:
-            if (record->event.pressed) {
-                tap_code(KC_BSLS);
-                register_code(KC_LSFT);
-                tap_code(KC_9);
-                unregister_code(KC_LSFT);
-                tap_code(KC_BSLS);
-                register_code(KC_LSFT);
-                tap_code(KC_0);
-                unregister_code(KC_LSFT);
-                tap_code(KC_LEFT);
-                tap_code(KC_LEFT);
-                tap_code(KC_SPC);
-                tap_code(KC_LEFT);
-                tap_code(KC_SPC);
-            }
-            break;
-        case SECTN:
-            if (record->event.pressed) {
-                SEND_STRING("\\section{}"SS_TAP(X_LEFT));
-            }
-            break;
-        case THEOREM:
-            if (record->event.pressed) {
-                SEND_STRING("\\begin{theorem}[]"SS_TAP(X_ENTER)SS_TAP(X_ENTER)"\\end{theorem}"SS_TAP(X_UP)SS_TAP(X_TAB));
-            }
-            break;
-    }
-    return true;
-}
-*/
-
-
-/*
-#ifdef OLED_DRIVER_ENABLE
-    oled_rotation_t oled_init_user(oled_rotation_t rotation) {
-        if (is_keyboard_master())
-            return OLED_ROTATION_270;
-        else if (!is_keyboard_master())
-            return OLED_ROTATION_180;
-        else
-          return rotation;
-    }
-
-static void render_logo(void) {
-    static const char PROGMEM sol_logo[] = {
-        0x80,0x81,0x82,0x83,0x84,0x85,0x86,0x87,0x88,0x89,0x8a,0x8b,0x8c,0x8d,0x8e,0x8f,0x90,0x91,0x92,0x93,0x94,
-        0xa0,0xa1,0xa2,0xa3,0xa4,0xa5,0xa6,0xa7,0xa8,0xa9,0xaa,0xab,0xac,0xad,0xae,0xaf,0xb0,0xb1,0xb2,0xb3,0xb4,
-        0xc0,0xc1,0xc2,0xc3,0xc4,0xc5,0xc6,0xc7,0xc8,0xc9,0xca,0xcb,0xcc,0xcd,0xce,0xcf,0xd0,0xd1,0xd2,0xd3,0xd4,0
-    };
-    oled_write_P(sol_logo, false);
-}
-
-static void render_status(void) {
-  // Render to mode icon
-  static const char PROGMEM sol_icon[] = {
-    0x9b,0x9c,0x9d,0x9e,0x9f,
-    0xbb,0xbc,0xbd,0xbe,0xbf,
-    0xdb,0xdc,0xdd,0xde,0xdf,0
-  };
-  oled_write_P(sol_icon, false);
-*/
-
 // OLED Driver Logic
 #ifdef OLED_DRIVER_ENABLE
 oled_rotation_t oled_init_user(oled_rotation_t rotation) {
@@ -589,6 +466,12 @@ void render_layer_state(void) {
             break;
         case _NUM:
             oled_write_P(PSTR("NUMPD"), false);
+            break;
+        case _MOUSE:
+            oled_write_P(PSTR("MOUSE"), false);
+            break;
+        case _MEDIA:
+            oled_write_P(PSTR("MEDIA"), false);
             break;
         case _ADJUST:
             oled_write_P(PSTR("ADJST"), false);
@@ -641,7 +524,7 @@ void oled_task_user(void) {
         render_status_main();  // Renders the current keyboard state (layer, lock, caps, scroll, etc)
     } else {
         render_logo();
-        oled_scroll_left();
+        //oled_scroll_left();
     }
 }
 
