@@ -7,7 +7,7 @@
 #endif
 
 #include "avatak.h"
-
+#define ADJ2 TO(_ADJUST)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
@@ -61,7 +61,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       _______, __NAV_L1___________________________________, _______, _______, __NAV_R1___________________________________, S(LCTL(LALT(KC_S))),
       _______, __NAV_L2___________________________________, _______, _______, __NAV_R2___________________________________, KC_APP ,\
       _______, __NAV_L3___________________________________, _______, _______, __NAV_R3___________________________________, _______,\
-      _______, _______, _______, _______, _______, _______, _______, _______, KC_ENT,  _______, _______, _______, _______, KC_F12,\
+      ADJ2   , _______, _______, _______, _______, _______, _______, _______, KC_ENT,  _______, _______, _______, _______, KC_F12,\
                                                    _______, _______, _______, KC_ENT \
       ),
 
@@ -95,7 +95,23 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 
   /* _SYM (Symbols, Numbers, and F Row)
-   * ,--------------------------------------------------------------.      ,--------------------------------------------------------------.
+   * ,----------------------------------------------------------:: Running post-transaction hooks...
+(1/1) Arming ConditionNeedsUpdate...
+❯ vim
+❯ R
+zsh: command not found: R
+❯ cd qmk_firmware
+❯ ls
+bin                 common_features.mk  lib                      readme.md                       tests
+book.json           common.mk           LICENSE                  requirements-dev.txt            tmk_core
+bootloader.mk       Dockerfile          license_GPLv2.md         requirements.txt                users
+build_full_test.mk  docs                license_GPLv3.md         rgbkb_sol_rev1_avatak_rev1.hex  util
+build_json.mk       Doxyfile            license_Modified_BSD.md  secrets.tar.enc                 Vagrantfile
+build_keyboard.mk   doxygen-todo        Makefile                 setup.cfg
+build_layout.mk     drivers             message.mk               shell.nix
+build_test.mk       keyboards           nose2.cfg                show_options.mk
+CODE_OF_CONDUCT.md  layouts             quantum                  testlist.mk
+---.      ,--------------------------------------------------------------.
    * |        |   F1   |  F2    |  F3    |  F4    |  F5    |        |      |        |  F6    |  F7    |  F8    |  F9    |  F10   |  F11   |
    * |--------+--------+--------+--------+--------+--------+--------|      |--------+--------+--------+--------+--------+--------+--------|
    * |        |   F1   |  F2    |  F3    |  F4    |  F5    |        |      |        |  F6    |  F7    |  F8    |  F9    |  F10   |  F12   |
