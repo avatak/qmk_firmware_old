@@ -37,8 +37,23 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       ADJUST , KC_LCTL, KC_LGUI, KC_LALT,LCTL(KC_O), NAVSPC, MO(_i3),     SYMENT ,  TEXSPC, LGUI(KC_TAB), KC_HYPR, S(KC_RALT),LCTL(KC_RALT), MEDIA, \
                                                      NAVSPC, MO(_i3),     SYMENT ,  TEXSPC \
   ),\
-
-  /* _NAV (Navigation layer)
+:: Running post-transaction hooks...
+(1/1) Arming ConditionNeedsUpdate...
+❯ vim
+❯ R
+zsh: command not found: R
+❯ cd qmk_firmware
+❯ ls
+bin                 common_features.mk  lib                      readme.md                       tests
+book.json           common.mk           LICENSE                  requirements-dev.txt            tmk_core
+bootloader.mk       Dockerfile          license_GPLv2.md         requirements.txt                users
+build_full_test.mk  docs                license_GPLv3.md         rgbkb_sol_rev1_avatak_rev1.hex  util
+build_json.mk       Doxyfile            license_Modified_BSD.md  secrets.tar.enc                 Vagrantfile
+build_keyboard.mk   doxygen-todo        Makefile                 setup.cfg
+build_layout.mk     drivers             message.mk               shell.nix
+build_test.mk       keyboards           nose2.cfg                show_options.mk
+CODE_OF_CONDUCT.md  layouts             quantum                  testlist.mk
+V
    * ,--------------------------------------------------------------.      ,--------------------------------------------------------------.
    * |        |        |        |        |Alt+F4  |        |        |      |        |        |        |        |        |        |        |
    * |--------+--------+--------+--------+--------+--------+--------|      |--------+------+-----------+-------+--------+--------+--------|
