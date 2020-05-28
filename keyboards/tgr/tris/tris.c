@@ -1,4 +1,4 @@
-/* Copyright 2019 MechMerlin
+/* Copyright 2020 halfenergized
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -14,15 +14,20 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include QMK_KEYBOARD_H
+#include "tris.h"
 
-const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-    [0] = LAYOUT(
-                          KC_DEL,  KC_BSPC,
-        KC_NLCK, KC_PSLS, KC_PAST, KC_PMNS,
-        KC_P7,   KC_P8,   KC_P9,
-        KC_P4,   KC_P5,   KC_P6,   KC_PPLS,
-        KC_P1,   KC_P2,   KC_P3,
-        KC_P0,            KC_PDOT, KC_PENT
-    )
-};
+void keyboard_pre_init_kb(void) {
+    led_init_ports();
+    keyboard_pre_init_user();
+}
+
+void led_init_ports(void) {
+    setPinOutput(D0);
+}
+
+bool led_update_kb(led_t led_state) {
+    if (led_update_user(led_state)) {
+        writePin(D0, led_state.num_lock);
+    }
+    return true;
+}
