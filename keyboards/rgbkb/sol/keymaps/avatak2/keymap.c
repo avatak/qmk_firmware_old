@@ -10,14 +10,14 @@
 // Layer names don't all need to be of the same length, obviously, and you can also skip them
 // entirely and just use numbers.
 
-enum layer_number { 
-    _COLEMAK = 0, 
-    _NAV, 
-    _TEX, 
-    _SYM, 
-    _NUM, 
-    _MEDIA, 
-    _MOUSE, 
+enum layer_number {
+    _COLEMAK = 0,
+    _NAV,
+    _TEX,
+    _SYM,
+    _NUM,
+    _MEDIA,
+    _MOUSE,
     _ADJUST,
 };
 
@@ -262,7 +262,7 @@ void rgb_matrix_increase_flags(void) {
             rgb_matrix_enable_noeeprom();
         } break;
     }
-}
+66}
 
 void rgb_matrix_decrease_flags(void) {
     switch (rgb_matrix_get_flags()) {

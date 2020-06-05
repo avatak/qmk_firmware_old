@@ -37,23 +37,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       ADJUST , KC_LCTL, KC_LGUI, KC_LALT,LCTL(KC_O), NAVSPC, MO(_i3),     SYMENT ,  TEXSPC, LGUI(KC_TAB), KC_HYPR, S(KC_RALT),LCTL(KC_RALT), MEDIA, \
                                                      NAVSPC, MO(_i3),     SYMENT ,  TEXSPC \
   ),\
-:: Running post-transaction hooks...
-(1/1) Arming ConditionNeedsUpdate...
-❯ vim
-❯ R
-zsh: command not found: R
-❯ cd qmk_firmware
-❯ ls
-bin                 common_features.mk  lib                      readme.md                       tests
-book.json           common.mk           LICENSE                  requirements-dev.txt            tmk_core
-bootloader.mk       Dockerfile          license_GPLv2.md         requirements.txt                users
-build_full_test.mk  docs                license_GPLv3.md         rgbkb_sol_rev1_avatak_rev1.hex  util
-build_json.mk       Doxyfile            license_Modified_BSD.md  secrets.tar.enc                 Vagrantfile
-build_keyboard.mk   doxygen-todo        Makefile                 setup.cfg
-build_layout.mk     drivers             message.mk               shell.nix
-build_test.mk       keyboards           nose2.cfg                show_options.mk
-CODE_OF_CONDUCT.md  layouts             quantum                  testlist.mk
-V
+
+  /* Nav
    * ,--------------------------------------------------------------.      ,--------------------------------------------------------------.
    * |        |        |        |        |Alt+F4  |        |        |      |        |        |        |        |        |        |        |
    * |--------+--------+--------+--------+--------+--------+--------|      |--------+------+-----------+-------+--------+--------+--------|
@@ -79,7 +64,7 @@ V
       ADJ2   , _______, _______, _______, _______, _______, _______, _______, KC_ENT,  _______, _______, _______, _______, KC_F12,\
                                                    _______, _______, _______, KC_ENT \
       ),
-
+666
 
   /* _TEX (Macros and useful keys for LaTeX)
    * ,--------------------------------------------------------------.      ,--------------------------------------------------------------.
@@ -110,23 +95,7 @@ V
 
 
   /* _SYM (Symbols, Numbers, and F Row)
-   * ,----------------------------------------------------------:: Running post-transaction hooks...
-(1/1) Arming ConditionNeedsUpdate...
-❯ vim
-❯ R
-zsh: command not found: R
-❯ cd qmk_firmware
-❯ ls
-bin                 common_features.mk  lib                      readme.md                       tests
-book.json           common.mk           LICENSE                  requirements-dev.txt            tmk_core
-bootloader.mk       Dockerfile          license_GPLv2.md         requirements.txt                users
-build_full_test.mk  docs                license_GPLv3.md         rgbkb_sol_rev1_avatak_rev1.hex  util
-build_json.mk       Doxyfile            license_Modified_BSD.md  secrets.tar.enc                 Vagrantfile
-build_keyboard.mk   doxygen-todo        Makefile                 setup.cfg
-build_layout.mk     drivers             message.mk               shell.nix
-build_test.mk       keyboards           nose2.cfg                show_options.mk
-CODE_OF_CONDUCT.md  layouts             quantum                  testlist.mk
----.      ,--------------------------------------------------------------.
+   * ,--------------------------------------------------------------.
    * |        |   F1   |  F2    |  F3    |  F4    |  F5    |        |      |        |  F6    |  F7    |  F8    |  F9    |  F10   |  F11   |
    * |--------+--------+--------+--------+--------+--------+--------|      |--------+--------+--------+--------+--------+--------+--------|
    * |        |   F1   |  F2    |  F3    |  F4    |  F5    |        |      |        |  F6    |  F7    |  F8    |  F9    |  F10   |  F12   |
