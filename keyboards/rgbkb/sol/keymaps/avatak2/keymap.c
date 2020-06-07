@@ -262,7 +262,7 @@ void rgb_matrix_increase_flags(void) {
             rgb_matrix_enable_noeeprom();
         } break;
     }
-66}
+}
 
 void rgb_matrix_decrease_flags(void) {
     switch (rgb_matrix_get_flags()) {
@@ -600,19 +600,11 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             break;
         case LINEMTH:
             if (record->event.pressed) {
-                tap_code(KC_BSLS);
-                register_code(KC_LSFT);
-                tap_code(KC_9);
-                unregister_code(KC_LSFT);
-                tap_code(KC_BSLS);
-                register_code(KC_LSFT);
-                tap_code(KC_0);
-                unregister_code(KC_LSFT);
-                tap_code(KC_LEFT);
-                tap_code(KC_LEFT);
-                tap_code(KC_SPC);
-                tap_code(KC_LEFT);
-                tap_code(KC_SPC);
+                SEND_STRING("\\(   \\)");
+                tap_code16(KC_LEFT);
+                tap_code16(KC_LEFT);
+                tap_code16(KC_LEFT);
+                tap_code16(KC_LEFT);
             }
             break;
         case SECTN:
