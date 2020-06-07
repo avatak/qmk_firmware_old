@@ -1,3 +1,2 @@
-POINTING_DEVICE_ENABLE 		= yes
-
-SRC += analog.
+PS2_MOUSE_ENABLE = yes
+PS2_USE_USART = yes

@@ -48,8 +48,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 /* COL2ROW, ROW2COL*/
 #define DIODE_DIRECTION COL2ROW
 
-#define ENCODERS_PAD_A { D4, C0 }
-#define ENCODERS_PAD_B { D5, C1 }
+#define ENCODERS_PAD_A { D7, C0 }
+#define ENCODERS_PAD_B { D6, C1 }
 
 #define C6_AUDIO
 #define AUDIO_CLICKY
