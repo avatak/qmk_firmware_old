@@ -41,15 +41,15 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *                  ROW2COL = ROW = Anode (+), COL = Cathode (-, marked on diode)
  *
  */
-#define MATRIX_ROW_PINS { F0, F3, F4, F5, F6 }
-#define MATRIX_COL_PINS { F7, C7, C5, C4, C3, C2, C1, C0, E1, E0, D7, D6 }
+#define MATRIX_ROW_PINS { E1, C0, C1, C2, C3 }
+#define MATRIX_COL_PINS { B6, B5, B4, B3, B2, B1, B0, E0, D7, D6, D4, D3 }
 #define UNUSED_PINS
 
 /* COL2ROW, ROW2COL*/
 #define DIODE_DIRECTION COL2ROW
 
-#define ENCODERS_PAD_A { E6, F1 }
-#define ENCODERS_PAD_B { E7, F2 }
+#define ENCODERS_PAD_A { F4, C7 }
+#define ENCODERS_PAD_B { F5, C5 }
 
 #define C6_AUDIO
 //#define AUDIO_CLICKY
