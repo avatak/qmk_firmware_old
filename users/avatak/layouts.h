@@ -14,7 +14,7 @@
 
 #define __COLEMAK_R1_______________________________ KC_J   , KC_L   , KC_U   , KC_Y   , GUI_SCLN
 #define __COLEMAK_R2_______________________________ KC_K   , KC_N   , KC_E   , KC_I   , KC_O
-#define __COLEMAK_R3_______________________________ KC_M   , KC_H   , ALT_COM, KC_DOT , CTL_SLSH
+#define __COLEMAK_R3_______________________________ KC_M   , KC_H   , ALT_COM, GUIDOT , CTL_SLSH
 
 // COLEMAK MOD-DH FOR OSX
 #define __COLEMAC_L1_______________________________ KC_Q   , KC_W   , KC_F   , KC_P   , KC_B

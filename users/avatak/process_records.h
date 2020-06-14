@@ -41,6 +41,7 @@ enum userspace_custom_keycodes {
 #define CTLSHIFT LCTL(KC_LSFT)
 #define CTLSHFT LCTL(KC_LSFT)
 
+#define GUIDOT  GUI_T(KC_DOT)
 #define GUILEFT LGUI(KC_LEFT)
 #define GUIRIGHT LGUI(KC_RIGHT)
 #define GUI_SCLN GUI_T(KC_SCLN)

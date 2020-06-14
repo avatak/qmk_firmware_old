@@ -26,19 +26,24 @@ enum layer_number {
 /* Layer changes */
 
 #define ADJUST MO(_ADJUST)
+
 #define MACWIN MO(_MWIN)
 #define MEDIA MO(_MEDIA)
 #define MNAVESC LT(_MNAV, KC_ESC)
 #define MNAVSPC LT(_MNAV, KC_SPC)
 #define MO_NAV MO(_NAV)
-#define TOGMOUS TG(_MOUSE)
+
 #define NAVESC LT(_NAV, KC_ESC)
 #define NAVSPC LT(_NAV, KC_SPC)
 #define NUM_TAP TT(_NUM)
 #define NUM_TOG TG(_NUM)
+
 #define SYMENT LT(_SYM, KC_ENT)
 #define SYMBOL MO(_SYM)
+
 #define TEXSPC LT(_TEX, KC_SPC)
+#define TOGMOUS TG(_MOUSE)
+
 
 /* Custom combination keycodes */
 
@@ -68,6 +73,7 @@ enum layer_number {
 #define ALT_COM ALT_T(KC_COMM)
 #define CTLSCLN CTL_T(KC_SCLN)
 #define CTLSLSH CTL_T(KC_SLSH)
+#define GUIDOT  GUI_T(KC_DOT )
 #define GUISCLN GUI_T(KC_SCLN)
 #define GUISLSH GUI_T(KC_SLSH)
 
@@ -138,7 +144,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_GRV , KC_1   , KC_2   , KC_3   , KC_4   , KC_5   , KC_INS , TOGMOUS, KC_6   , KC_7   , KC_8   , KC_9   , KC_0   , KC_BSPC,\
         KC_TAB , KC_Q   , KC_W   , KC_F   , KC_P   , KC_B   , KC_CAPS, NUM_TOG, KC_J   , KC_L   , KC_U   , KC_Y   , GUISCLN, KC_BSLS, \
         NAVESC , KC_A   , KC_R   , KC_S   , KC_T   , KC_G   , XXXXXXX, XXXXXXX, KC_K   , KC_N   , KC_E   , KC_I   , KC_O   , KC_QUOT, \
-        KC_LSFT, KC_Z   , KC_X   , KC_C   , KC_D   , KC_V   , XXXXXXX, XXXXXXX, KC_M   , KC_H   , ALT_COM, KC_DOT , CTLSLSH, KC_RSFT, \
+        KC_LSFT, KC_Z   , KC_X   , KC_C   , KC_D   , KC_V   , XXXXXXX, XXXXXXX, KC_M   , KC_H   , ALT_COM, GUIDOT , CTLSLSH, KC_RSFT, \
         ADJUST , KC_LCTL, KC_LGUI, KC_LALT, KC_LALT, NAVSPC , NUM_TAP, SYMENT , TEXSPC , MO_NAV , KC_HYPR, CTLSHFT, ALTSHFT, MEDIA  ,
                                                      NAVSPC , NUM_TAP, SYMENT , TEXSPC \
         ),
