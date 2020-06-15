@@ -576,7 +576,12 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             break;
         case DISPMTH:
             if (record->event.pressed) {
-                SEND_STRING("\\[\n\\]" SS_TAP(X_UP) "    ");
+                SEND_STRING("\\[\\]");
+                tap_code16(KC_LEFT);
+                tap_code16(KC_LEFT);
+                tap_code16(KC_ENT);
+                tap_code16(KC_ENT);
+                tap_code16(KC_UP);
             }
             break;
         case ENUM:
@@ -606,10 +611,10 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             break;
         case LINEMTH:
             if (record->event.pressed) {
-                SEND_STRING("\\(   \\)");
+                SEND_STRING("\\(\\)");
                 tap_code16(KC_LEFT);
                 tap_code16(KC_LEFT);
-                tap_code16(KC_LEFT);
+                SEND_STRING("  ");
                 tap_code16(KC_LEFT);
             }
             break;
