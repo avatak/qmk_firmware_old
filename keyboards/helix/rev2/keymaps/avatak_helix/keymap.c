@@ -629,3 +629,31 @@ void iota_gfx_task_user(void) {
 }
 
 #endif
+
+#ifdef ENCODER_ENABLE
+
+    void encoder_update_user(uint8_t index, bool clockwise) {
+
+    // LEFT KNOB
+
+        if (index == 0) {
+            // NAV LAYER
+                if (clockwise) {
+                    tap_code(KC_DOWN);
+                } else {
+                    tap_code(KC_UP);
+                }
+            }
+
+// RIGHT KNOB
+
+    else if (index == 1) {
+        if (clockwise) {
+          tap_code(KC_RGHT);
+        } else {
+          tap_code(KC_LEFT);
+        }
+        }
+    }
+#endif
+

@@ -7,6 +7,8 @@
 #
 LINK_TIME_OPTIMIZATION_ENABLE = no  # if firmware size over limit, try this option
 
+ENCODER_ENABLE = yes
+
 # Helix Spacific Build Options
 # you can uncomment and edit follows 7 Variables
 #  jp: 以下の7つの変数を必要に応じて編集し、コメントアウトをはずします。
