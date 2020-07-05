@@ -29,7 +29,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_NAV] = LAYOUT_wrapper( \
         _______, _______, _______, _______, WINQUIT, _______,                   _______, _______, _______, _______, _______, _______, \
         _______, __NAV_L1___________________________________,                   __NAV_R1___________________________________, _______, \
-        _______, __NAV_L2___________________________________,                   __NAV_R2___________________________________, _______, \
+        _______, __NAV_L2___________________________________,                   __NAV_R2___________________________________, KC_APP , \
         _______, __NAV_L3___________________________________, _______, _______, __NAV_R3___________________________________, _______, \
         _______, _______, _______, _______, _______, _______, _______, _______, KC_ENT , _______, _______, _______, _______, KC_F12  \
     ),
@@ -202,9 +202,6 @@ void render_layer_state(void) {
         case _COLEMAK:
             oled_write_P(PSTR("COLMK"), false);
             break;
-        case _COLEMAC:
-            oled_write_P(PSTR("CLMAC"), false);
-            break;
         case _NAV:
             oled_write_P(PSTR("  NAV"), false);
             break;
@@ -219,9 +216,6 @@ void render_layer_state(void) {
             break;
         case _NUM:
             oled_write_P(PSTR("NUMPD"), false);
-            break;
-        case _MWIN:
-            oled_write_P(PSTR(" MWIN"), false);
             break;
         case _ADJUST:
             oled_write_P(PSTR("  ADJ"), false);
