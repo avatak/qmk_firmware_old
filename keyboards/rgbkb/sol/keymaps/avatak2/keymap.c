@@ -27,22 +27,22 @@ enum layer_number {
 
 #define ADJUST MO(_ADJUST)
 
-#define MACWIN MO(_MWIN)
-#define MEDIA MO(_MEDIA)
-#define MNAVESC LT(_MNAV, KC_ESC)
-#define MNAVSPC LT(_MNAV, KC_SPC)
-#define MO_NAV MO(_NAV)
+    #define MACWIN MO(_MWIN)
+    #define MEDIA MO(_MEDIA)
+    #define MNAVESC LT(_MNAV, KC_ESC)
+    #define MNAVSPC LT(_MNAV, KC_SPC)
+    #define MO_NAV MO(_NAV)
 
-#define NAVESC LT(_NAV, KC_ESC)
-#define NAVSPC LT(_NAV, KC_SPC)
-#define NUM_TAP TT(_NUM)
-#define NUM_TOG TG(_NUM)
+    #define NAVESC LT(_NAV, KC_ESC)
+    #define NAVSPC LT(_NAV, KC_SPC)
+    #define NUM_TAP TT(_NUM)
+    #define NUM_TOG TG(_NUM)
 
-#define SYMENT LT(_SYM, KC_ENT)
-#define SYMBOL MO(_SYM)
+    #define SYMENT LT(_SYM, KC_ENT)
+    #define SYMBOL MO(_SYM)
 
-#define TEXSPC LT(_TEX, KC_SPC)
-#define TOGMOUS TG(_MOUSE)
+    #define TEXSPC LT(_TEX, KC_SPC)
+    #define TOGMOUS TG(_MOUSE)
 
 
 /* Custom combination keycodes */
@@ -117,11 +117,9 @@ enum custom_keycodes {
     LINEMTH,
     RENC_DN,
     RENC_UP,
-    RGBRST,
-    RGB_MENU,
     SECTN,
     THEOREM,
-    QWERTY,
+    RSTEEPM,
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -219,7 +217,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
             ),
 
     [_MEDIA] = LAYOUT(
-        _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, RESET  ,
+        _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, RSTEEPM,
         _______, _______, _______, KC_VOLU, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
         _______, _______, KC_MPRV, KC_VOLD, KC_MNXT, _______, _______, _______, _______, _______, KC_MPLY, KC_VOLU, _______, _______,
         _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, KC_MPRV, KC_VOLD, KC_MNXT, _______,
@@ -237,8 +235,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
 
     [_ADJUST] = LAYOUT(
-        RESET  , _______, _______, _______, _______, _______, _______,      _______, RGB_TOG, _______, _______, _______, _______, RGBRST ,
-        RGBRST , RGB_TOG, _______, _______, _______, _______, _______,      _______, RGB_SPI, RGB_SAI, RGB_VAI, RGB_HUI, _______, _______,
+        RESET  , _______, _______, _______, _______, _______, _______,      _______, RGB_TOG, _______, _______, _______, _______, RGB_M_P,
+        _______, RGB_TOG, RSTEEPM, _______, _______, _______, _______,      _______, RGB_SPI, RGB_SAI, RGB_VAI, RGB_HUI, _______, _______,
         _______, _______, _______, _______, _______, _______, _______,      _______, RGB_SPD, RGB_RMOD,_______, RGB_MOD, _______, _______,
         _______, _______, _______, CUTROW , _______, _______, _______,      _______, _______, _______, _______, _______, _______, _______,
         _______, _______, _______, _______, _______, _______, _______,      _______, _______, RGB_TOG, _______, _______, _______, _______,
@@ -523,47 +521,17 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 LENC_ST = abs(LENC_ST - 1) % 2;
             }
             break;
-        case RGBRST:
-#if defined(RGBLIGHT_ENABLE)
-            if (record->event.pressed) {
-                eeconfig_update_rgblight_default();
-                rgblight_enable();
-            }
-#elif defined(RGB_MATRIX_ENABLE)
-            if (record->event.pressed) {
-                eeconfig_update_rgb_matrix_default();
-            }
-#endif
-            return false;
         case RESET:
             if (record->event.pressed) {
                 reset_keyboard();
             }
             return false;
-#if defined(RGB_MATRIX_ENABLE) && defined(KEYBOARD_rgbkb_sol_rev2)
-        case RGB_TOG:
+        case RSTEEPM:
             if (record->event.pressed) {
-                rgb_matrix_increase_flags();
+                eeconfig_init();
             }
-            return false;
-#endif
-        case RGB_MENU:
-#ifdef RGB_OLED_MENU
-            if (record->event.pressed) {
-                if (get_mods() & MOD_MASK_SHIFT) {
-                    rgb_encoder_state = (rgb_encoder_state - 1);
-                    if (rgb_encoder_state > 5) {
-                        rgb_encoder_state = 5;
-                    }
-                } else {
-                    rgb_encoder_state = (rgb_encoder_state + 1) % 6;
-                }
-            }
-#endif
-            return false;
-
+            break;
             // For LaTeX specifically
-
         case ALIGN:
             if (record->event.pressed) {
                 SEND_STRING("\\begin{align*}" SS_TAP(X_ENTER) SS_TAP(X_ENTER) "\\end{align*}" SS_TAP(X_UP) SS_TAP(X_TAB));
