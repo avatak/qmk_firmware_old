@@ -57,7 +57,7 @@ enum layer_number {
       #define TABRGHT LCTL(KC_TAB)
 
   /* Dual function keys */
-      
+
       #define ALTCOMM ALT_T(KC_COMM)
       #define CTLSCLN CTL_T(KC_SCLN)
       #define CTLSLSH CTL_T(KC_SLSH)

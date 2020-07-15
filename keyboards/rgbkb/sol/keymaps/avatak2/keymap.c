@@ -579,11 +579,19 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             break;
         case LINEMTH:
             if (record->event.pressed) {
-                SEND_STRING("\\(\\)");
-                tap_code16(KC_LEFT);
-                tap_code16(KC_LEFT);
-                SEND_STRING("  ");
-                tap_code16(KC_LEFT);
+                tap_code(KC_BSLS);
+                register_code(KC_LSFT);
+                tap_code(KC_9);
+                unregister_code(KC_LSFT);
+                tap_code(KC_SPC);
+                tap_code(KC_SPC);
+                tap_code(KC_BSLS);
+                register_code(KC_LSFT);
+                tap_code(KC_0);
+                unregister_code(KC_LSFT);
+                tap_code(KC_LEFT);
+                tap_code(KC_LEFT);
+                tap_code(KC_LEFT);
             }
             break;
         case SECTN:
