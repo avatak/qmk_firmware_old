@@ -22,6 +22,8 @@ BLUETOOTH_ENABLE = no       # Enable Bluetooth
 AUDIO_ENABLE = no           # Audio output
 
 SPLIT_KEYBOARD = yes
+ENCODER_ENABLE = yes
+OLED_DRIVER_ENABLE = yes
 
 # Link time optimization, should save on firmware size
 EXTRAFLAGS += -flto
