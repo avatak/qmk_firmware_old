@@ -25,6 +25,8 @@ enum layer_names {
     _ADJUST
 };
 
+#define ADJUST MO(_ADJUST)
+
 // Defines the keycodes used by our macros in process_record_user
 /*
 enum custom_keycodes {
@@ -40,7 +42,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_SPC , KC_SPC , KC_SPC , KC_SPC , KC_SPC , KC_SPC ,                  KC_SPC , KC_SPC , KC_SPC , KC_SPC , KC_SPC , KC_SPC ,\
         KC_SPC , KC_SPC , KC_SPC , KC_SPC , KC_SPC , KC_SPC ,                  KC_SPC , KC_SPC , KC_SPC , KC_SPC , KC_SPC , KC_SPC ,\
         KC_SPC , KC_SPC , KC_SPC , KC_SPC , KC_SPC , KC_SPC ,                  KC_SPC , KC_SPC , KC_SPC , KC_SPC , KC_SPC , KC_SPC ,\
-        KC_SPC , KC_SPC , KC_SPC , KC_SPC ,      KC_SPC ,    KC_SPC , KC_SPC ,     KC_SPC ,      KC_SPC , KC_SPC , KC_SPC , KC_SPC \
+        ADJUST , KC_SPC , KC_SPC , KC_SPC ,      KC_SPC ,    KC_SPC , KC_SPC ,     KC_SPC ,      KC_SPC , KC_SPC , KC_SPC , ADJUST \
     ),
 
     [_NAV] = LAYOUT(
@@ -52,7 +54,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
 
     [_ADJUST] = LAYOUT(
-        _______, _______, _______, _______, _______, _______,                  _______, _______, _______, _______, _______, _______,\
+        RESET  , _______, _______, _______, _______, _______,                  _______, _______, _______, _______, _______, RESET  ,\
         _______, _______, _______, _______, _______, _______,                  _______, _______, _______, _______, _______, _______,\
         _______, _______, _______, _______, _______, _______,                  _______, _______, _______, _______, _______, _______,\
         _______, _______, _______, _______, _______, _______,                  _______, _______, _______, _______, _______, _______,\
