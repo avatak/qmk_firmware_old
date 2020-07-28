@@ -58,6 +58,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #define TAPPING_TOGGLE 2
 
+
+/* OLED STUFF */
+#define OLED_DISPLAY_128X64
+
 /* COL2ROW, ROW2COL */
 #define DIODE_DIRECTION COL2ROW
 

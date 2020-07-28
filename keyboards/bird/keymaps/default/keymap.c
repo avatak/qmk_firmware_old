@@ -98,16 +98,16 @@ void encoder_update_user(uint8_t index, bool clockwise) {
 // OLED Driver Logic
 #ifdef OLED_DRIVER_ENABLE
 
-/*
+
 oled_rotation_t oled_init_user(oled_rotation_t rotation) {
     if (is_keyboard_master())
-        return OLED_ROTATION_270;
+        return OLED_ROTATION_180;
     else if (!is_keyboard_master())
         return OLED_ROTATION_180;
     else
         return rotation;
 }
-*/
+
 
 // Render to mode icon
   static const char PROGMEM sol_icon[] = {
@@ -118,12 +118,12 @@ oled_rotation_t oled_init_user(oled_rotation_t rotation) {
 
 
 void render_layer_state(void) {
-    oled_write_P(PSTR("\nLayer"), false);
-    oled_write_P(PSTR("-----"), false);
+    oled_write_P(PSTR("\nLayer: "), false);
+    //oled_write_P(PSTR("-----"), false);
     uint8_t layer = layer_state ? biton(layer_state) : biton32(default_layer_state);
     switch (layer) {
         case _COLEMAK:
-            oled_write_P(PSTR("COLMK"), false);
+            oled_write_P(PSTR("Colemak\n"), false);
             break;
         case _NAV:
             oled_write_P(PSTR("  NAV"), false);
@@ -158,12 +158,12 @@ void render_keylock_status(uint8_t led_usb_state) {
 }
 
 void render_mod_status(uint8_t modifiers) {
-    oled_write_P(PSTR("\nMods "), false);
-    oled_write_P(PSTR("-----"), false);
-    oled_write_P((modifiers & MOD_MASK_SHIFT) ? PSTR("S") : PSTR(" "), false);
-    oled_write_P((modifiers & MOD_MASK_CTRL) ? PSTR("C") : PSTR(" "), false);
-    oled_write_P((modifiers & MOD_MASK_ALT) ? PSTR("A") : PSTR(" "), false);
-    oled_write_P((modifiers & MOD_MASK_GUI) ? PSTR("G") : PSTR(" "), false);
+    oled_write_P(PSTR("\nMods: "), false);
+    //oled_write_P(PSTR("-----"), false);
+    oled_write_P((modifiers & MOD_MASK_SHIFT) ? PSTR("Shft ") : PSTR("     "), false);
+    oled_write_P((modifiers & MOD_MASK_CTRL) ? PSTR("Ctrl ") : PSTR("     "), false);
+    oled_write_P((modifiers & MOD_MASK_ALT) ? PSTR("Alt ") : PSTR("    "), false);
+    oled_write_P((modifiers & MOD_MASK_GUI) ? PSTR("Gui ") : PSTR("    "), false);
 }
 
 void render_status_main(void) {
