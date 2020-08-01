@@ -1,0 +1,1 @@
+SRC += avatak.c
