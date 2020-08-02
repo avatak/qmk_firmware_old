@@ -1,5 +1,5 @@
-#ifndef USERSPACE
-#define USERSPACE
+#pragma once
+#include QMK_KEYBOARD_H
 
 #include "encoder_custom.h"
 #include "layouts.h"
@@ -8,11 +8,11 @@
 #include "quantum.h"
 
 #ifdef ENCODER_ENABLE
-    #include "encoder_custom.h"
+#   include "encoder_custom.h"
 #endif
 
 enum userspace_layers {
-    _BASE = 0,
+    _CLMK = 0,
     _NAV,
     _TEX,
     _SYM,
@@ -35,17 +35,18 @@ enum userspace_layers {
 #define GUIDOT GUI_T(KC_DOT)
 
 /* Custom combos */
+#define ALT_F2  LALT(KC_F2)
+#define ALT_F3  LALT(KC_F3)
+#define ALT_F4  LALT(KC_F4)
 #define ALTCTL  LALT(KC_LCTL)
-#define ALTSHFT LALT(KC_SHFT)
+#define ALTSHFT LALT(KC_LSFT)
 #define CTLBSPC LCTL(KC_BSPC)
 #define CTLDEL  LCTL(KC_DEL)
 #define CTLLEFT LCTL(KC_LEFT)
 #define CTLRGHT LCTL(KC_RGHT)
 #define CTLPGDN LCTL(KC_PGDN)
 #define CTLPGUP LCTL(KC_PGUP)
-#define CTLSHFT LCTL(KC_SHIFT)
+#define CTLSHFT LCTL(KC_LSFT)
 #define CTLZERO LCTL(KC_0)
 #define TABLEFT LCTL(KC_PGUP)
 #define TABRGHT LCTL(KC_PGDN)
-
-#endif

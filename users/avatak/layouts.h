@@ -1,7 +1,7 @@
 #pragma once
 #include "avatak.h"
 
-#define LAYOUT_wrapper(...) LAYOUT(__VA_ARGS__)
+#define LAYOUT_wrapper(...)                  LAYOUT(__VA_ARGS__)
 
 #define __NUM_L____________________________________     KC_1,    KC_2,    KC_3,    KC_4,    KC_5
 #define __NUM_R____________________________________     KC_6,    KC_7,    KC_8,    KC_9,    KC_0
