@@ -1,7 +1,7 @@
 #include "progmem.h"
 
-// Helidox 8x6 font with RGBKB SOL Logo
-// Online editor: http://teripom.x0.com/
+// Helidox 8x6 font with Custom Logo
+// Online editor: https://helixfonteditor.netlify.app/
 
 static const unsigned char font[] PROGMEM = {
   0x00, 0x00, 0x00, 0x00, 0x00, 0x00,

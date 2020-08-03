@@ -9,13 +9,6 @@
 #   define OLED_RENDER_LAYER_SYM    " Symbol"
 #   define OLED_RENDER_LAYER_NUM    " Numpad"
 #   define OLED_RENDER_LAYER_ADJ    " Adjust"
-#   define OLED_RENDER_LOCK_NLCK    "N"
-#   define OLED_RENDER_LOCK_CAPS    "C"
-#   define OLED_RENDER_LOCK_SLCK    "S"
-#   define OLED_RENDER_MOD_SHFT     "S"
-#   define OLED_RENDER_MOD_CTRL     "C"
-#   define OLED_RENDER_MOD_ALT      "A"
-#   define OLED_RENDER_MOD_GUI      "G"
 #else
 #   define OLED_RENDER_LAYER_NAME  "Layer"
 #   define OLED_RENDER_LAYER_CLMK  "COLMK"
@@ -24,12 +17,5 @@
 #   define OLED_RENDER_LAYER_SYM   "  SYM"
 #   define OLED_RENDER_LAYER_NUM   "NUMPD"
 #   define OLED_RENDER_LAYER_ADJ   "ADJST"
-#   define OLED_RENDER_LOCK_NLCK    "N"
-#   define OLED_RENDER_LOCK_CAPS    "C"
-#   define OLED_RENDER_LOCK_SLCK    "S"
-#   define OLED_RENDER_MOD_SHFT     "S"
-#   define OLED_RENDER_MOD_CTRL     "C"
-#   define OLED_RENDER_MOD_ALT      "A"
-#   define OLED_RENDER_MOD_GUI      "G"
 #endif
 
