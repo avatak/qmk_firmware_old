@@ -5,6 +5,14 @@
 
 #endif
 
+#ifdef OLED_DRIVER_ENABLE
+#   ifdef OLED_FONT_H
+#       undef OLED_FONT_H
+#   endif
+#   define OLED_FONT_H "users/avatak/glcdfont_custom.c"
+#endif
+
+
 #ifndef TAPPING_TERM
 #   define TAPPING_TERM 150
 #endif

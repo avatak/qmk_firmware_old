@@ -24,7 +24,7 @@ void render_layer_state(void) {
     #ifndef OLED_DISPLAY_128X64
         oled_write_P(PSTR("-----"), false);
     #endif
-    switch (get_highest_layer(default_layer_state)) {
+    switch (get_highest_layer(layer_state)) {
         case _CLMK:
             oled_write_P(PSTR(OLED_RENDER_LAYER_CLMK), false);
             break;
@@ -44,11 +44,12 @@ void render_layer_state(void) {
             oled_write_P(PSTR(OLED_RENDER_LAYER_ADJ), false);
             break;
     }
+
 }
 
 void render_keylock_status(uint8_t led_usb_state) {
     uint8_t led_state = host_keyboard_leds();
-    oled_write_P(PSTR("Locks"), false);
+    oled_write_P(PSTR("\nLocks"), false);
     oled_write_P(PSTR("-----"), false);
     oled_write_P(IS_LED_ON(led_state, USB_LED_NUM_LOCK) ? PSTR("N") : PSTR(" "), false);
     oled_write_P(PSTR(" "), false);
