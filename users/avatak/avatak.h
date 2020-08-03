@@ -33,6 +33,7 @@ enum userspace_layers {
 #define ALTCOMM ALT_T(KC_COMM)
 #define CTLSLSH CTL_T(KC_SLSH)
 #define GUIDOT GUI_T(KC_DOT)
+#define GUISCLN GUI_T(KC_SCLN)
 
 /* Custom combos */
 #define ALT_F2  LALT(KC_F2)

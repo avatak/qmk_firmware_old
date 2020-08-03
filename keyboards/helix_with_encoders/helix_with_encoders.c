@@ -15,3 +15,12 @@
  */
 
 #include "helix_with_encoders.h"
+
+#ifdef RGB_MATRIX_ENABLE
+    led_config_t g_led_config = { {
+        {      0,      1,      2,      3,      4,      5,     NO_LED },
+        {      6,      7,      8,      9,     10,     11,     NO_LED },
+        {     12,     13,     14,     15,     16,     17,     NO_LED },
+        {     18,     19,     20,     21,     22,     23,     24     },
+        {     25,     26,     27,     28,     29,     30,     31     },
+#endif

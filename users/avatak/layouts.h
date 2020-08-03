@@ -10,7 +10,7 @@
 #define __CLMK_L2__________________________________     KC_A,    KC_R,    KC_S,    KC_T,    KC_G
 #define __CLMK_L3__________________________________     KC_Z,    KC_X,    KC_C,    KC_D,    KC_V
 
-#define __CLMK_R1__________________________________     KC_J,    KC_L,    KC_U,    KC_Y,    KC_SCLN
+#define __CLMK_R1__________________________________     KC_J,    KC_L,    KC_U,    KC_Y,    GUISCLN
 #define __CLMK_R2__________________________________     KC_K,    KC_N,    KC_E,    KC_I,    KC_O
 #define __CLMK_R3__________________________________     KC_M,    KC_H,    ALTCOMM, GUIDOT,  CTLSLSH
 

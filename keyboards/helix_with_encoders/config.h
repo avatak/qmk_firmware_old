@@ -44,6 +44,16 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define MATRIX_COL_PINS { F4, F5, F6, F7, B1, B3, B2 }
 #define UNUSED_PINS
 
+#define RGB_DI_PIN D3
+
+#ifdef RGBLIGHT_ENABLE
+#   define RGBLED_NUM 32
+#   define RGBLIGHT_LIMIT_VAL 35
+#   define RGBLIGHT_HUE_STEP 10
+#   define RGBLIGHT_SAT_STEP 17
+#   define RGBLIGHT_LIMIT_VAL 120
+#endif
+
 /* COL2ROW, ROW2COL */
 #define DIODE_DIRECTION COL2ROW
 
