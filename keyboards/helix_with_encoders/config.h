@@ -47,11 +47,11 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define RGB_DI_PIN D3
 
 #ifdef RGBLIGHT_ENABLE
-#   define RGBLED_NUM 32
-#   define RGBLIGHT_LIMIT_VAL 35
+#   define RGBLED_NUM 64
+#   define RGBLED_SPLIT {32, 32}
+#   define RGBLIGHT_LIMIT_VAL 120
 #   define RGBLIGHT_HUE_STEP 10
 #   define RGBLIGHT_SAT_STEP 17
-#   define RGBLIGHT_LIMIT_VAL 120
 #endif
 
 /* COL2ROW, ROW2COL */
@@ -67,6 +67,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define ENCODERS_PAD_B { B5 }
 
 #define B7_AUDIO
+#define NO_MUSIC_MODE
+
+
+
 
 //#define BACKLIGHT_PIN B7
 //#define BACKLIGHT_LEVELS 3

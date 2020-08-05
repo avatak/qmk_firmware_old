@@ -14,7 +14,8 @@
 #define __CLMK_R2__________________________________     KC_K,    KC_N,    KC_E,    KC_I,    KC_O
 #define __CLMK_R3__________________________________     KC_M,    KC_H,    ALTCOMM, GUIDOT,  CTLSLSH
 
-#define __NAV_L1___________________________________     _______, CTLPGUP, KC_PGUP, CTLPGDN, _______
+#define __NAV_L0___________________________________     _______, LALT(KC_F2), _______, LALT(KC_F4), _______
+#define __NAV_L1___________________________________    LALT(KC_F2),CTLPGUP, KC_PGUP, CTLPGDN, _______
 #define __NAV_L2___________________________________     _______, KC_HOME, KC_PGDN, KC_END,  _______
 #define __NAV_L3___________________________________     _______, KC_SLCK, KC_CAPS, KC_INS,  _______
 
@@ -42,6 +43,7 @@
 #define __NP_1____________________________              KC_P7,   KC_P8,   KC_P9,   KC_PMNS
 #define __NP_2____________________________              KC_P4,   KC_P5,   KC_P6,   KC_PPLS
 #define __NP_3____________________________              KC_P1,   KC_P2,   KC_P3,   KC_TAB
+#define __NP_4____________________________              KC_P0,   KC_COMM, KC_PDOT, KC_PENT
 
 #define __ADJ_L1___________________________________     RGB_TOG, _______, CK_UP  , _______, _______
 #define __ADJ_L2___________________________________     AU_TOG , _______, CK_DOWN, _______, _______
