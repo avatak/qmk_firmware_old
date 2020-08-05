@@ -9,6 +9,7 @@ enum userspace_custom_keycodes {
     ITEM,
     ITEMIZE,
     LINEMTH,
+    RGBRST,
     NEW_SAFE_RANGE
 };
 

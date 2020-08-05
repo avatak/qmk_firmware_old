@@ -50,9 +50,17 @@ void encoder_update_user(uint8_t index, bool clockwise) {
             */
             case _ADJ:
                 if (clockwise) {
-                    tap_code16(KC_VOLU);
+                    #if defined(RGBLIGHT_ENABLE)
+                        tap_code16(RGB_MOD);
+                    #else
+                        tap_code16(KC_VOLU);
+                    #endif
                 } else {
-                    tap_code16(KC_VOLD);
+                    #if defined(RGBLIGHT_ENABLE)
+                        tap_code16(RGB_RMOD);
+                    #else
+                        tap_code16(KC_VOLD);
+                    #endif
                 }
                 break;
             default:
@@ -102,11 +110,26 @@ void encoder_update_user(uint8_t index, bool clockwise) {
                     tap_code16(S(KC_TAB));
                 }
                 break;
-            case _ADJ:
+            case _MEDIA:
                 if (clockwise) {
                     tap_code16(KC_MNXT);
                 } else {
                     tap_code16(KC_MPRV);
+                }
+                break;
+            case _ADJ:
+                if (clockwise) {
+                    #if defined(RGBLIGHT_ENABLE)
+                        tap_code16(RGB_HUI);
+                    #else
+                        tap_code16(KC_MNXT);
+                    #endif
+                } else {
+                    #if defined(RGBLIGHT_ENABLE)
+                        tap_code16(RGB_HUD);
+                    #else
+                        tap_code16(KC_MPRV);
+                    #endif
                 }
                 break;
             default:

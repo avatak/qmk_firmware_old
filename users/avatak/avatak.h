@@ -17,6 +17,7 @@ enum userspace_layers {
     _TEX,
     _SYM,
     _NUM,
+    _MEDIA,
     _ADJ
 };
 

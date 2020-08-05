@@ -40,6 +40,9 @@ void render_layer_state(void) {
         case _NUM:
             oled_write_P(PSTR(OLED_RENDER_LAYER_NUM), false);
             break;
+        case _MEDIA:
+            oled_write_P(PSTR(OLED_RENDER_LAYER_MEDIA), false);
+            break;
         case _ADJ:
             oled_write_P(PSTR(OLED_RENDER_LAYER_ADJ), false);
             break;

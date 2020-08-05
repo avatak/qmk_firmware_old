@@ -16,6 +16,7 @@
 #   define OLED_RENDER_LAYER_TEX   "LATEX"
 #   define OLED_RENDER_LAYER_SYM   "  SYM"
 #   define OLED_RENDER_LAYER_NUM   "NUMPD"
+#   define OLED_RENDER_LAYER_MEDIA "MEDIA"
 #   define OLED_RENDER_LAYER_ADJ   "ADJST"
 #endif
 

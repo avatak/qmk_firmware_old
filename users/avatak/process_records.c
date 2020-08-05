@@ -14,9 +14,13 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 // TODO
             }
             return false;
-            break;
+        case RGBRST:
+            if (record->event.pressed) {
+                eeconfig_update_rgblight_default();
+                rgblight_enable();
+            }
+            return false;
     }
-
     process_record_keymap(keycode, record);
     return true;
 }
