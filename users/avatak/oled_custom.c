@@ -10,6 +10,10 @@
         else
             return rotation;
     }
+#else
+    oled_rotation_t oled_init_user(oled_rotation_t rotation) {
+        return OLED_ROTATION_180;
+    }
 #endif
 
 /* Custom keymap icon */
@@ -20,6 +24,9 @@
   };
 
 void render_layer_state(void) {
+    #ifdef OLED_DISPLAY_128X64
+        oled_write_P(PSTR("\n"), false);
+    #endif
     oled_write_P(PSTR(OLED_RENDER_LAYER_NAME), false);
     #ifndef OLED_DISPLAY_128X64
         oled_write_P(PSTR("-----"), false);
@@ -52,22 +59,36 @@ void render_layer_state(void) {
 
 void render_keylock_status(uint8_t led_usb_state) {
     uint8_t led_state = host_keyboard_leds();
-    oled_write_P(PSTR("\nLocks"), false);
-    oled_write_P(PSTR("-----"), false);
-    oled_write_P(IS_LED_ON(led_state, USB_LED_NUM_LOCK) ? PSTR("N") : PSTR(" "), false);
-    oled_write_P(PSTR(" "), false);
-    oled_write_P(IS_LED_ON(led_state, USB_LED_CAPS_LOCK) ? PSTR("C") : PSTR(" "), false);
-    oled_write_P(PSTR(" "), false);
-    oled_write_P(IS_LED_ON(led_state, USB_LED_SCROLL_LOCK) ? PSTR("S") : PSTR(" "), false);
+    oled_write_P(PSTR(OLED_RENDER_LOCKS_NAME), false);
+    #ifdef OLED_DISPLAY_128X64
+        oled_write_P(IS_LED_ON(led_state, USB_LED_NUM_LOCK) ? PSTR(" NLCK") : PSTR("     "), false);
+        oled_write_P(IS_LED_ON(led_state, USB_LED_CAPS_LOCK) ? PSTR(" CAPS") : PSTR("     "), false);
+        oled_write_P(IS_LED_ON(led_state, USB_LED_SCROLL_LOCK) ? PSTR(" SLCK") : PSTR("     "), false);
+    #else
+        oled_write_P(PSTR("-----"), false);
+        oled_write_P(IS_LED_ON(led_state, USB_LED_NUM_LOCK) ? PSTR("N") : PSTR(" "), false);
+        oled_write_P(PSTR(" "), false);
+        oled_write_P(IS_LED_ON(led_state, USB_LED_CAPS_LOCK) ? PSTR("C") : PSTR(" "), false);
+        oled_write_P(PSTR(" "), false);
+        oled_write_P(IS_LED_ON(led_state, USB_LED_SCROLL_LOCK) ? PSTR("S") : PSTR(" "), false);
+    #endif
 }
 
 void render_mod_status(uint8_t modifiers) {
-    oled_write_P(PSTR("\nMods "), false);
-    oled_write_P(PSTR("-----"), false);
-    oled_write_P((modifiers & MOD_MASK_SHIFT) ? PSTR("S") : PSTR(" "), false);
-    oled_write_P((modifiers & MOD_MASK_CTRL) ? PSTR("C") : PSTR(" "), false);
-    oled_write_P((modifiers & MOD_MASK_ALT) ? PSTR("A") : PSTR(" "), false);
-    oled_write_P((modifiers & MOD_MASK_GUI) ? PSTR("G") : PSTR(" "), false);
+    #ifdef OLED_DISPLAY_128X64
+        oled_write_P(PSTR("Mods:"), false);
+        oled_write_P((modifiers & MOD_MASK_SHIFT) ? PSTR("Shft") : PSTR("    "), false);
+        oled_write_P((modifiers & MOD_MASK_CTRL) ? PSTR(" Ctl") : PSTR("    "), false);
+        oled_write_P((modifiers & MOD_MASK_ALT) ? PSTR(" Alt") : PSTR("    "), false);
+        oled_write_P((modifiers & MOD_MASK_GUI) ? PSTR(" Gui") : PSTR("    "), false);
+    #else
+        oled_write_P(PSTR("\nMods "), false);
+        oled_write_P(PSTR("-----"), false);
+        oled_write_P((modifiers & MOD_MASK_SHIFT) ? PSTR("S") : PSTR(" "), false);
+        oled_write_P((modifiers & MOD_MASK_CTRL) ? PSTR("C") : PSTR(" "), false);
+        oled_write_P((modifiers & MOD_MASK_ALT) ? PSTR("A") : PSTR(" "), false);
+        oled_write_P((modifiers & MOD_MASK_GUI) ? PSTR("G") : PSTR(" "), false);
+    #endif
 }
 
 void render_status_main(void) {

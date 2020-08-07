@@ -10,6 +10,7 @@
 #       undef OLED_FONT_H
 #   endif
 #   define OLED_FONT_H "users/avatak/glcdfont_custom.c"
+//#   define OLED_FONT_WIDTH 8
 #endif
 
 
