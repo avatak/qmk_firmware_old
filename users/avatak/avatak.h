@@ -50,5 +50,7 @@ enum userspace_layers {
 #define CTLPGUP LCTL(KC_PGUP)
 #define CTLSHFT LCTL(KC_LSFT)
 #define CTLZERO LCTL(KC_0)
+#define SCLEFT S(LCTL(KC_LEFT))
+#define SCRIGHT S(LCTL(KC_RIGHT))
 #define TABLEFT LCTL(KC_PGUP)
 #define TABRGHT LCTL(KC_PGDN)
