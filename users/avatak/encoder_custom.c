@@ -12,15 +12,13 @@ void encoder_update_user(uint8_t index, bool clockwise) {
                     tap_code16(KC_UP);
                 }
                 break;
-        /*
             case _NAV:
                 if (clockwise) {
-
+                    tap_code16(LGUI(KC_DOWN));
                 } else {
-
+                    tap_code16(LGUI(KC_UP));
                 }
                 break;
-        */
             case _TEX:
                 if (clockwise) {
                     register_code16(KC_LCTL);
@@ -82,9 +80,9 @@ void encoder_update_user(uint8_t index, bool clockwise) {
                 break;
             case _NAV:
                 if (clockwise) {
-                    tap_code16(KC_PGDN);
+                    tap_code16(LGUI(KC_RGHT));
                 } else {
-                    tap_code16(KC_PGUP);
+                    tap_code16(LGUI(KC_LEFT));
                 }
                 break;
             /*

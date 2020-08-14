@@ -21,13 +21,13 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case DISPMTH:
             if (record->event.pressed)
             {
-                SEND_STRING("\\[" "\\]");
+                SEND_STRING("\\[");
             }
             return false;
         case LINEMTH:
             if (record->event.pressed)
             {
-                SEND_STRING("\\(\\)" SS_DELAY(50) SS_TAP(X_LEFT) SS_TAP(X_LEFT));
+                SEND_STRING("\\(");
             }
             return false;
         case RGBRST:

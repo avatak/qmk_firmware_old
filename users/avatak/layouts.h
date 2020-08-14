@@ -20,7 +20,7 @@
 #define __NAV_L3___________________________________     _______, KC_SLCK, KC_CAPS, KC_INS,  _______
 
 #define __NAV_R1___________________________________     _______, TABLEFT, KC_UP,   TABRGHT, _______
-#define __NAV_R2___________________________________     SCLEFT , KC_LEFT, KC_DOWN, KC_RGHT, SCRIGHT
+#define __NAV_R2___________________________________     CTLLEFT, KC_LEFT, KC_DOWN, KC_RGHT, CTLRGHT
 #define __NAV_R3___________________________________     CTLBSPC, KC_BSPC, KC_DEL,  CTLDEL,  CTLZERO
 
 #define __TEX_L1___________________________________     _______, _______, ENUM,    ITEMIZE, _______
