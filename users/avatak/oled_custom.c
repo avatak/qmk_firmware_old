@@ -31,9 +31,9 @@
 #endif
 
 void render_layer_state(void) {
-    #ifdef OLED_DISPLAY_128X64
-        oled_write_P(PSTR("\n"), false);
-    #endif
+//    #ifdef OLED_DISPLAY_128X64
+    oled_write_P(PSTR("\n"), false);
+//    #endif
     oled_write_P(PSTR(OLED_RENDER_LAYER_NAME), false);
     #ifndef OLED_DISPLAY_128X64
         oled_write_P(PSTR("-----"), false);
@@ -61,7 +61,7 @@ void render_layer_state(void) {
             oled_write_P(PSTR(OLED_RENDER_LAYER_ADJ), false);
             break;
     }
-
+    oled_write_P(PSTR("\n"), false);
 }
 
 void render_keylock_status(uint8_t led_usb_state) {
