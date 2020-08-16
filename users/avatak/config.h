@@ -5,12 +5,16 @@
 
 #endif
 
-#ifdef OLED_DRIVER_ENABLE
+
+#ifdef CUSTOM_OLED
 #   ifdef OLED_FONT_H
 #       undef OLED_FONT_H
 #   endif
-#   define OLED_FONT_H "users/avatak/glcdfont_custom.c"
-//#   define OLED_FONT_WIDTH 8
+#   ifdef OLED_DISPLAY_128X64
+#       define OLED_FONT_H "users/avatak/glcdfont_128x64.c"
+    else
+#       define  OLED_FONT_H "users/avatak/glcdfont_custom.c"
+#   endif
 #endif
 
 

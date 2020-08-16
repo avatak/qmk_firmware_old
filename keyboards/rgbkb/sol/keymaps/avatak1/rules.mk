@@ -33,6 +33,8 @@ IOS_DEVICE_ENABLE       = no        # Limit max brightness to connect to IOS dev
 
 # Misc
 OLED_DRIVER_ENABLE      = yes        # Enable the OLED Driver
+define CUSTOM_OLED
+
 SWAP_HANDS_ENABLE       = no        # Enable one-hand typing
 ENCODER_ENABLE = yes
 
