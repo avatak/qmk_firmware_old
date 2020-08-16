@@ -4,7 +4,7 @@ SRC	+=	avatak.c \
 ifeq ($(strip $(ENCODER_ENABLE)), yes)
 	SRC += encoder_custom.c
 endif
-ifdef CUSTOM_OLED
+ifeq ($(strip $(OLED_DRIVER_ENABLE)), yes)
 	SRC += oled_custom.c
 endif
 
