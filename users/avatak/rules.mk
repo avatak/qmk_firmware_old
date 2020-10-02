@@ -8,4 +8,4 @@ ifeq ($(strip $(OLED_DRIVER_ENABLE)), yes)
 	SRC += oled_custom.c
 endif
 
-LINK_TIME_OPTIMIZATION_ENABLE = yes
+LTO_ENABLE = yes
