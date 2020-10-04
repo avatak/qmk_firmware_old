@@ -34,7 +34,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_TAB , __CLMK_L1__________________________________,                   __CLMK_R1__________________________________, KC_BSLS, \
   NAVESC , __CLMK_L2__________________________________,                   __CLMK_R2__________________________________, KC_QUOT, \
   KC_LSFT, __CLMK_L3__________________________________, _______, _______, __CLMK_R3__________________________________, KC_RSFT,
-                             KC_LCTL, KC_LALT, NAVSPC , _______, SYMENT , TEXSPC , _______, _______ \
+                             KC_LCTL, KC_LALT, NAVSPC , NUMTAP , SYMENT , TEXSPC , KC_HYPR, ALTSHFT \
   ),
 
  [_NAV] = LAYOUT_wrapper( \
@@ -69,6 +69,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                              _______, _______, _______, _______, __NP_4____________________________ \
   ),
 
+/*
  [_MEDIA] = LAYOUT_wrapper( \
   _______, _______, _______, _______, _______, _______,                   _______, _______, _______, _______, _______, _______, \
   _______, _______, _______, _______, _______, _______,                   _______, _______, _______, _______, _______, _______, \
@@ -76,6 +77,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
                              _______, _______, _______, _______, _______, _______, _______, _______ \
   ),
+*/
 
  [_ADJ] = LAYOUT_wrapper( \
   _______, _______, _______, _______, _______, _______,                   _______, _______, _______, _______, _______, _______, \
@@ -87,6 +89,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 };
 
 // Setting ADJUST layer RGB back to default
+/*
 void update_tri_layer_RGB(uint8_t layer1, uint8_t layer2, uint8_t layer3) {
   if (IS_LAYER_ON(layer1) && IS_LAYER_ON(layer2)) {
     layer_on(layer3);
@@ -94,11 +97,13 @@ void update_tri_layer_RGB(uint8_t layer1, uint8_t layer2, uint8_t layer3) {
     layer_off(layer3);
   }
 }
-
+*/
 //SSD1306 OLED update loop, make sure to enable OLED_DRIVER_ENABLE=yes in rules.mk
+
+/*
 #ifdef OLED_DRIVER_ENABLE
 
-oled_rotation_t oled_init_user(oled_rotation_t rotation) {
+oled_rotation_t oled_init_keymap(oled_rotation_t rotation) {
   if (!is_keyboard_master())
     return OLED_ROTATION_180;  // flips the display 180 degrees if offhand
   return rotation;
@@ -140,3 +145,4 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   }
   return true;
 }
+*/

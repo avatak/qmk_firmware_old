@@ -5,6 +5,7 @@ ifeq ($(strip $(ENCODER_ENABLE)), yes)
 	SRC += encoder_custom.c
 endif
 ifeq ($(strip $(OLED_DRIVER_ENABLE)), yes)
+# ifdef	STD_OLED
 	SRC += oled_custom.c
 endif
 
