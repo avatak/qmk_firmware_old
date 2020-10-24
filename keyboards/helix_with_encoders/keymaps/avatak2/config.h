@@ -11,5 +11,5 @@
 #undef  ENCODERS_PAD_A
 #undef  ENCODERS_PAD_B
 
-#define ENCODERS_PAD_A { F0 }
-#define ENCODERS_PAD_B { D5 }
+#define ENCODERS_PAD_A { D5 }
+#define ENCODERS_PAD_B { F0 }
