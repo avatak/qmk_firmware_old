@@ -49,13 +49,13 @@ void encoder_update_user(uint8_t index, bool clockwise) {
             case _ADJ:
                 if (clockwise) {
                     #if defined(RGBLIGHT_ENABLE)
-                        tap_code16(RGB_MOD);
+                        rgblight_increase_hue();
                     #else
                         tap_code16(KC_VOLU);
                     #endif
                 } else {
                     #if defined(RGBLIGHT_ENABLE)
-                        tap_code16(RGB_RMOD);
+                        rgblight_decrease_hue();
                     #else
                         tap_code16(KC_VOLD);
                     #endif
@@ -118,13 +118,13 @@ void encoder_update_user(uint8_t index, bool clockwise) {
             case _ADJ:
                 if (clockwise) {
                     #if defined(RGBLIGHT_ENABLE)
-                        tap_code16(RGB_HUI);
+                        rgblight_increase();
                     #else
                         tap_code16(KC_MNXT);
                     #endif
                 } else {
                     #if defined(RGBLIGHT_ENABLE)
-                        tap_code16(RGB_HUD);
+                        rgblight_decrease();
                     #else
                         tap_code16(KC_MPRV);
                     #endif
