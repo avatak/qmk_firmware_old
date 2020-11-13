@@ -46,6 +46,13 @@ void encoder_update_user(uint8_t index, bool clockwise) {
                 }
                 break;
             */
+            case _MOUSE:
+                if (clockwise) {
+                    tap_code16(KC_MS_DOWN);
+                } else {
+                    tap_code16(KC_MS_UP);
+                }
+                break;
             case _ADJ:
                 if (clockwise) {
                     #if defined(RGBLIGHT_ENABLE)
@@ -113,6 +120,13 @@ void encoder_update_user(uint8_t index, bool clockwise) {
                     tap_code16(KC_MNXT);
                 } else {
                     tap_code16(KC_MPRV);
+                }
+                break;
+            case _MOUSE:
+                if (clockwise) {
+                    tap_code16(KC_MS_RIGHT);
+                } else {
+                    tap_code16(KC_MS_LEFT);
                 }
                 break;
             case _ADJ:

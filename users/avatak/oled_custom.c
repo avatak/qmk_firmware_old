@@ -50,6 +50,9 @@ void render_layer_state(void) {
         case _MEDIA:
             oled_write_P(PSTR(OLED_RENDER_LAYER_MEDIA), false);
             break;
+        case _MOUSE:
+            oled_write_P(PSTR(OLED_RENDER_LAYER_MOUSE), false);
+            break;
         case _ADJ:
             oled_write_P(PSTR(OLED_RENDER_LAYER_ADJ), false);
             break;

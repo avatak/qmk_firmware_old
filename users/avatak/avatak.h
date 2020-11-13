@@ -19,6 +19,7 @@ enum userspace_layers {
     _SYM,
     _NUM,
     _MEDIA,
+    _MOUSE,
     _ADJ
 };
 
@@ -29,6 +30,7 @@ enum userspace_layers {
 #define NUMTAP TT(_NUM)
 #define SYMENT LT(_SYM, KC_ENT)
 #define TEXSPC LT(_TEX, KC_SPC)
+#define MOUSE  TG(_MOUSE)
 
 
 /* Mod tap keys */
