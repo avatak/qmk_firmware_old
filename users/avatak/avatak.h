@@ -13,6 +13,7 @@
 
 enum userspace_layers {
     _CLMK = 0,
+    _QWRTY,
     _NAV,
     _TEX,
     _SYM,
