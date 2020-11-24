@@ -63,8 +63,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define SOFT_SERIAL_PIN D2
 #define MASTER_LEFT
 
-#define ENCODERS_PAD_A { B5 }
-#define ENCODERS_PAD_B { B6 }
+#define ENCODERS_PAD_B { B5 }
+#define ENCODERS_PAD_A { B6 }
 
 #define B7_AUDIO
 #define NO_MUSIC_MODE
