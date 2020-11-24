@@ -19,6 +19,7 @@
 #   define OLED_RENDER_LAYER_NAME  "Layer"
 #   define OLED_RENDER_LOCKS_NAME  "Locks"
 #   define OLED_RENDER_LAYER_CLMK  "COLMK"
+#   define OLED_RENDER_LAYER_CLMAC "CLMAC"
 #   define OLED_RENDER_LAYER_NAV   "  NAV"
 #   define OLED_RENDER_LAYER_TEX   "LATEX"
 #   define OLED_RENDER_LAYER_SYM   "  SYM"

@@ -4,6 +4,8 @@
 enum userspace_custom_keycodes {
     ALIGN = SAFE_RANGE,
     ARRAY,
+    COLEMAK,
+    COLEMAC,
     DISPMTH,
     ENUM,
     ITEM,

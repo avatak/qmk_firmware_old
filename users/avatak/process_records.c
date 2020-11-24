@@ -8,6 +8,26 @@ __attribute__((weak)) bool process_record_keymap(uint16_t keycode, keyrecord_t *
 // Then runs the _keymap's record handier if not processed here
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
+        case COLEMAK:
+            if (record->event.pressed) {
+                set_single_persistent_default_layer(_CLMK);
+            }
+            /*
+            #ifdef AUDIO_ENABLE
+                PLAY_SONG(tone_coin);
+            #endif
+            */
+            break;
+        case COLEMAC:
+            if (record->event.pressed) {
+                set_single_persistent_default_layer(_CLMAC);
+            }
+            /*
+            #ifdef AUDIO_ENABLE
+                PLAY_SONG(tone_coin);
+            #endif
+            */
+            break;
         case ALIGN:
             if (record->event.pressed)
             {

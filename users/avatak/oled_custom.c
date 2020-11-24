@@ -35,6 +35,9 @@ void render_layer_state(void) {
         case _CLMK:
             oled_write_P(PSTR(OLED_RENDER_LAYER_CLMK), false);
             break;
+        case _CLMAC:
+            oled_write_P(PSTR(OLED_RENDER_LAYER_CLMAC), false);
+            break;
         case _NAV:
             oled_write_P(PSTR(OLED_RENDER_LAYER_NAV), false);
             break;
