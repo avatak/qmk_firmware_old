@@ -13,8 +13,10 @@
 
 enum userspace_layers {
     _CLMK = 0,
+    _CLMAC,
     _QWRTY,
     _NAV,
+    _MNAV,
     _TEX,
     _SYM,
     _NUM,
@@ -26,7 +28,9 @@ enum userspace_layers {
 /* Layer shifting */
 #define ADJUST TT(_ADJ)
 #define NAVSPC LT(_NAV, KC_SPC)
+#define MNAVSPC LT(_MNAV, KC_SPC)
 #define NAVESC LT(_NAV, KC_ESC)
+#define MNAVESC LT(_MNAV, KC_ESC)
 #define NUMTAP TT(_NUM)
 #define SYMENT LT(_SYM, KC_ENT)
 #define TEXSPC LT(_TEX, KC_SPC)
