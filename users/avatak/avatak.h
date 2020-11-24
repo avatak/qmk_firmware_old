@@ -42,6 +42,7 @@ enum userspace_layers {
 #define MACEND LGUI(KC_RIGHT)
 #define MACHOME LGUI(KC_LEFT)
 #define MACMENU LCTL(KC_F2)
+#define MACWIN MO(_MWIN)
 
 // Mac Window Adjustment with magnet
 #define MW_CENT LCTL(LALT(KC_F))

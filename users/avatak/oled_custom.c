@@ -41,6 +41,9 @@ void render_layer_state(void) {
         case _NAV:
             oled_write_P(PSTR(OLED_RENDER_LAYER_NAV), false);
             break;
+        case _MNAV:
+            oled_write_P(PSTR(OLED_RENDER_LAYER_MNAV), false);
+            break;
         case _TEX:
             oled_write_P(PSTR(OLED_RENDER_LAYER_TEX), false);
             break;
@@ -55,6 +58,9 @@ void render_layer_state(void) {
             break;
         case _MOUSE:
             oled_write_P(PSTR(OLED_RENDER_LAYER_MOUSE), false);
+            break;
+        case _MWIN:
+            oled_write_P(PSTR(OLED_RENDER_LAYER_MWIN), false);
             break;
         case _ADJ:
             oled_write_P(PSTR(OLED_RENDER_LAYER_ADJ), false);

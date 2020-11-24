@@ -41,7 +41,7 @@
 #define __MNAV_L3__________________________________ _______, _______,       KC_CAPS, KC_INS ,       LCTL(KC_0)
 
 #define __MNAV_R0__________________________________ _______,       _______, _______, _______,      _______
-#define __MNAV_R1__________________________________ _______,       TABLEFT, KC_UP  , TABRIGHT,     _______
+#define __MNAV_R1__________________________________ _______,       TABLEFT, KC_UP  , TABRGHT,     _______
 #define __MNAV_R2__________________________________ LALT(KC_LEFT), KC_LEFT, KC_DOWN, KC_RGHT,      LALT(KC_RGHT)
 #define __MNAV_R3__________________________________ LALT(KC_BSPC), KC_BSPC, KC_DEL , LALT(KC_DEL), LCTL(KC_0)
 
