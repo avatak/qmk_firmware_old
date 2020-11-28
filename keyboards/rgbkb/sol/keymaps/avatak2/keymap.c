@@ -9,6 +9,7 @@
 
 #define APPSRCH LALT(KC_F3)
 #define APPMENU LALT(KC_F1)
+#define MEDIA MO(_MEDIA)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   /* Qwerty
@@ -31,7 +32,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_TAB , __CLMK_L1__________________________________, KC_CAPS,   APPSRCH, __CLMK_R1__________________________________, KC_BSLS, \
         NAVESC , __CLMK_L2__________________________________, XXXXXXX,   XXXXXXX, __CLMK_R2__________________________________, KC_QUOT, \
         KC_LSFT, __CLMK_L3__________________________________, XXXXXXX,   XXXXXXX, __CLMK_R3__________________________________, KC_RSFT, \
-        ADJUST , KC_LCTL, KC_LGUI, KC_LALT, _______, NAVSPC , NUMTAP ,   SYMENT , TEXSPC , _______, CTLSHFT, ALTCTL , ALTSHFT, ADJUST , \
+        ADJUST , KC_LCTL, KC_LGUI, KC_LALT, _______, NAVSPC , NUMTAP ,   SYMENT , TEXSPC , _______, CTLSHFT, ALTCTL , ALTSHFT, MEDIA  , \
                                                      NAVSPC , NUMTAP ,   SYMENT , TEXSPC \
     ),
 
@@ -81,9 +82,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
 
     [_ADJ] = LAYOUT_wrapper( \
-        RESET  , _______, _______, _______, _______, _______, _______,  _______, _______, _______, _______, _______, _______, _______, \
-        _______, RGB_TOG, _______, _______, _______, _______, _______,  _______, _______, _______, RGB_HUI, _______, _______, _______, \
-        _______, _______, _______, _______, _______, _______, XXXXXXX,  XXXXXXX, _______,RGB_RMOD, RGB_HUD, RGB_MOD, _______, _______, \
+        RESET  , _______, _______, _______, _______, _______, _______,  RGB_TOG, RGBRST , RGB_VAI, RGB_SAI, RGB_SPI, RGB_MOD, RGB_HUI, \
+        _______, RGB_TOG, _______, _______, _______, _______, _______,  _______, _______, RGB_VAD, RGB_SAD, RGB_SPD,RGB_RMOD, RGB_HUD, \
+        _______, _______, _______, _______, _______, _______, XXXXXXX,  XXXXXXX, _______, RGB_M_P, _______, _______, _______, _______, \
         _______, _______, _______, _______, _______, _______, XXXXXXX,  XXXXXXX, _______, _______, _______, _______, _______, _______, \
         _______, _______, _______, _______, _______, _______, _______,  _______, _______, _______, _______, _______, _______, _______, \
                                                      _______, _______,  _______, _______ \
