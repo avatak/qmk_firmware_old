@@ -25,7 +25,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    */
   [_CLMK] = LAYOUT_wrapper( \
         KC_GRV , __NUM_L____________________________________, _______,   MOUSE  , __NUM_R____________________________________, KC_BSPC, \
-        KC_TAB , __CLMK_L1__________________________________, _______,   _______, __CLMK_R1__________________________________, KC_BSLS, \
+        KC_TAB , __CLMK_L1__________________________________, _______,   NUMTOG , __CLMK_R1__________________________________, KC_BSLS, \
         NAVESC , __CLMK_L2__________________________________, XXXXXXX,   XXXXXXX, __CLMK_R2__________________________________, KC_QUOT, \
         KC_LSFT, __CLMK_L3__________________________________, XXXXXXX,   XXXXXXX, __CLMK_R3__________________________________, KC_RSFT, \
         ADJUST , KC_LCTL, KC_LGUI, KC_LALT, _______, NAVSPC , NUMTAP ,   SYMENT , TEXSPC , _______, CTLSHFT, ALTCTL , ALTSHFT, MO(_MEDIA)  , \
