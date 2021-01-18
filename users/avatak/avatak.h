@@ -75,6 +75,7 @@ enum userspace_layers {
 #define ALT_F3  LALT(KC_F3)
 #define ALT_F4  LALT(KC_F4)
 #define ALTCTL  LALT(KC_LCTL)
+#define ALTCTLS S(LALT(KC_LCTL))
 #define ALTSHFT LALT(KC_LSFT)
 #define CTLBSPC LCTL(KC_BSPC)
 #define CTLDEL  LCTL(KC_DEL)
