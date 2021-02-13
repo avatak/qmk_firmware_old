@@ -28,7 +28,7 @@
 #define __NAV_L0___________________________________     _______, LALT(KC_F2), _______, LALT(KC_F4), _______
 #define __NAV_L1___________________________________    LALT(KC_F2),CTLPGUP, KC_PGUP, CTLPGDN, _______
 #define __NAV_L2___________________________________     _______, KC_HOME, KC_PGDN, KC_END,  _______
-#define __NAV_L3___________________________________     _______, KC_SLCK, KC_CAPS, KC_INS,  _______
+#define __NAV_L3___________________________________     CTRLSZR, KC_SLCK, KC_CAPS, KC_INS,  _______
 
 #define __NAV_R1___________________________________     _______, TABLEFT, KC_UP,   TABRGHT, _______
 #define __NAV_R2___________________________________     CTLLEFT, KC_LEFT, KC_DOWN, KC_RGHT, CTLRGHT
