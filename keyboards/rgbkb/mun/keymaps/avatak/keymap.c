@@ -1,6 +1,6 @@
 #include QMK_KEYBOARD_H
 
-enum userspace_layers {
+enum keymap_layers {
     _COLEMAK = 0,
     _NAV,
     _TEX,
@@ -12,41 +12,15 @@ enum userspace_layers {
 };
 
 /* Layer shifting */
-#define ADJUST TT(_ADJ)
+#define ADJUST TT(_ADJUST)
 #define NAVSPC LT(_NAV, KC_SPC)
-#define MNAVSPC LT(_MNAV, KC_SPC)
 #define NAVESC LT(_NAV, KC_ESC)
-#define MNAVESC LT(_MNAV, KC_ESC)
 #define NUMTAP TT(_NUM)
 #define NUMTOG TG(_NUM)
 #define SYMENT LT(_SYM, KC_ENT)
 #define TEXSPC LT(_TEX, KC_SPC)
 #define MOUSE  TG(_MOUSE)
-
-/* OSX Specific */
-#define MACTERM S(LALT(KC_T))
-#define MACEND LGUI(KC_RIGHT)
-#define MACHOME LGUI(KC_LEFT)
-#define MACMENU LCTL(KC_F2)
-#define MACWIN MO(_MWIN)
-
-// Mac Window Adjustment with magnet
-#define MW_CENT LCTL(LALT(KC_F))
-#define MW_CSQR LCTL(LALT(KC_C))
-#define MW_FULL LCTL(LALT(KC_ENT))
-#define MW_LEFT LCTL(LALT(KC_LEFT))
-#define MW_LLFT LCTL(LALT(KC_J))
-#define MW_LOWR LCTL(LALT(KC_DOWN))
-#define MW_LRIT LCTL(LALT(KC_K))
-#define MW_L13 LCTL(LALT(KC_D))
-#define MW_L23 LCTL(LALT(KC_E))
-#define MW_RGHT LCTL(LALT(KC_RIGHT))
-#define MW_R13 LCTL(LALT(KC_G))
-#define MW_R23 LCTL(LALT(KC_T))
-#define MW_ULFT LCTL(LALT(KC_U))
-#define MW_UPPR LCTL(LALT(KC_UP))
-#define MW_URIT LCTL(LALT(KC_I))
-
+#define MEDIA MO(_MEDIA)
 
 /* Mod tap keys */
 #define ALTCOMM ALT_T(KC_COMM)
@@ -83,27 +57,32 @@ enum userspace_layers {
 #define RENAME  LALT(KC_F2)
 
 
-
-
-
-
-enum keymap_keycodes {
-    // Disables touch processing
-    TCH_TOG = NEW_SAFE_RANGE
+enum keymap_custom_keycodes {
+    ALIGN = SAFE_RANGE,
+    ARRAY,
+    COLEMAK,
+    COLEMAC,
+    DISPMTH,
+    ENUM,
+    ITEM,
+    ITEMIZE,
+    LINEMTH,
+    RGBRST,
+    TCH_TOG
 };
 
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
-    [_CLMK] = LAYOUT_wrapper(
+    [_COLEMAK] = LAYOUT(
         KC_GRV , KC_1,    KC_2,    KC_3,    KC_4,    KC_5   , XXXXXXX, XXXXXXX, KC_6,    KC_7,    KC_8,    KC_9,    KC_0   , KC_BSPC,
         KC_TAB , KC_Q,    KC_W,    KC_F,    KC_P,    KC_B   , XXXXXXX, XXXXXXX, KC_J,    KC_L,    KC_U,    KC_Y,    GUISCLN, KC_BSLS,
-        NAVESC , KC_A,    KC_R,    KC_S,    KC_T,    KC_G   , _______, _______, KC_K,    KC_N,    KC_E,    KC_I,    KC_O     KC_QUOT,
-        KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_D,    KC_V   , ADJUST , UNDOIT , KC_M,    KC_H,    ALTCOMM, GUIDOT,  CTLSLSH, KC_RSHT,
+        NAVESC , KC_A,    KC_R,    KC_S,    KC_T,    KC_G   , _______, _______, KC_K,    KC_N,    KC_E,    KC_I,    KC_O   , KC_QUOT,
+        KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_D,    KC_V   , ADJUST , UNDOIT , KC_M,    KC_H,    ALTCOMM, GUIDOT,  CTLSLSH, KC_RSFT,
         KC_LCTL, KC_LGUI, KC_LALT, _______, NAVSPC , NAVSPC , NUMTAP , SYMENT , TEXSPC , _______, _______, _______, _______, MEDIA  
     ),
 
-    [_NAV] = LAYOUT_wrapper(
+    [_NAV] = LAYOUT(
         _______, _______, RENAME , _______, WINQUIT, _______, _______, _______, _______, _______, _______, _______, _______, _______,
         _______, _______, CTLPGUP, KC_PGUP, CTLPGDN, _______, _______, _______, _______, TABLEFT, KC_UP,   TABRGHT, _______, _______,
         _______, _______, KC_HOME, KC_PGDN, KC_END,  _______, _______, _______, CTLLEFT, KC_LEFT, KC_DOWN, KC_RGHT, CTLRGHT, KC_APP ,
@@ -111,7 +90,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______
     ),
 
-    [_TEX] = LAYOUT_wrapper(
+    [_TEX] = LAYOUT(
         _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
         _______, _______, _______, ENUM,    ITEMIZE, _______, _______, _______, _______, KC_LBRC, KC_RBRC, DISPMTH, LINEMTH, _______,
         _______, ALIGN,   _______, _______, ITEM,    _______, _______, _______, KC_PIPE, KC_LCBR, KC_RCBR, KC_LPRN, KC_RPRN, _______,
@@ -119,7 +98,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______
     ),
 
-    [_SYM] = LAYOUT_wrapper(
+    [_SYM] = LAYOUT(
         _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
         _______, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5  , _______, _______, KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10 , KC_F11 ,
         _______, KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC, _______, _______, KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, KC_F12 ,
@@ -127,7 +106,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______
     ),
 
-    [_NUM] = LAYOUT_wrapper(
+    [_NUM] = LAYOUT(
         _______, _______, _______, _______, _______, _______, _______,  _______, KC_NLCK, KC_PAST, KC_PSLS, KC_BSPC, _______, _______,
         _______, _______, _______, _______, _______, _______, _______,  _______, KC_P7  , KC_P8  , KC_P9  , KC_PMNS, _______, _______,
         _______, _______, _______, _______, _______, _______, _______,  _______, KC_P4  , KC_P5  , KC_P6  , KC_PPLS, _______, _______,
@@ -135,7 +114,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         _______, _______, _______, _______, _______, _______, _______,  KC_PENT, KC_P0  , KC_PDOT, _______, KC_TAB , S(KC_TAB), _______
     ),      
 
-    [_MEDIA] = LAYOUT_wrapper(
+    [_MEDIA] = LAYOUT(
         _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
         _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
         _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, KC_MPLY, KC_VOLU, _______, _______,
@@ -143,7 +122,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______
     ),
 
-    [_ADJUST] = LAYOUT_wrapper(
+    [_ADJUST] = LAYOUT(
         _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
         _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
         _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, KC_MPLY, KC_VOLU, _______, _______,
@@ -162,7 +141,7 @@ const uint16_t PROGMEM touch_encoders[][NUMBER_OF_TOUCH_ENCODERS][TOUCH_ENCODER_
     ),
     [_NAV] = TOUCH_ENCODER_LAYOUT( \
         _______, _______, _______, _______, _______,
-        _______, _______, _ie______, _______, _______
+        _______, _______, _______, _______, _______
     ),
     [_SYM] = TOUCH_ENCODER_LAYOUT( \
         _______, _______, _______, _______, _______,
