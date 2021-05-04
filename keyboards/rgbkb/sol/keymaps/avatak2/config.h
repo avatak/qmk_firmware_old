@@ -19,5 +19,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 #pragma once
+// #define ENCODER_DIRECTION_FLIP
+
+// place overrides here
 
 #define ENCODER_RESOLUTION 2
