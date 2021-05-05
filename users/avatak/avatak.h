@@ -93,3 +93,5 @@ enum userspace_layers {
 #define SCRIGHT S(LCTL(KC_RIGHT))
 #define TABLEFT LCTL(KC_PGUP)
 #define TABRGHT LCTL(KC_PGDN)
+#define UNDOIT  LCTL(KC_Z)
+#define REDOIT  S(LCTL(KC_Z))

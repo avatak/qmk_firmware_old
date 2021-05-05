@@ -39,8 +39,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         NAVESC , __CLMK_L2__________________________________, KC_INS ,   APPMENU, __CLMK_R2__________________________________, KC_QUOT, \
         KC_LSFT, __CLMK_L3__________________________________, KC_CAPS,   APPSRCH, __CLMK_R3__________________________________, KC_RSFT, \
         ADJUST , KC_LCTL, KC_LALT, _______, NAVSPC , NAVSPC , NUMTAP ,   SYMENT , TEXSPC , TEXSPC, CTLSHFT, ALTCTL , ALTCTLS, MEDIA  , \
-
-        KC_VOLU, KC_VOLD, KC_UP  , KC_DOWN,                                                          KC_VOLU, KC_VOLD, KC_LEFT, KC_RIGHT,
+//
+//      |---- Upper ---|  |---  Lower ---|                                                           |---- Upper ---|  |---  Lower ---|
+        KC_PGUP, KC_PGDN, KC_UP  , KC_DOWN,                                                          CTLLEFT, CTLRGHT, KC_LEFT, KC_RIGHT,
+//      
         KC_VOLD, KC_VOLU, KC_MNXT, KC_MPLY, KC_MPRV,                                        RGB_HUI, RGB_HUD, RGB_RMOD,RGB_TOG, RGB_MOD
     ),
 
