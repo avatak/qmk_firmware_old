@@ -42,7 +42,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 //
 //      |---- Upper ---|  |---  Lower ---|                                                           |---- Upper ---|  |---  Lower ---|
         KC_PGUP, KC_PGDN, KC_UP  , KC_DOWN,                                                          CTLLEFT, CTLRGHT, KC_LEFT, KC_RIGHT,
-//      
+//      3 touch buttons, then swipe up and down
         KC_VOLD, KC_VOLU, KC_MNXT, KC_MPLY, KC_MPRV,                                        RGB_HUI, RGB_HUD, RGB_RMOD,RGB_TOG, RGB_MOD
     ),
 
