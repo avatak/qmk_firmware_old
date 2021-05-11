@@ -34,10 +34,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * '--------+--------+--------+--------+--------'                                      '--------+--------+--------+--------+--------'
      */
     [_CLMK] = LAYOUT_wrapper(
-        KC_GRV , __NUM_L____________________________________, XXXXXXX,   TCH_TOG, __NUM_R____________________________________, KC_BSPC, \
+        KC_GRV , __NUM_L____________________________________, XXXXXXX,   XXXXXXX, __NUM_R____________________________________, KC_BSPC, \
         KC_TAB , __CLMK_L1__________________________________, XXXXXXX,   XXXXXXX, __CLMK_R1__________________________________, KC_BSLS, \
-        NAVESC , __CLMK_L2__________________________________, KC_INS ,   APPMENU, __CLMK_R2__________________________________, KC_QUOT, \
-        KC_LSFT, __CLMK_L3__________________________________, KC_CAPS,   APPSRCH, __CLMK_R3__________________________________, KC_RSFT, \
+        NAVESC , __CLMK_L2__________________________________, KC_INS ,   TCH_TOG, __CLMK_R2__________________________________, KC_QUOT, \
+        KC_LSFT, __CLMK_L3__________________________________, KC_CAPS,   UNDOIT , __CLMK_R3__________________________________, KC_RSFT, \
         ADJUST , KC_LCTL, KC_LALT, _______, NAVSPC , NAVSPC , NUMTAP ,   SYMENT , TEXSPC , TEXSPC, CTLSHFT, ALTCTL , ALTCTLS, MEDIA  , \
 //
 //      |---- Upper ---|  |---  Lower ---|                                                           |---- Upper ---|  |---  Lower ---|
@@ -109,7 +109,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         RESET  , _______, _______, _______, _______, _______, _______,   _______, _______, RGB_VAD, _______, RGB_VAI, _______, RGBRST ,\
         _______, RGB_TOG, _______, _______, _______, _______, _______,   _______, _______, RGB_SPD, RGB_HUI, RGB_SPI, _______, _______,\
         _______, _______, _______, _______, _______, _______, _______,   _______, _______, RGB_RMOD,RGB_HUD, RGB_MOD, _______, _______,\
-        _______, _______, _______, _______, _______, _______, _______,   _______, _______, RGB_SAD, _______, RGB_SAI, _______, _______,\
+        _______, _______, _______, _______, _______, _______, _______,   EEP_RST, _______, RGB_SAD, _______, RGB_SAI, _______, _______,\
         _______, _______, _______, _______, _______, _______, _______,   _______, _______, _______, _______, _______, _______, _______,\
 
         _______, _______, _______, _______,                                                         _______, _______, _______, _______,
@@ -119,7 +119,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 };
 
 bool process_record_keymap(uint16_t keycode, keyrecord_t *record) {
-    switch (keycode) {
+    switch (keycode) {n
         case TCH_TOG:
             touch_encoder_toggle();
             return false;  // Skip all further processing of this key
@@ -138,16 +138,18 @@ static void render_icon(void) {
     oled_write_P(font_icon, false);
 }
 
+/*
 static void render_rgb_menu(void) {
     static char buffer[53] = {0};
     snprintf(buffer, sizeof(buffer), "Hue   %3d Satur %3d Value %3d Speed %3d Mode  %3d ", 
     rgb_matrix_config.hsv.h, rgb_matrix_config.hsv.s, rgb_matrix_config.hsv.v, rgb_matrix_config.speed, rgb_matrix_config.mode);
     oled_write(buffer, false);
 }
+*/
 
 static void render_layer(void) {
     // Host Keyboard Layer Status
-    oled_write_P(PSTR("Layer"), false);
+    oled_write_P(PSTR("Layer\n-----"), false);
     switch (get_highest_layer(layer_state)) {
         case _CLMK:
             oled_write_ln_P(PSTR("Clmk "), false);
@@ -175,6 +177,16 @@ static void render_layer(void) {
     }
 }
 
+void render_mod_status(uint8_t modifiers) {
+        oled_write_P(PSTR("\nMods "), false);
+        oled_write_P(PSTR("-----"), false);
+        oled_write_P((modifiers & MOD_MASK_SHIFT) ? PSTR("S") : PSTR(" "), false);
+        oled_write_P((modifiers & MOD_MASK_CTRL) ? PSTR("C") : PSTR(" "), false);
+        oled_write_P((modifiers & MOD_MASK_ALT) ? PSTR("A") : PSTR(" "), false);
+        oled_write_P((modifiers & MOD_MASK_GUI) ? PSTR("G") : PSTR(" "), false);
+}
+
+/*
 static void render_leds(void)
 {
     // Host Keyboard LED Status
@@ -183,6 +195,7 @@ static void render_leds(void)
     oled_write_P(led_state.caps_lock ? PSTR("CAPLK")    : PSTR("     "), false);
     oled_write_P(led_state.scroll_lock ? PSTR("SCRLK")  : PSTR("     "), false);
 }
+*/
 
 static void render_touch(void)
 {
@@ -195,14 +208,16 @@ void oled_task_user(void) {
     if (is_keyboard_master()) {
         render_layer();
         oled_write_P(PSTR("     "), false);
-        render_leds();
-        oled_write_P(PSTR("     "), false);
-        render_touch();
+        render_mod_status(get_mods());
+        //render_leds();
+        //oled_write_P(PSTR("     "), false);
+        //render_touch();
         oled_set_cursor(0, 12);
         render_icon();
     }
     else {
-        render_rgb_menu();
+        render_touch();
+        //render_rgb_menu();
         oled_set_cursor(0, 12);
         render_icon();
     }
