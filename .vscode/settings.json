@@ -23,5 +23,12 @@
         "editor.trimAutoWhitespace": false,
         "files.trimTrailingWhitespace": false
     },
+<<<<<<< HEAD
     "overtype.abbreviatedStatus": true
+=======
+    "python.formatting.provider": "yapf",
+    "[json]": {
+	    "editor.formatOnSave": false
+    }
+>>>>>>> origin
 }
