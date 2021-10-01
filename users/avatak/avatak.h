@@ -1,20 +1,20 @@
 #pragma once
 #include QMK_KEYBOARD_H
 
-#include "encoder_custom.h"
+//#include "encoder_custom.h"
 #include "layouts.h"
-#include "oled_custom.h"
+//#include "oled_custom.h"
 #include "process_records.h"
 #include "quantum.h"
 
-#ifdef ENCODER_ENABLE
-#   include "encoder_custom.h"
-#endif
+//#ifdef ENCODER_ENABLE
+//#   include "encoder_custom.h"
+//#endif
 
 enum userspace_layers {
-    _CLMK = 0,
-    _CLMAC,
-    _QWRTY,
+    _COLEMAK = 0,
+    _COLEMAC,
+    _QWERTY,
     _NAV,
     _MNAV,
     _TEX,
@@ -23,11 +23,12 @@ enum userspace_layers {
     _MEDIA,
     _MOUSE,
     _MWIN,
-    _ADJ
+    _UTIL,
+    _ADJUST
 };
 
 /* Layer shifting */
-#define ADJUST TT(_ADJ)
+#define ADJUST TT(_ADJUST)
 #define NAVSPC LT(_NAV, KC_SPC)
 #define MNAVSPC LT(_MNAV, KC_SPC)
 #define NAVESC LT(_NAV, KC_ESC)
@@ -36,6 +37,7 @@ enum userspace_layers {
 #define NUMTOG TG(_NUM)
 #define SYMENT LT(_SYM, KC_ENT)
 #define TEXSPC LT(_TEX, KC_SPC)
+#define TOGUTIL TG(_UTIL)
 #define MOUSE  TG(_MOUSE)
 
 /* OSX Specific */
@@ -93,3 +95,5 @@ enum userspace_layers {
 #define SCRIGHT S(LCTL(KC_RIGHT))
 #define TABLEFT LCTL(KC_PGUP)
 #define TABRGHT LCTL(KC_PGDN)
+#define UNDOIT  LCTL(KC_Z)
+#define REDOIT LCTL(KC_Y)

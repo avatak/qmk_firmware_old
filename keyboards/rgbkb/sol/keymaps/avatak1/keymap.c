@@ -7,6 +7,12 @@
 
 #include "avatak.h"
 
+enum keymap_keycodes {
+  NXTPRST = NEW_SAFE_RANGE,
+  PRVPRST,  
+};
+
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   /* Qwerty
    * ,------------------------------------------------.  ,------------------------------------------------.
@@ -24,8 +30,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    *                                    `-------------'  `-------------'
    */
   [_CLMK] = LAYOUT_wrapper( \
-        KC_GRV , __NUM_L____________________________________, _______,   MOUSE  , __NUM_R____________________________________, KC_BSPC, \
-        KC_TAB , __CLMK_L1__________________________________, _______,   NUMTOG , __CLMK_R1__________________________________, KC_BSLS, \
+        KC_GRV , __NUM_L____________________________________, PRVPRST,   MOUSE  , __NUM_R____________________________________, KC_BSPC, \
+        KC_TAB , __CLMK_L1__________________________________, NXTPRST,   NUMTOG , __CLMK_R1__________________________________, KC_BSLS, \
         NAVESC , __CLMK_L2__________________________________, XXXXXXX,   XXXXXXX, __CLMK_R2__________________________________, KC_QUOT, \
         KC_LSFT, __CLMK_L3__________________________________, XXXXXXX,   XXXXXXX, __CLMK_R3__________________________________, KC_RSFT, \
         ADJUST , KC_LCTL, KC_LGUI, KC_LALT, _______, NAVSPC , NUMTAP ,   SYMENT , TEXSPC , _______, CTLSHFT, ALTCTL , ALTSHFT, MO(_MEDIA)  , \
@@ -86,6 +92,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                      _______, _______,   KC_BTN2, KC_BTN1 \
     ),
 
+    [_UTIL] = LAYOUT_wrapper( \
+        _______, _______, _______, _______, _______, _______, _______,   _______, _______, _______, _______, _______, _______, _______, \
+        _______, _______, _______, _______, _______, _______, _______,   _______, _______, PRVPRST, KC_UP  , NXTPRST, _______, _______, \
+        _______, _______, _______, _______, _______, _______, XXXXXXX,   XXXXXXX, _______, KC_LEFT, KC_DOWN, KC_RGHT, _______, _______, \
+        _______, _______, _______, _______, _______, _______, XXXXXXX,   XXXXXXX, _______, _______, _______, _______, _______, _______, \
+        _______, _______, _______, _______, _______, _______, _______,   _______, _______, _______, _______, _______, _______, _______, \
+                                                     _______, _______,   _______, _______ \
+    ),
+
     [_ADJ] = LAYOUT_wrapper( \
         RESET  , _______, _______, _______, _______, _______, _______,  _______, _______, _______, _______, _______, _______, _______, \
         _______, __ADJ_L1___________________________________, _______,  _______, __ADJ_R1___________________________________, _______, \
@@ -95,3 +110,26 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                      _______, _______,  _______, _______ \
     )
 };
+
+
+bool process_record_keymap(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode)
+    {
+        case NXTPRST:
+            if (record->event.pressed) {
+                tap_code(KC_DOWN);
+                SEND_STRING(SS_DELAY(500));
+                tap_code(KC_RGHT);
+            }
+            return false;  // Skip all further processing of this key
+        case PRVPRST:
+            if (record->event.pressed) {
+                tap_code(KC_UP);
+                SEND_STRING(SS_DELAY(500));
+                tap_code(KC_RGHT);
+            }
+            return false;  // Skip all further processing of this key
+        default:
+            return true;
+    }
+}
