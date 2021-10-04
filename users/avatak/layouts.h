@@ -3,13 +3,14 @@
 
 #define LAYOUT_wrapper(...)                  LAYOUT(__VA_ARGS__)
 
-#define __NUM_L____________________________________     KC_1,    KC_2,    KC_3,    KC_4,    KC_5
-#define __NUM_R____________________________________     KC_6,    KC_7,    KC_8,    KC_9,    KC_0
 
+
+#define __NUM_L____________________________________     KC_1,    KC_2,    KC_3,    KC_4,    KC_5
 #define __CLMK_L1__________________________________     KC_Q,    KC_W,    KC_F,    KC_P,    KC_B
 #define __CLMK_L2__________________________________     KC_A,    KC_R,    KC_S,    KC_T,    KC_G
 #define __CLMK_L3__________________________________     KC_Z,    KC_X,    KC_C,    KC_D,    KC_V
 
+#define __NUM_R____________________________________     KC_6,    KC_7,    KC_8,    KC_9,    KC_0
 #define __CLMK_R1__________________________________     KC_J,    KC_L,    KC_U,    KC_Y,    GUISCLN
 #define __CLMK_R2__________________________________     KC_K,    KC_N,    KC_E,    KC_I,    KC_O
 #define __CLMK_R3__________________________________     KC_M,    KC_H,    ALTCOMM, GUIDOT,  CTLSLSH

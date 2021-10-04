@@ -7,11 +7,13 @@ enum userspace_custom_keycodes {
     COLEMAK,
     COLEMAC,
     DISPMTH,
+    DOWNRGHT,
     ENUM,
     ITEM,
     ITEMIZE,
     LINEMTH,
     RGBRST,
+    UPRGHT,
     NEW_SAFE_RANGE
 };
 

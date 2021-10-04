@@ -11,6 +11,11 @@
 #define APPMENU LALT(KC_F1)
 #define MEDIA MO(_MEDIA)
 
+enum keymap_keycodes {
+  NXTPRST = NEW_SAFE_RANGE,
+  PRVPRST,  
+};
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   /* Qwerty
    * ,------------------------------------------------.  ,------------------------------------------------.
@@ -108,6 +113,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                      _______, _______,   _______, _______ \
     ),
 
+    [_UTIL] = LAYOUT_wrapper( \
+        _______, _______, _______, _______, _______, _______, _______,   _______, _______, _______, _______, _______, _______, _______, \
+        _______, _______, _______, _______, _______, _______, _______,   _______, _______, PRVPRST, KC_UP  , NXTPRST, _______, _______, \
+        _______, _______, _______, _______, _______, _______, XXXXXXX,   XXXXXXX, _______, KC_LEFT, KD_DOWN, KC_RGHT, _______, _______, \
+        _______, _______, _______, _______, _______, _______, XXXXXXX,   XXXXXXX, _______, _______, _______, _______, _______, _______, \
+        _______, _______, _______, _______, _______, _______, _______,   _______, _______, _______, _______, _______, _______, _______, \
+                                                     _______, _______,   _______, _______ \
+    ),
+
+
     [_ADJ] = LAYOUT_wrapper( \
         RESET  , _______, _______, _______, _______, _______, _______,  RGB_TOG, RGBRST , RGB_VAI, RGB_SAI, RGB_SPI, RGB_MOD, RGB_HUI, \
         _______, RGB_TOG, _______, _______, _______, _______, _______,  _______, _______, RGB_VAD, RGB_SAD, RGB_SPD,RGB_RMOD, RGB_HUD, \
@@ -117,3 +132,27 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                      _______, _______,  _______, _______ \
     )
 };
+
+
+
+bool process_record_keymap(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode)
+    {
+        case NXTPRST:
+            if (record->event.pressed) {
+                SS_TAP(KC_DOWN);
+                SS_DELAY(500);
+                SS_TAP(KC_RGHT);
+            }
+            return false;  // Skip all further processing of this key
+        case PRVPRST:
+            if (record->event.pressed) {
+                SS_TAP(KC_UP);
+                SS_DELAY(500);
+                SS_TAP(KC_RGHT);
+            }
+            return false;  // Skip all further processing of this key
+        default:
+            return true;
+    }
+}

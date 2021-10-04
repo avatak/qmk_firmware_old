@@ -10,7 +10,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         case COLEMAK:
             if (record->event.pressed) {
-                set_single_persistent_default_layer(_CLMK);
+                set_single_persistent_default_layer(_COLEMAK);
             }
             /*
             #ifdef AUDIO_ENABLE
@@ -20,7 +20,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             break;
         case COLEMAC:
             if (record->event.pressed) {
-                set_single_persistent_default_layer(_CLMAC);
+                set_single_persistent_default_layer(_COLEMAC);
             }
             /*
             #ifdef AUDIO_ENABLE
@@ -44,6 +44,14 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 SEND_STRING("\\[");
             }
             return false;
+        case DOWNRGHT:
+            if (record->event.pressed)
+            {
+                tap_code16(KC_DOWN);
+                SEND_STRING(SS_DELAY(100));
+                tap_code16(KC_RGHT);
+            }
+            return false;
         case LINEMTH:
             if (record->event.pressed)
             {
@@ -56,6 +64,14 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                     eeconfig_update_rgblight_default();
                     rgblight_enable();
                 #endif
+            }
+            return false;
+        case UPRGHT:
+            if (record->event.pressed)
+            {
+                tap_code16(KC_UP);
+                SEND_STRING(SS_DELAY(100));
+                tap_code16(KC_RGHT);
             }
             return false;
     }
