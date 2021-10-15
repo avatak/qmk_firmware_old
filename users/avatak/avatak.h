@@ -13,18 +13,18 @@
 
 enum userspace_layers {
     _COLEMAK = 0,
-    _COLEMAC,
-    _QWERTY,
     _NAV,
-    _MNAV,
     _TEX,
     _SYM,
     _NUM,
     _MEDIA,
     _MOUSE,
-    _MWIN,
     _UTIL,
-    _ADJUST
+    _ADJUST,
+    _COLEMAC,
+    _QWERTY,
+    _MNAV,
+    _MWIN
 };
 
 /* Layer shifting */
