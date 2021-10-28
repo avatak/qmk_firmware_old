@@ -21,9 +21,5 @@
 #define RGB_DISABLE_WHEN_USB_SUSPENDED
 
 #define STM32_ONBOARD_EEPROM_SIZE 2048
-<<<<<<< HEAD
-=======
-
 #undef EE_HANDS
 #define MASTER_LEFT
->>>>>>> b630c2213335e6e839c61ba12c22e8e43cdbdd9c
