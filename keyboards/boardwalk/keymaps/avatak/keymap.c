@@ -16,8 +16,8 @@
 #include QMK_KEYBOARD_H
 #include "avatak.h"
 
+#undef LAYOUT
 #define LAYOUT LAYOUT_ortho_5x14
-
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     /* Base Layer
@@ -33,12 +33,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * | LCTRL  | LGUI   | FN     | LALT   | SPACE  | SPACE  | SPACE  | SPACE  | SPACE  | LEFT   | DOWN   | UP     | RIGHT  | RCTRL  |
      * '-----------------------------------------------------------------------------------------------------------------------------'
      */
-    [_CLMK] = LAYOUT_wrapper(
+    [_COLEMAK] = LAYOUT_wrapper(
         KC_GRV , __NUM_L____________________________________, _______, _______, __NUM_R____________________________________, KC_BSPC,
         KC_TAB , __CLMK_L1__________________________________, _______, _______, __CLMK_R1__________________________________, KC_BSLS,
         NAVESC , __CLMK_L2__________________________________, _______, _______, __CLMK_R2__________________________________, KC_QUOT,
         KC_LSFT, __CLMK_L3__________________________________, _______, _______, __CLMK_R3__________________________________, KC_RSFT,
-        ADJUST , KC_LCTL, _______, KC_LGUI, KC_LALT, NAVSPC , NUMTAP , SYMENT , TEXSPC , ALTCTL , KC_HYPR, CTLSHFT, ALTSHFT, ADJUST
+        ADJUST , KC_LCTL, KC_LCTL, KC_LGUI, KC_LALT, NAVSPC , NUMTAP , SYMENT , TEXSPC , ALTCTL , KC_HYPR, CTLSHFT, ALTSHFT, ADJUST
     ),
 
     [_NAV] = LAYOUT_wrapper(
@@ -73,7 +73,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         _______, _______, _______, _______, _______, _______, _______, _______, __NP_4____________________________, _______, _______
     ),
 
-    [_ADJ] = LAYOUT_wrapper(
+    [_ADJUST] = LAYOUT_wrapper(
         RESET  , _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
         _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
         _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, KC_MPLY, KC_VOLU, _______, _______,
