@@ -6,7 +6,7 @@
  * you think this stuff is worth it, you can buy me a beer in return. David Rauseo
  * ----------------------------------------------------------------------------
  */
-
+0
 #include QMK_KEYBOARD_H
 #include "common_oled.h"
 #include "avatak.h"
@@ -31,8 +31,7 @@ Encoder press keycode should be set to MENU_BTN, Clockwise should be MENU_UP, an
 Depending on where you add an encoder to the right half will determin in the default keymap where you should put those keycodes.
 */
 
-const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-    /* QWERTY
+const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = 1    /* QWERTY
      * .--------------------------------------------------------------.  .--------------------------------------------------------------.
      * | `~/ESC | 1      | 2      | 3      | 4      | 5      |   -    |  |    =   | 6      | 7      | 8      | 9      | 0      | Bckspc |
      * |--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
@@ -56,12 +55,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_COLEMAK] = LAYOUT_wrapper(
         KC_GRV , __NUM_L____________________________________, XXXXXXX, XXXXXXX, __NUM_R____________________________________, KC_BSPC,
         KC_TAB , __CLMK_L1__________________________________, XXXXXXX, XXXXXXX, __CLMK_R1__________________________________, KC_BSLS,
-        NAVESC , __CLMK_L2__________________________________, _______, _______, __CLMK_R2__________________________________, KC_QUOT,
-        KC_LSFT, __CLMK_L3__________________________________, TOGUTIL, UNDOIT , __CLMK_R3__________________________________, KC_RSFT,
-        ADJUST , KC_LCTL, KC_LGUI, KC_LALT, NAVSPC , NAVSPC , NUMTAP , SYMENT , TEXSPC , TEXSPC , _______, ALTSHFT, ALTCTL , MO(_MEDIA),
+        NAVESC , __CLMK_L2__________________________________, _______, ADJUST, __CLMK_R2__________________________________, KC_QUOT,
+        KC_LSFT, __CLMK_L3__________________________________, ADJUST , UNDOIT , __CLMK_R3__________________________________, KC_RSFT,
+        KC_LCTL, KC_LGUI, KC_LALT, XXXXXXX, NAVSPC , NAVSPC , NUMTAP , SYMENT , TEXSPC , TEXSPC , _______, ALTSHFT, ALTCTL , MO(_MEDIA),
 
         KC_UP , KC_DOWN , KC_UP  , KC_DOWN,                                                       KC_PGUP, KC_PGDN, KC_LEFT, KC_RGHT,
-        _______, _______, _______, _______, _______,                                     _______, _______, _______, _______, _______
+        KC_VOLD, KC_VOLU, KC_MNXT, KC_MPLY, KC_MPRV,                                     KC_VOLD, KC_VOLU, KC_MPRV, KC_MPLY, KC_MNXT
     ),
 
     [_NAV] = LAYOUT_wrapper(
@@ -121,7 +120,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_ADJUST] = LAYOUT_wrapper(
         RESET  , _______, _______, _______, _______, _______, _______, _______, _______, RGB_SAD, RGB_VAI, RGB_SAI, _______, RGBRST ,
         _______, RGB_TOG, _______, _______, _______, _______, _______, _______, _______, RGB_HUD, RGB_VAD, RGB_HUI, _______, _______,
-        _______, _______, _______, _______, _______, _______, _______, _______, _______, RGB_SPD, _______, RGB_SPI, _______, _______,
+        _______, _______, _______, _______, TCH_TOG, _______, _______, _______, _______, RGB_SPD, _______, RGB_SPI, _______, _______,
         _______, _______, _______, _______, _______, _______, _______, _______, _______, RGB_RMOD,_______, RGB_MOD, _______, _______,
         _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
 
