@@ -1,4 +1,4 @@
-#pragma once
+pragma once
 #include "avatak.h"
 
 #define LAYOUT_wrapper(...)                  LAYOUT(__VA_ARGS__)
