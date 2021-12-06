@@ -38,7 +38,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_TAB , __CLMK_L1__________________________________, _______, _______, __CLMK_R1__________________________________, KC_BSLS,
         NAVESC , __CLMK_L2__________________________________, _______, _______, __CLMK_R2__________________________________, KC_QUOT,
         KC_LSFT, __CLMK_L3__________________________________, _______, _______, __CLMK_R3__________________________________, KC_RSFT,
-        ADJUST , KC_LCTL, KC_LCTL, KC_LGUI, KC_LALT, NAVSPC , NUMTAP , SYMENT , TEXSPC , ALTCTL , KC_HYPR, CTLSHFT, ALTSHFT, ADJUST
+        ADJUST , KC_LCTL, KC_LCTL, KC_LGUI, KC_LALT, NAVSPC , NUMTAP , SYMENT , TEXSPC , ALTCTL , KC_HYPR, CTLSHFT, ALTSHFT, ADJUST 
     ),
 
     [_NAV] = LAYOUT_wrapper(
@@ -51,9 +51,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [_COLEMAC] = LAYOUT_wrapper(
         KC_GRV , __NUM_L____________________________________, _______, _______, __NUM_R____________________________________, KC_BSPC,
-        KC_TAB , __CLMK_L1__________________________________, _______, MACMENU, __CLMK_R1__________________________________, KC_BSLS,
-        MNAVESC , __CLMK_L2__________________________________, _______, _______, __CLMK_R2__________________________________, KC_QUOT,
-        KC_LSFT, __CLMK_L3__________________________________, _______, MACTERM, __CLMK_R3__________________________________, KC_RSFT,
+        KC_TAB , __CLMAC_L1_________________________________, _______, MACMENU, __CLMAC_R1_________________________________, KC_BSLS,
+        MNAVESC, __CLMAC_L2_________________________________, _______, _______, __CLMAC_R2_________________________________, KC_QUOT,
+        KC_LSFT, __CLMAC_L3_________________________________, _______, MACTERM, __CLMAC_R3_________________________________, KC_RSFT,
         ADJUST , KC_LCTL, KC_LCTL, KC_LALT, KC_LGUI, MNAVSPC , NUMTAP , SYMENT , TEXSPC , ALTCTL , KC_HYPR, CTLSHFT, ALTSHFT, ADJUST
     ),
 
