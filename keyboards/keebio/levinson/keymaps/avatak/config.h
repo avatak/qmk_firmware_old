@@ -21,6 +21,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #pragma once
 
+<<<<<<< HEAD
 //#define ENCODERS_PAD_A { F5 }
 //#define ENCODERS_PAD_B { F4 }
 
@@ -32,6 +33,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #define C6_AUDIO
 
+=======
+>>>>>>> master
 // #define USE_I2C
 
 /* Select hand configuration */
